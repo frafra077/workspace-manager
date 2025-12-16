@@ -140,27 +140,34 @@
 <body class="antialiased selection:bg-blue-500 selection:text-white">
 
 	<!-- NAVIGAZIONE -->
+	<!-- NAVIGAZIONE COMPLETA (sostituisci tutto il <nav>) -->
 	<nav class="fixed w-full z-50 glass border-b-0">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex items-center justify-between h-16">
-				<div class="flex items-center gap-3">
-					<!-- Icona App -->
-					<img src="app-icon.png" alt="WorkSpace Manager" class="w-8 h-8 rounded-lg shadow-lg object-cover">
-					</div>
+				<div class="flex items-center gap-2"> <!-- gap-2 più stretto -->
+					<!-- ✅ ICONA CORRETTA -->
+					<img src="app-icon.png" 
+						 alt="WorkSpace Manager" 
+						 class="w-8 h-8 rounded-lg shadow-md object-cover flex-shrink-0"
+						 loading="lazy">
 					<span class="font-bold text-lg tracking-tight">WorkSpace Manager</span>
 				</div>
-				<div class="hidden md:block">
+				<div class="hidden md:flex items-center gap-2">
 					<a href="#features" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Funzioni</a>
 					<a href="#gallery" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Gallery</a>
 					<a href="#install" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Installazione</a>
-					<a href="#donate" class="px-3 py-2 text-sm text-yellow-400 hover:text-yellow-300 transition"><i class="fa-solid fa-heart mr-1"></i> Supporta</a>
-
-					<a href="#download" class="ml-4 px-4 py-2 rounded-full bg-white text-black font-semibold text-sm hover:bg-gray-200 transition shadow-lg shadow-white/10">Download v1.0</a>
+					<a href="#donate" class="px-3 py-2 text-sm text-yellow-400 hover:text-yellow-300 transition">
+						<i class="fa-solid fa-heart mr-1"></i> Supporta
+					</a>
+					<a href="#download" class="px-4 py-2 rounded-full bg-white text-black font-semibold text-sm hover:bg-gray-200 transition shadow-md ml-2">
+						Download v1.0
+					</a>
 					<a href="#contact" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Contatti</a>
 				</div>
 			</div>
 		</div>
 	</nav>
+
 
 	<!-- 🆕 MODAL HTML (Nascosto di default) -->
 	<div id="imageModal" class="image-modal">
