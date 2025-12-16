@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WorkSpace Manager - macOS Automation</title>
+	<!-- Tailwind CSS per stile moderno immediato -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<!-- Font Inter simile a San Francisco di Apple -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<!-- Icone -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	
+	<style>
+		body { font-family: 'Inter', sans-serif; background-color: #0f1115; color: #ffffff; }
+		
+		/* Effetto Glassmorphism */
+		.glass {
+			background: rgba(255, 255, 255, 0.05);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+		}
+		
+		/* Gradiente del testo */
+		.text-gradient {
+			background: linear-gradient(to right, #60a5fa, #c084fc);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+		
+		/* Animazione Hero */
+		.hero-image {
+			transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+			box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+			transition: transform 0.3s ease;
+		}
+		.hero-image:hover {
+			transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+		}
+
+		/* 🆕 STILE MODAL IMMAGINI */
+		.image-modal {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background: rgba(0,0,0,0.95);
+			backdrop-filter: blur(20px);
+			z-index: 2000;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s ease;
+		}
+		.image-modal.active {
+			opacity: 1;
+			visibility: visible;
+		}
+		.modal-image {
+			max-width: 90vw;
+			max-height: 90vh;
+			object-fit: contain;
+			border-radius: 12px;
+			box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+			transform: scale(0.9);
+			transition: transform 0.3s ease;
+			cursor: zoom-in;
+		}
+		.modal-image.zoomed {
+			transform: scale(1.5);
+			cursor: zoom-out;
+		}
+		.modal-nav {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background: rgba(255,255,255,0.1);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(255,255,255,0.2);
+			color: white;
+			font-size: 1.5rem;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			z-index: 2010;
+		}
+		.modal-nav:hover {
+			background: rgba(255,255,255,0.2);
+			transform: translateY(-50%) scale(1.1);
+		}
+		.modal-nav.prev { left: 2rem; }
+		.modal-nav.next { right: 2rem; }
+		.modal-close {
+			position: absolute;
+			top: 2rem;
+			right: 2rem;
+			background: rgba(255,255,255,0.1);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(255,255,255,0.2);
+			color: white;
+			font-size: 1.5rem;
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			z-index: 2010;
+		}
+		.modal-close:hover {
+			background: rgba(255,0,0,0.4);
+			transform: rotate(90deg);
+		}
+		.modal-counter {
+			position: absolute;
+			bottom: 2rem;
+			left: 50%;
+			transform: translateX(-50%);
+			background: rgba(255,255,255,0.1);
+			backdrop-filter: blur(10px);
+			padding: 0.5rem 1.5rem;
+			border-radius: 20px;
+			font-size: 0.9rem;
+			color: rgba(255,255,255,0.8);
+			border: 1px solid rgba(255,255,255,0.1);
+		}
+	</style>
+</head>
+<body class="antialiased selection:bg-blue-500 selection:text-white">
+
+	<!-- NAVIGAZIONE -->
+	<nav class="fixed w-full z-50 glass border-b-0">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex items-center justify-between h-16">
+				<div class="flex items-center gap-3">
+					<!-- Icona App -->
+					<img src="app-icon.png" alt="WorkSpace Manager" class="w-8 h-8 rounded-lg shadow-lg object-cover">
+					</div>
+					<span class="font-bold text-lg tracking-tight">WorkSpace Manager</span>
+				</div>
+				<div class="hidden md:block">
+					<a href="#features" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Funzioni</a>
+					<a href="#gallery" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Gallery</a>
+					<a href="#install" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Installazione</a>
+					<a href="#donate" class="px-3 py-2 text-sm text-yellow-400 hover:text-yellow-300 transition"><i class="fa-solid fa-heart mr-1"></i> Supporta</a>
+
+					<a href="#download" class="ml-4 px-4 py-2 rounded-full bg-white text-black font-semibold text-sm hover:bg-gray-200 transition shadow-lg shadow-white/10">Download v1.0</a>
+					<a href="#contact" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Contatti</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- 🆕 MODAL HTML (Nascosto di default) -->
+	<div id="imageModal" class="image-modal">
+		<div class="modal-close" onclick="closeModal()">
+			<i class="fa-solid fa-xmark"></i>
+		</div>
+		<div class="modal-nav prev" onclick="prevImage()">
+			<i class="fa-solid fa-chevron-left"></i>
+		</div>
+		<div class="modal-nav next" onclick="nextImage()">
+			<i class="fa-solid fa-chevron-right"></i>
+		</div>
+		<img id="modalImage" class="modal-image" src="" alt="Fullscreen Preview" onclick="toggleZoom()">
+		<div id="modalCounter" class="modal-counter">1 / 5</div>
+	</div>
+
+	<!-- HERO SECTION -->
+	<section class="relative pt-36 pb-20 overflow-hidden">
+		<!-- Background Glow -->
+		<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[120px] opacity-20 -z-10"></div>
+
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
+			
+			<!-- Testo -->
+			<div class="md:w-1/2 text-center md:text-left">
+				<div class="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-900/30 rounded-full border border-emerald-800">
+					Nuova Release 1.0
+				</div>
+
+				<!-- 🆕 BANNER SWIFTUI -->
+				<div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-6 p-3 glass rounded-xl border border-white/20 bg-gradient-to-r from-emerald-900/20 to-blue-900/20 w-fit mx-auto md:mx-0">
+					<div class="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-lg">
+						<i class="fa-brands fa-swift text-emerald-400 text-lg"></i>
+						<span class="font-semibold text-emerald-300 text-sm">100% SwiftUI Nativo</span>
+					</div>
+					<div class="w-px h-4 bg-white/20 hidden sm:block"></div>
+					<div class="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-lg">
+						<i class="fa-solid fa-bolt-lightning text-yellow-400 text-lg"></i>
+						<span class="font-semibold text-yellow-300 text-sm">Super Leggero</span>
+						<span class="text-xs bg-black/20 px-2 py-0.5 rounded-full ml-1 text-gray-300">~15MB</span>
+					</div>
+				</div>
+				<!-- DOPO il banner SwiftUI, PRIMA del <h1> -->
+				<div class="flex items-center justify-center md:justify-start mb-8 mx-auto md:mx-0">
+					<img src="app-icon.png" alt="WorkSpace Manager Icon" class="w-24 h-24 rounded-2xl shadow-2xl ring-4 ring-blue-500/30 mx-auto md:mx-0">
+				</div>
+
+
+				<h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+					Il tuo setup ideale <br>
+					<span class="text-gradient">in un solo click.</span>
+				</h1>
+				<p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">
+					Smetti di aprire manualmente terminali, cartelle e browser ogni mattina. 
+					WorkSpace Manager configura la tua postazione di lavoro macOS all'istante.
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+					<a href="#download" class="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg shadow-blue-900/50 transition flex items-center justify-center gap-2">
+						<i class="fa-brands fa-apple text-xl"></i> Scarica per macOS
+					</a>
+					<a href="#features" class="px-8 py-4 rounded-xl glass hover:bg-white/10 text-white font-semibold transition">
+						Scopri di più
+					</a>
+				</div>
+				<p class="mt-4 text-xs text-gray-500 flex items-center justify-center md:justify-start gap-2">
+					<i class="fa-solid fa-laptop text-gray-600"></i> Richiede macOS Sonoma o superiore
+				</p>
+			</div>
+
+			<!-- Immagine 3D -->
+			<div class="md:w-1/2 relative z-10 perspective-container">
+				<img src="SCREEN_DASHBOARD.png" alt="App Dashboard" class="hero-image rounded-xl border border-white/20 w-full max-w-lg mx-auto shadow-2xl">
+			</div>
+		</div>
+	</section>
+
+	<!-- FEATURES GRID -->
+	<section id="features" class="py-20 bg-[#0b0d10]">
+		<div class="max-w-7xl mx-auto px-4">
+			<h2 class="text-3xl font-bold text-center mb-16">Tutto quello che ti serve per <span class="text-blue-400">il focus.</span></h2>
+			
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<!-- Feature 1 -->
+				<div class="glass p-8 rounded-2xl hover:border-blue-500/50 transition duration-300 group">
+					<div class="w-12 h-12 bg-blue-900/50 rounded-lg flex items-center justify-center mb-6 text-blue-400 group-hover:scale-110 transition">
+						<i class="fa-solid fa-terminal text-xl"></i>
+					</div>
+					<h3 class="text-xl font-bold mb-3">Automazione Terminale</h3>
+					<p class="text-gray-400 text-sm">Lancia comandi shell, attiva ambienti virtuali (venv) ed esegue script di setup in background automaticamente.</p>
+				</div>
+
+				<!-- Feature 2 -->
+				<div class="glass p-8 rounded-2xl hover:border-purple-500/50 transition duration-300 group">
+					<div class="w-12 h-12 bg-purple-900/50 rounded-lg flex items-center justify-center mb-6 text-purple-400 group-hover:scale-110 transition">
+						<i class="fa-solid fa-desktop text-xl"></i>
+					</div>
+					<h3 class="text-xl font-bold mb-3">Desktop Virtuali</h3>
+					<p class="text-gray-400 text-sm">Sfrutta Mission Control per creare una nuova scrivania pulita per ogni progetto. Niente più finestre mischiate.</p>
+				</div>
+
+				<!-- Feature 3 -->
+				<div class="glass p-8 rounded-2xl hover:border-green-500/50 transition duration-300 group">
+					<div class="w-12 h-12 bg-green-900/50 rounded-lg flex items-center justify-center mb-6 text-green-400 group-hover:scale-110 transition">
+						<i class="fa-brands fa-safari text-xl"></i>
+					</div>
+					<h3 class="text-xl font-bold mb-3">Smart Browser</h3>
+					<p class="text-gray-400 text-sm">Apre gruppi di URL specifici in tab ordinati. Perfetto per avere Jira, GitHub e Preview pronti all'avvio.</p>
+				</div>
+				
+				<!-- Feature 4 (Larga) -->
+				<div class="md:col-span-3 glass p-8 rounded-2xl flex flex-col md:flex-row items-center gap-8 border-t-4 border-t-blue-500 hover:bg-white/5 transition">
+					<div class="flex-1">
+						<h3 class="text-2xl font-bold mb-4">Menu Bar Resident</h3>
+						<p class="text-gray-400 mb-6">Controlla i tuoi workspace direttamente dalla barra dei menu. Switch rapido, riepilogo delle risorse attive e stato del sistema sempre visibile.</p>
+						<ul class="space-y-2 text-sm text-gray-300">
+							<li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Accesso rapido alle configurazioni</li>
+							<li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Modalità "Stealth" (nascondi finestra principale)</li>
+						</ul>
+					</div>
+					<div class="md:w-1/3">
+						<img src="SCREEN_MENUBAR.png" alt="Menu Bar" class="rounded-lg shadow-2xl border border-white/10 rotate-1 hover:rotate-0 transition duration-500 cursor-pointer" onclick="openModal('SCREEN_MENUBAR.png')">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- GALLERY SECTION (AGGIORNATA CON ONCLICK) -->
+	<section id="gallery" class="py-20 bg-gradient-to-b from-[#0f1115] to-[#0b0d10]">
+		<div class="max-w-7xl mx-auto px-4">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl font-bold mb-6">WorkSpace Manager in azione</h2>
+				<p class="text-xl text-gray-400 max-w-2xl mx-auto">
+					Clicca sulle immagini per ingrandirle e vedere i dettagli.
+				</p>
+			</div>
+	
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				
+				<!-- Screen 1 -->
+				<div class="group relative overflow-hidden rounded-2xl glass hover:border-blue-500/50 transition-all duration-300 cursor-pointer" onclick="openModal('SCREEN_DASHBOARD.png')">
+					<img src="SCREEN_DASHBOARD.png" alt="Dashboard Workspace" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+						<i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i>
+					</div>
+				</div>
+	
+				<!-- Screen 2 -->
+				<div class="group relative overflow-hidden rounded-2xl glass hover:border-purple-500/50 transition-all duration-300 cursor-pointer" onclick="openModal('SCREEN_MENUBAR.png')">
+					<img src="SCREEN_MENUBAR.png" alt="Menu Bar" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+						<i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i>
+					</div>
+				</div>
+	
+				<!-- Screen 3 -->
+				<div class="group relative overflow-hidden rounded-2xl glass hover:border-green-500/50 transition-all duration-300 cursor-pointer" onclick="openModal('SCREEN_SETTINGS.png')">
+					<img src="SCREEN_SETTINGS.png" alt="Impostazioni" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+						<i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i>
+					</div>
+				</div>
+	
+				<!-- Screen 4 -->
+				<div class="group relative overflow-hidden rounded-2xl glass hover:border-indigo-500/50 transition-all duration-300 cursor-pointer md:col-span-2 lg:col-span-1" onclick="openModal('SCREEN_APPEARANCE.png')">
+					<img src="SCREEN_APPEARANCE.png" alt="Aspetto" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+						<i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i>
+					</div>
+				</div>
+	
+				<!-- Screen 5 -->
+				<div class="group relative overflow-hidden rounded-2xl glass hover:border-yellow-500/50 transition-all duration-300 cursor-pointer lg:col-span-2" onclick="openModal('SCREEN_ERRORS.png')">
+					<img src="SCREEN_ERRORS.png" alt="Errori" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+						<i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i>
+					</div>
+				</div>
+	
+			</div>
+		</div>
+	</section>
+
+	<!-- INSTALLAZIONE -->
+	<section id="install" class="py-20 bg-gray-900/50 border-y border-white/5">
+		<div class="max-w-4xl mx-auto px-4 text-center">
+			<div class="inline-block p-3 rounded-full bg-yellow-500/10 text-yellow-500 mb-6 border border-yellow-500/20">
+				<i class="fa-solid fa-shield-halved text-2xl"></i>
+			</div>
+			<h2 class="text-3xl font-bold mb-6">Come installare (Importante)</h2>
+			<p class="text-gray-400 mb-10 max-w-2xl mx-auto">
+				WorkSpace Manager è un tool indipendente sviluppato da un freelance, non distribuito su App Store. 
+				Per questo motivo, macOS mostrerà un avviso la prima volta. Ecco come procedere:
+			</p>
+
+			<div class="grid md:grid-cols-3 gap-8 text-left">
+				<div class="glass p-6 rounded-xl relative hover:bg-white/5 transition">
+					<div class="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center font-bold shadow-lg">1</div>
+					<h4 class="font-bold mb-2">Scarica & Trascina</h4>
+					<p class="text-sm text-gray-400">Scarica il DMG, aprilo e trascina l'icona dell'app nella cartella <strong>Applicazioni</strong>.</p>
+				</div>
+				<div class="glass p-6 rounded-xl relative border border-yellow-500/30 hover:bg-yellow-500/5 transition">
+					<div class="absolute -top-4 -left-4 w-8 h-8 bg-yellow-600 rounded-full flex items-center justify-center font-bold shadow-lg">2</div>
+					<h4 class="font-bold mb-2 text-yellow-400">Tasto Destro > Apri</h4>
+					<p class="text-sm text-gray-400">Non fare doppio click! Clicca col <strong>Tasto Destro</strong> sull'icona e seleziona <strong>Apri</strong> dal menu.</p>
+				</div>
+				<div class="glass p-6 rounded-xl relative hover:bg-white/5 transition">
+					<div class="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center font-bold shadow-lg">3</div>
+					<h4 class="font-bold mb-2">Conferma</h4>
+					<p class="text-sm text-gray-400">Nel popup che appare, clicca su <strong>Apri</strong>. Questo va fatto solo al primo avvio assoluto.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- DOWNLOAD SECTION -->
+	<section id="download" class="py-24 text-center">
+		<div class="max-w-3xl mx-auto px-4">
+			<h2 class="text-4xl font-bold mb-8">Ottimizza il tuo flusso di lavoro.</h2>
+			
+			<div class="glass p-10 rounded-3xl inline-block w-full max-w-md mx-auto border border-white/10 hover:border-blue-500/30 transition shadow-2xl shadow-blue-900/20">
+				<div class="mb-6 flex items-center justify-center">
+					<img src="app-icon.png" alt="WorkSpace Manager" class="w-20 h-20 rounded-2xl shadow-2xl object-cover ring-4 ring-white/20">
+				</div>
+				<h3 class="text-2xl font-bold mb-2">WorkSpace Manager</h3>
+				<p class="text-gray-500 text-sm mb-8">Versione 1.0.0 • macOS Sonoma/Sequoia • Universal</p>
+				
+				<!-- LINK DMG CORRETTO -->
+				<a href="https://github.com/frafra077/workspace-manager/releases/download/v1.0.0/WorkSpace_Manager_v1.0.dmg" class="relative group w-full py-4 rounded-xl bg-white text-black font-bold text-lg hover:bg-gray-200 transition mb-4 flex flex-col items-center justify-center shadow-lg">
+					<span>Scarica Ora (.dmg)</span>
+					<span id="download-count" class="text-xs font-normal text-gray-500 mt-1 hidden">
+						<i class="fa-solid fa-cloud-arrow-down mr-1"></i> Caricamento...
+					</span>
+				</a>
+
+				<p class="text-xs text-gray-600">
+					Gratuito & Privato. Nessun dato viene raccolto.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- DONATION SECTION -->
+	<section id="donate" class="py-20 relative">
+		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-yellow-600 rounded-full blur-[100px] opacity-10 -z-10"></div>
+	
+		<div class="max-w-4xl mx-auto px-4">
+			<div class="glass p-10 rounded-3xl border border-yellow-500/20 text-center relative overflow-hidden">
+				
+				<div class="absolute top-0 right-0 p-4 opacity-20">
+					<i class="fa-solid fa-heart text-8xl text-yellow-500 transform rotate-12"></i>
+				</div>
+	
+				<div class="relative z-10">
+					<h2 class="text-3xl font-bold mb-4">
+						Ti piace <span class="text-yellow-400">WorkSpace Manager</span>?
+					</h2>
+					<p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+						L'app è completamente gratuita e priva di pubblicità. <br>
+						Se ti fa risparmiare tempo ogni giorno e vuoi sostenere lo sviluppo di nuove funzionalità, il tuo supporto è preziosissimo.
+					</p>
+	
+					<div class="flex flex-col sm:flex-row justify-center gap-4">
+						<a href="INSERISCI_TUO_LINK_BUYMEACOFFEE" target="_blank" class="px-8 py-3 rounded-xl bg-[#FFDD00] text-black font-bold hover:bg-[#ffea00] transition flex items-center justify-center gap-2 shadow-lg shadow-yellow-900/20">
+							<i class="fa-solid fa-mug-hot"></i> Offrimi un Caffè
+						</a>
+	
+						<a href="INSERISCI_TUO_LINK_PAYPAL" target="_blank" class="px-8 py-3 rounded-xl glass hover:bg-white/10 text-white font-semibold transition flex items-center justify-center gap-2">
+							<i class="fa-brands fa-paypal"></i> Donazione PayPal
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CONTATTI SECTION -->
+	<section id="contact" class="py-16 bg-gray-900/30 border-y border-white/5">
+		<div class="max-w-4xl mx-auto px-4">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl font-bold mb-4">Hai domande o feedback?</h2>
+				<p class="text-gray-400 text-lg">Contattami direttamente, rispondo entro 24h.</p>
+			</div>
+	
+			<div class="grid md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+				
+				<!-- Email -->
+				<a href="mailto:info@francescowebdesign.it" class="glass p-6 rounded-xl hover:border-blue-500/50 transition-all duration-300 group text-center">
+					<div class="w-12 h-12 bg-blue-900/50 rounded-lg flex items-center justify-center mb-4 mx-auto group-hover:bg-blue-500 transition">
+						<i class="fa-solid fa-envelope text-blue-400 text-xl group-hover:text-white"></i>
+					</div>
+					<h4 class="font-bold text-lg mb-2 group-hover:text-blue-400 transition">Email</h4>
+					<p class="text-sm text-gray-400">Invia email</p>
+				</a>
+	
+				<!-- GitHub Issues -->
+				<a href="https://github.com/frafra077/workspace-manager/issues" target="_blank" class="glass p-6 rounded-xl hover:border-gray-500/50 transition-all duration-300 group text-center">
+					<div class="w-12 h-12 bg-gray-900/50 rounded-lg flex items-center justify-center mb-4 mx-auto group-hover:bg-gray-700 transition">
+						<i class="fa-brands fa-github text-gray-400 text-xl group-hover:text-white"></i>
+					</div>
+					<h4 class="font-bold text-lg mb-2 group-hover:text-gray-300 transition">Bug Report</h4>
+					<p class="text-sm text-gray-400">Apri un Issue</p>
+				</a>
+	
+				<!-- LinkedIn -->
+				<a href="https://linkedin.com/in/francescowebdesign" target="_blank" class="glass p-6 rounded-xl hover:border-indigo-500/50 transition-all duration-300 group text-center">
+					<div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-4 mx-auto group-hover:bg-indigo-500 transition">
+						<i class="fa-brands fa-linkedin text-indigo-400 text-xl group-hover:text-white"></i>
+					</div>
+					<h4 class="font-bold text-lg mb-2 group-hover:text-indigo-400 transition">LinkedIn</h4>
+					<p class="text-sm text-gray-400">Francesco Web Design</p>
+				</a>
+	
+			</div>
+		</div>
+	</section>
+
+	<!-- FOOTER -->
+	<footer class="py-8 text-center text-gray-600 text-sm border-t border-white/5 bg-[#0b0d10]">
+		<p>&copy; 2025 Francesco. Design & Development. All rights reserved.</p>
+		<div class="mt-4 flex justify-center gap-6">
+			<a href="https://github.com/frafra077" class="hover:text-white transition"><i class="fa-brands fa-github"></i> GitHub</a>
+			<a href="https://linkedin.com/in/francescowebdesign" class="hover:text-white transition"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+			<a href="mailto:info@francescowebdesign.it" class="hover:text-white transition"><i class="fa-solid fa-envelope"></i> Contatti</a>
+		</div>
+	</footer>
+
+	<!-- SCRIPT FINALE -->
+	<script>
+		// Configurazione
+		const githubUser = 'frafra077';
+		const githubRepo = 'workspace-manager';
+
+		// 🆕 LOGICA MODAL & GALLERY
+		let currentImageIndex = 0;
+		const galleryImages = [
+			'SCREEN_DASHBOARD.png',
+			'SCREEN_MENUBAR.png',
+			'SCREEN_SETTINGS.png',
+			'SCREEN_APPEARANCE.png',
+			'SCREEN_ERRORS.png'
+		];
+
+		function openModal(imageSrc) {
+			const modal = document.getElementById('imageModal');
+			const modalImg = document.getElementById('modalImage');
+			const modalCounter = document.getElementById('modalCounter');
+			
+			// Trova l'indice corretto
+			currentImageIndex = galleryImages.indexOf(imageSrc);
+			
+			modalImg.src = imageSrc;
+			modalCounter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+			
+			modal.classList.add('active');
+			document.body.style.overflow = 'hidden'; // Blocca scroll
+		}
+
+		function closeModal() {
+			const modal = document.getElementById('imageModal');
+			modal.classList.remove('active');
+			document.getElementById('modalImage').classList.remove('zoomed');
+			document.body.style.overflow = ''; // Sblocca scroll
+		}
+
+		function nextImage() {
+			currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+			updateModalImage();
+		}
+
+		function prevImage() {
+			currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+			updateModalImage();
+		}
+
+		function updateModalImage() {
+			const imgName = galleryImages[currentImageIndex];
+			const modalImg = document.getElementById('modalImage');
+			
+			// Reset zoom quando si cambia immagine
+			modalImg.classList.remove('zoomed');
+			
+			// Fade out/in effect
+			modalImg.style.opacity = '0.5';
+			setTimeout(() => {
+				modalImg.src = imgName;
+				modalImg.style.opacity = '1';
+				document.getElementById('modalCounter').textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+			}, 150);
+		}
+
+		function toggleZoom() {
+			document.getElementById('modalImage').classList.toggle('zoomed');
+		}
+
+		// Event Listeners Navigazione
+		document.addEventListener('keydown', (e) => {
+			if (!document.getElementById('imageModal').classList.contains('active')) return;
+			
+			if (e.key === 'Escape') closeModal();
+			if (e.key === 'ArrowRight') nextImage();
+			if (e.key === 'ArrowLeft') prevImage();
+		});
+
+		document.getElementById('imageModal').addEventListener('click', (e) => {
+			if (e.target.id === 'imageModal') closeModal();
+		});
+
+		// ⬇️ DOWNLOAD COUNT
+		async function fetchDownloadCount() {
+			const countElement = document.getElementById('download-count');
+			try {
+				const response = await fetch(`https://api.github.com/repos/${githubUser}/${githubRepo}/releases/latest`);
+				if (!response.ok) throw new Error('Network response was not ok');
+				const data = await response.json();
+				
+				let totalDownloads = 0;
+				if (data.assets && data.assets.length > 0) {
+					data.assets.forEach(asset => {
+						totalDownloads += asset.download_count;
+					});
+				}
+				if (totalDownloads > 0) {
+					countElement.innerHTML = `<i class="fa-solid fa-cloud-arrow-down mr-1"></i> ${totalDownloads} download`;
+					countElement.classList.remove('hidden');
+				}
+			} catch (error) {
+				console.error('Impossibile recuperare i download:', error);
+			}
+		}
+	
+		document.addEventListener('DOMContentLoaded', fetchDownloadCount);
+	</script>
+
+</body>
+</html>
