@@ -141,17 +141,20 @@
 
 	<!-- NAVIGAZIONE -->
 	<!-- NAVIGAZIONE COMPLETA (sostituisci tutto il <nav>) -->
+	<!-- NAVIGAZIONE COMPLETA CON MOBILE MENU -->
 	<nav class="fixed w-full z-50 glass border-b-0">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex items-center justify-between h-16">
-				<div class="flex items-center gap-2"> <!-- gap-2 più stretto -->
-					<!-- ✅ ICONA CORRETTA -->
+				<!-- Logo Sinistra -->
+				<div class="flex items-center gap-2">
 					<img src="app-icon.png" 
 						 alt="WorkSpace Manager" 
 						 class="w-8 h-8 rounded-lg shadow-md object-cover flex-shrink-0"
 						 loading="lazy">
 					<span class="font-bold text-lg tracking-tight">WorkSpace Manager</span>
 				</div>
+	
+				<!-- Desktop Menu -->
 				<div class="hidden md:flex items-center gap-2">
 					<a href="#features" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Funzioni</a>
 					<a href="#gallery" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Gallery</a>
@@ -164,9 +167,31 @@
 					</a>
 					<a href="#contact" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Contatti</a>
 				</div>
+	
+				<!-- 🍔 MOBILE HAMBURGER BUTTON -->
+				<button id="mobileMenuBtn" class="md:hidden p-1 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition w-10 h-10 flex items-center justify-center">
+					<i class="fa-solid fa-bars text-xl"></i>
+				</button>
+			</div>
+		</div>
+	
+		<!-- 🆕 MOBILE MENU SLIDE DOWN -->
+		<div id="mobileMenu" class="md:hidden glass border-t border-white/10 bg-black/20 backdrop-blur-xl fixed top-16 left-0 w-full opacity-0 invisible transform -translate-y-full transition-all duration-300 ease-in-out z-40">
+			<div class="max-w-7xl mx-auto px-4 py-4">
+				<a href="#features" class="block py-3 px-4 text-lg font-semibold text-gray-200 hover:text-white hover:bg-white/10 rounded-lg transition mb-1">Funzioni</a>
+				<a href="#gallery" class="block py-3 px-4 text-lg font-semibold text-gray-200 hover:text-white hover:bg-white/10 rounded-lg transition mb-1">Gallery</a>
+				<a href="#install" class="block py-3 px-4 text-lg font-semibold text-gray-200 hover:text-white hover:bg-white/10 rounded-lg transition mb-1">Installazione</a>
+				<a href="#donate" class="block py-3 px-4 text-lg font-semibold text-yellow-300 hover:text-yellow-200 hover:bg-yellow-500/10 rounded-lg transition mb-4">
+					<i class="fa-solid fa-heart mr-2"></i> Supporta
+				</a>
+				<a href="#download" class="block w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold text-lg text-center hover:from-blue-500 hover:to-blue-600 shadow-xl transition mb-2 shadow-blue-900/30">
+					📱 Download v1.0
+				</a>
+				<a href="#contact" class="block py-3 px-4 text-lg font-semibold text-gray-200 hover:text-white hover:bg-white/10 rounded-lg transition">Contatti</a>
 			</div>
 		</div>
 	</nav>
+
 
 
 	<!-- 🆕 MODAL HTML (Nascosto di default) -->
@@ -396,7 +421,7 @@
 				<p class="text-gray-500 text-sm mb-8">Versione 1.0.0 • macOS Sonoma/Sequoia • Universal</p>
 				
 				<!-- LINK DMG CORRETTO -->
-				<a href="https://github.com/frafra077/workspace-manager/releases/download/v1.0.0/WorkSpace.1.0.dmg" class="relative group w-full py-4 rounded-xl bg-white text-black font-bold text-lg hover:bg-gray-200 transition mb-4 flex flex-col items-center justify-center shadow-lg">
+				<a href="https://github.com/frafra077/workspace-manager/releases/download/v1.0.0/WorkSpace_Manager_v1.0.dmg" class="relative group w-full py-4 rounded-xl bg-white text-black font-bold text-lg hover:bg-gray-200 transition mb-4 flex flex-col items-center justify-center shadow-lg">
 					<span>Scarica Ora (.dmg)</span>
 					<span id="download-count" class="text-xs font-normal text-gray-500 mt-1 hidden">
 						<i class="fa-solid fa-cloud-arrow-down mr-1"></i> Caricamento...
@@ -600,6 +625,31 @@
 		}
 	
 		document.addEventListener('DOMContentLoaded', fetchDownloadCount);
+		
+		// 🆕 MOBILE MENU TOGGLE
+		document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+			const mobileMenu = document.getElementById('mobileMenu');
+			
+			if (mobileMenu.classList.contains('invisible')) {
+				// Apri menu
+				mobileMenu.classList.remove('invisible', 'opacity-0', '-translate-y-full');
+				mobileMenu.classList.add('opacity-100', 'translate-y-0');
+				this.innerHTML = '<i class="fa-solid fa-xmark text-xl"></i>'; // Cambia in X
+			} else {
+				// Chiudi menu
+				mobileMenu.classList.add('invisible', 'opacity-0', '-translate-y-full');
+				mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+				this.innerHTML = '<i class="fa-solid fa-bars text-xl"></i>'; // Torna hamburger
+			}
+		});
+		
+		// Chiudi menu toccando fuori (mobile)
+		document.getElementById('mobileMenu').addEventListener('click', function(e) {
+			if (e.target === this) {
+				document.getElementById('mobileMenuBtn').click();
+			}
+		});
+
 	</script>
 
 </body>
