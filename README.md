@@ -98,3 +98,36 @@ Temi (Light/Dark/System), shortcuts globali, workspace preferito ⭐.
 ---
 
 ⭐ **Star this repo if you find it useful!**
+
+## 👨‍💻 Codice SwiftUI (Anteprima)
+
+```swift
+struct WorkspaceItemView: View {
+    let workspace: WorkspaceModel
+    
+    var body: some View {
+        HStack {
+            Image(systemName: workspace.icon)
+                .foregroundStyle(.blue)
+                .font(.title2)
+            
+            VStack(alignment: .leading) {
+                Text(workspace.name)
+                    .font(.headline)
+                Text("$$workspace.items.count) elementi")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            
+            Spacer()
+            
+            Button("Avvia") {
+                launchWorkspace(workspace)
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .padding()
+        .glassBackgroundEffect()
+    }
+}
+
