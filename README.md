@@ -5,14 +5,26 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  Automazione del workspace per sviluppatori e freelance su macOS.<br/>
-  Terminale, cartelle, app e siti web aperti in un click.
+  <strong>Versione 1.1.0</strong> • Automazione workspace per sviluppatori e freelance<br/>
+  Terminale, cartelle, app e siti web aperti in <strong>un click</strong>.
 </p>
 
 <p align="center">
-  <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Sito ufficiale &amp; Screenshot</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download diretto (.dmg)</b></a>
+  <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Sito ufficiale & Screenshot</b></a> •
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v1.1 (.dmg)</b></a>
 </p>
+
+---
+
+## 🎉 Novità v1.1.0
+
+| 🌍 **Multilingua** | 🌗 **Temi** | 💾 **Backup** | ⌨️ **Shortcuts** |
+|---|---|---|---|
+| Italiano 🇮🇹 / English 🇬🇧 | Light/Dark/System | Esporta/Importa JSON | Tastiera globale |
+
+| 🔄 **Smart Relaunch** | ⭐ **Preferito** | 📖 **Onboarding** | 🗑️ **Reset** |
+|---|---|---|---|
+| Riapri elementi singoli | Workspace default | Guida interattiva | Pulizia totale |
 
 ---
 
@@ -26,31 +38,63 @@
 
 ## Caratteristiche principali
 
-- Apertura automatica di Terminale con ambiente (venv, script, ecc.) già configurato.
-- Finder, app e siti web aperti in un workspace dedicato.
-- Integrazione con la barra menu di macOS.
-- 100% SwiftUI nativo, app leggera e senza Electron.
-- Distribuita come `.dmg` per un’installazione in stile app professionale.
+✅ **Automazione Completa**  
+Terminale con venv/script già attivi, Finder, app e siti web in workspace dedicato.
+
+✅ **Menu Bar Resident 2.0**  
+Controllo granulare: scegli cosa avvia automaticamente, cosa manualmente.
+
+✅ **100% SwiftUI Nativo**  
+Leggerissimo (~15MB RAM), senza Electron, look nativo macOS.
+
+✅ **Smart Relaunch**  
+Hai chiuso una cartella per sbaglio? Clicca l'icona per riaprirla sola.
+
+✅ **Backup & Restore**  
+Esporta i tuoi workspace in JSON, ripristinali ovunque.
+
+✅ **Personalizzazione Totale**  
+Temi (Light/Dark/System), shortcuts globali, workspace preferito ⭐.
 
 ---
 
-## Download
+## 📦 Installazione
 
-- 🔗 **Ultima versione (.dmg)**  
-  https://github.com/frafra077/workspace-manager/releases/latest
-
-> Prima installazione: tasto destro sull’app → “Apri” per superare l’avviso di Gatekeeper.
+1. **Scarica** `WorkSpace.1.1.dmg` dalla [Release](https://github.com/frafra077/workspace-manager/releases/latest)
+2. **Trascina** l'app in `/Applicazioni`
+3. **Prima volta**: Tasto destro → "Apri" (bypassa Gatekeeper)
+4. **Aggiornamento**: Sostituisci l'app vecchia (i workspace sono preservati!)
 
 ---
 
-## Feedback & Bug
+## 🌐 Multilingua
 
-- 🐞 Segnala un problema:  
-  https://github.com/frafra077/workspace-manager/issues  
+- **Italiano 🇮🇹** (predefinito)
+- **English 🇬🇧** (selezionabile dalle impostazioni)
 
-## Roadmap (indicativa)
+---
 
-- Esporta / importa workspace
-- Scorciatoie da tastiera globali
-- Opzioni avanzate per gestione browser / tab
+## Feedback & Supporto
 
+- 🐞 **Bug Report**: [Apri Issue](https://github.com/frafra077/workspace-manager/issues)
+- ☕ **Supportami**: [Buy Me a Coffee](https://buymeacoffee.com/fra07)
+
+
+---
+
+## 📱 Requisiti
+
+- macOS **Sonoma 14.0** o superiore
+- Architettura **Universal** (Intel + Apple Silicon)
+
+---
+
+<div align="center">
+  <img src="https://img.shields.io/github/downloads/frafra077/workspace-manager/total?style=for-the-badge&logo=github&logoColor=white&color=3b82f6" alt="Downloads" />
+  <img src="https://img.shields.io/badge/SwiftUI-100%25%20Nativo-blueviolet?style=for-the-badge&logo=swift&logoColor=white" alt="SwiftUI" />
+  <img src="https://img.shields.io/badge/macOS-Sonoma%2B-green?style=for-the-badge&logo=apple&logoColor=white" alt="macOS" />
+</div>
+
+---
+
+⭐ **Star this repo if you find it useful!**
