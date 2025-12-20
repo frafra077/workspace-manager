@@ -1,0 +1,18 @@
+// WorkSpace Manager - Preview File
+// SwiftUI macOS App per automazione workspace
+
+import SwiftUI
+
+struct WorkspaceManagerApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+        .windowResizability(.contentSize)
+    }
+}
+
+#Preview {
+    ContentView()
+        .frame(width: 800, height: 600)
+}
