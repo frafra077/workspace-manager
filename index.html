@@ -9,7 +9,7 @@
 	<!-- Font Inter -->
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<!-- Icone -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	
 	<style>
 		body { font-family: 'Inter', sans-serif; background-color: #0f1115; color: #ffffff; }
@@ -79,6 +79,18 @@
             padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.9rem;
             color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.1);
         }
+
+        /* Language Switcher Button Style */
+        .lang-btn {
+            cursor: pointer;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .lang-btn:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3); }
+        .lang-btn.active { background: rgba(59, 130, 246, 0.5); border-color: #3b82f6; }
 	</style>
 </head>
 <body class="antialiased selection:bg-blue-500 selection:text-white overflow-x-hidden w-full">
@@ -95,44 +107,59 @@
 
                 <!-- Desktop Menu -->
 				<div class="hidden md:flex items-center gap-2">
-					<a href="#workflow" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Funzioni</a>
-					<a href="#gallery" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Gallery</a>
-					<a href="#install" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Installazione</a>
-					<a href="#donate" class="px-3 py-2 text-sm text-yellow-400 hover:text-yellow-300 transition"><i class="fa-solid fa-heart mr-1"></i> Supporta</a>
-					<a href="#download" class="px-4 py-2 rounded-full bg-white text-black font-semibold text-sm hover:bg-gray-200 transition shadow-md ml-2">Download v1.0</a>
-					<a href="#contact" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition">Contatti</a>
+					<a href="#features" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition" data-i18n="nav_features">Funzioni</a>
+					<a href="#gallery" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition" data-i18n="nav_gallery">Gallery</a>
+					<a href="#install" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition" data-i18n="nav_install">Installazione</a>
+					<a href="#donate" class="px-3 py-2 text-sm text-yellow-400 hover:text-yellow-300 transition"><i class="fa-solid fa-heart mr-1"></i> <span data-i18n="nav_support">Supporta</span></a>
+					
+                    <!-- Language Switcher Desktop -->
+                    <div class="ml-2 flex items-center gap-1 bg-black/30 rounded-lg p-1">
+                        <button onclick="setLanguage('it')" class="lang-btn text-xs font-bold active" id="lang-it-d">IT</button>
+                        <button onclick="setLanguage('en')" class="lang-btn text-xs font-bold" id="lang-en-d">EN</button>
+                    </div>
+
+                    <a href="#download" class="px-4 py-2 rounded-full bg-white text-black font-semibold text-sm hover:bg-gray-200 transition shadow-md ml-2" data-i18n="nav_download">Download v1.1</a>
+					<a href="#contact" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition" data-i18n="nav_contact">Contatti</a>
 				</div>
 
                 <!-- Hamburger Mobile -->
-                <button id="mobileMenuBtn" class="md:hidden p-1 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition w-10 h-10 flex items-center justify-center">
-                    <i class="fa-solid fa-bars text-xl"></i>
-                </button>
+                <div class="flex items-center gap-4 md:hidden">
+                    <!-- Language Switcher Mobile (Small) -->
+                    <div class="flex items-center gap-1 bg-black/30 rounded-lg p-1">
+                        <button onclick="setLanguage('it')" class="lang-btn text-xs font-bold active" id="lang-it-m">IT</button>
+                        <button onclick="setLanguage('en')" class="lang-btn text-xs font-bold" id="lang-en-m">EN</button>
+                    </div>
+
+                    <button id="mobileMenuBtn" class="p-1 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition w-10 h-10 flex items-center justify-center">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
 			</div>
 		</div>
 
-        <!-- 🆕 MOBILE MENU (Leggibilità migliorata) -->
+        <!-- 🆕 MOBILE MENU -->
         <div id="mobileMenu" class="md:hidden fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-[#0b0d10]/95 backdrop-blur-2xl border-t border-white/10 opacity-0 invisible transform -translate-y-4 transition-all duration-300 ease-in-out z-40 overflow-y-auto shadow-2xl">
             <div class="flex flex-col p-4 space-y-2">
                 <a href="#features" onclick="closeMobileMenu()" class="block p-4 rounded-xl text-lg font-medium text-gray-200 hover:text-white hover:bg-white/10 transition border border-transparent hover:border-white/5 active:bg-white/20">
-                   <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400"><i class="fa-solid fa-layer-group"></i></div>Funzioni</div>
+                   <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400"><i class="fa-solid fa-layer-group"></i></div><span data-i18n="nav_features">Funzioni</span></div>
                 </a>
                 <a href="#gallery" onclick="closeMobileMenu()" class="block p-4 rounded-xl text-lg font-medium text-gray-200 hover:text-white hover:bg-white/10 transition border border-transparent hover:border-white/5 active:bg-white/20">
-                   <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400"><i class="fa-solid fa-images"></i></div>Gallery</div>
+                   <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400"><i class="fa-solid fa-images"></i></div><span data-i18n="nav_gallery">Gallery</span></div>
                 </a>
                 <a href="#install" onclick="closeMobileMenu()" class="block p-4 rounded-xl text-lg font-medium text-gray-200 hover:text-white hover:bg-white/10 transition border border-transparent hover:border-white/5 active:bg-white/20">
-                   <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400"><i class="fa-solid fa-download"></i></div>Installazione</div>
+                   <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400"><i class="fa-solid fa-download"></i></div><span data-i18n="nav_install">Installazione</span></div>
                 </a>
                 <a href="#donate" onclick="closeMobileMenu()" class="block p-4 rounded-xl text-lg font-medium text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 hover:bg-yellow-500/20 transition mt-2">
-                   <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-400"><i class="fa-solid fa-heart"></i></div>Supporta il progetto</div>
+                   <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-400"><i class="fa-solid fa-heart"></i></div><span data-i18n="nav_support_long">Supporta il progetto</span></div>
                 </a>
                 <a href="#contact" onclick="closeMobileMenu()" class="block p-4 rounded-xl text-lg font-medium text-gray-400 hover:text-white hover:bg-white/10 transition">
-                   <div class="flex items-center gap-3"><div class="w-8 h-8 flex items-center justify-center"><i class="fa-solid fa-envelope"></i></div>Contatti</div>
+                   <div class="flex items-center gap-3"><div class="w-8 h-8 flex items-center justify-center"><i class="fa-solid fa-envelope"></i></div><span data-i18n="nav_contact">Contatti</span></div>
                 </a>
                 <div class="h-px bg-white/10 my-2"></div>
-                <a href="#download" onclick="closeMobileMenu()" class="block w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold text-lg text-center shadow-lg shadow-blue-900/40 hover:scale-[1.02] active:scale-95 transition-all mt-4">
-                    Scarica App v1.0
+                <a href="#download" onclick="closeMobileMenu()" class="block w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold text-lg text-center shadow-lg shadow-blue-900/40 hover:scale-[1.02] active:scale-95 transition-all mt-4" data-i18n="mobile_download_btn">
+                    Scarica App v1.1
                 </a>
-                <p class="text-center text-xs text-gray-500 mt-4 pb-8">Versione 1.0.0 • macOS Universal</p>
+                <p class="text-center text-xs text-gray-500 mt-4 pb-8" data-i18n="footer_version">Versione 1.1.0 • macOS Universal</p>
             </div>
         </div>
 	</nav>
@@ -152,20 +179,20 @@
 
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
 			<div class="md:w-1/2 text-center md:text-left">
-				<div class="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-900/30 rounded-full border border-emerald-800">
-                    Nuova Release 1.0
+				<div class="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-900/30 rounded-full border border-emerald-800" data-i18n="hero_badge">
+                    Nuova Release 1.1
                 </div>
 
                 <!-- Banner SwiftUI -->
                 <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-6 p-3 glass rounded-xl border border-white/20 bg-gradient-to-r from-emerald-900/20 to-blue-900/20 w-fit mx-auto md:mx-0">
                     <div class="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-lg">
                         <i class="fa-brands fa-swift text-emerald-400 text-lg"></i>
-                        <span class="font-semibold text-emerald-300 text-sm">100% SwiftUI Nativo</span>
+                        <span class="font-semibold text-emerald-300 text-sm" data-i18n="badge_swift">100% SwiftUI Nativo</span>
                     </div>
                     <div class="w-px h-4 bg-white/20 hidden sm:block"></div>
                     <div class="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-lg">
                         <i class="fa-solid fa-bolt-lightning text-yellow-400 text-lg"></i>
-                        <span class="font-semibold text-yellow-300 text-sm">Super Leggero</span>
+                        <span class="font-semibold text-yellow-300 text-sm" data-i18n="badge_light">Super Leggero</span>
                         <span class="text-xs bg-black/20 px-2 py-0.5 rounded-full ml-1 text-gray-300">~15MB</span>
                     </div>
                 </div>
@@ -175,100 +202,143 @@
                     <img src="app-icon.png" alt="WorkSpace Manager Icon" class="w-24 h-24 rounded-3xl shadow-2xl ring-8 ring-blue-500/20 object-cover transform hover:scale-105 transition">
                 </div>
 
-				<h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+				<h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6" data-i18n="hero_title">
 					Il tuo setup ideale <br>
 					<span class="text-gradient">in un solo click.</span>
 				</h1>
-				<p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">
+				<p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-lg mx-auto md:mx-0" data-i18n="hero_desc">
 					Smetti di aprire manualmente terminali, cartelle e browser ogni mattina. 
 					WorkSpace Manager configura la tua postazione di lavoro macOS all'istante.
 				</p>
 				<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
 					<a href="#download" class="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg shadow-blue-900/50 transition flex items-center justify-center gap-2">
-						<i class="fa-brands fa-apple text-xl"></i> Scarica per macOS
+						<i class="fa-brands fa-apple text-xl"></i> <span data-i18n="btn_download_mac">Scarica per macOS</span>
 					</a>
-					<a href="#features" class="px-8 py-4 rounded-xl glass hover:bg-white/10 text-white font-semibold transition">
+					<a href="#features" class="px-8 py-4 rounded-xl glass hover:bg-white/10 text-white font-semibold transition" data-i18n="btn_learn_more">
 						Scopri di più
 					</a>
 				</div>
 				<p class="mt-4 text-xs text-gray-500 flex items-center justify-center md:justify-start gap-2">
-                    <i class="fa-solid fa-laptop text-gray-600"></i> Richiede macOS Sonoma o superiore
+                    <i class="fa-solid fa-laptop text-gray-600"></i> <span data-i18n="req_macos">Richiede macOS Sonoma o superiore</span>
                 </p>
 			</div>
 			<div class="md:w-1/2 relative z-10 perspective-container px-4 md:px-0">
-    <img src="SCREEN_DASHBOARD.png" alt="App Dashboard" class="hero-image rounded-xl border border-white/20 w-full max-w-lg mx-auto shadow-2xl">
-</div>
+                <img src="SCREEN_DASHBOARD.png" alt="App Dashboard" class="hero-image rounded-xl border border-white/20 w-full max-w-lg mx-auto shadow-2xl">
+            </div>
 		</div>
 	</section>
 
-    <!-- 🆕 COMPARISON SECTION (WORKFLOW) -->
+    <!-- WORKFLOW COMPARISON -->
     <section id="workflow" class="py-16 border-y border-white/5 bg-white/[0.02]">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Smetti di perdere tempo ogni mattina.</h2>
-                <p class="text-gray-400">Guadagna 15 minuti di focus ogni volta che cambi progetto.</p>
+                <h2 class="text-3xl font-bold mb-4" data-i18n="workflow_title">Smetti di perdere tempo ogni mattina.</h2>
+                <p class="text-gray-400" data-i18n="workflow_subtitle">Guadagna 15 minuti di focus ogni volta che cambi progetto.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- OLD WAY -->
                 <div class="p-8 rounded-2xl border border-red-500/10 bg-red-500/5 relative overflow-hidden">
                     <div class="absolute top-0 right-0 p-4 opacity-10"><i class="fa-solid fa-hourglass-start text-8xl text-red-500"></i></div>
-                    <h3 class="text-xl font-bold text-red-400 mb-6 flex items-center gap-2"><i class="fa-solid fa-xmark"></i> Senza WorkSpace Manager</h3>
+                    <h3 class="text-xl font-bold text-red-400 mb-6 flex items-center gap-2"><i class="fa-solid fa-xmark"></i> <span data-i18n="workflow_old_title">Senza WorkSpace Manager</span></h3>
                     <ul class="space-y-4 text-gray-400 text-sm">
-                        <li class="flex gap-3"><i class="fa-solid fa-minus text-red-500 mt-1"></i><span>Apri iTerm, digita `cd`, cerca il path...</span></li>
-                        <li class="flex gap-3"><i class="fa-solid fa-minus text-red-500 mt-1"></i><span>Cerca comandi `source venv/bin/activate`...</span></li>
-                        <li class="flex gap-3"><i class="fa-solid fa-minus text-red-500 mt-1"></i><span>Apri Finder e Browser manualmente.</span></li>
+                        <li class="flex gap-3"><i class="fa-solid fa-minus text-red-500 mt-1"></i><span data-i18n="workflow_old_1">Apri iTerm, digita `cd`, cerca il path...</span></li>
+                        <li class="flex gap-3"><i class="fa-solid fa-minus text-red-500 mt-1"></i><span data-i18n="workflow_old_2">Cerca comandi `source venv/bin/activate`...</span></li>
+                        <li class="flex gap-3"><i class="fa-solid fa-minus text-red-500 mt-1"></i><span data-i18n="workflow_old_3">Apri Finder e Browser manualmente.</span></li>
                     </ul>
-                    <div class="mt-8 pt-6 border-t border-red-500/20 text-center"><span class="text-red-300 font-semibold">❌ 10 minuti persi + Distrazione</span></div>
+                    <div class="mt-8 pt-6 border-t border-red-500/20 text-center"><span class="text-red-300 font-semibold" data-i18n="workflow_old_result">❌ 10 minuti persi + Distrazione</span></div>
                 </div>
                 <!-- NEW WAY -->
                 <div class="p-8 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 relative overflow-hidden shadow-2xl shadow-emerald-900/10">
                     <div class="absolute top-0 right-0 p-4 opacity-10"><i class="fa-solid fa-bolt text-8xl text-emerald-500"></i></div>
-                    <h3 class="text-xl font-bold text-emerald-400 mb-6 flex items-center gap-2"><i class="fa-solid fa-check"></i> Con WorkSpace Manager</h3>
+                    <h3 class="text-xl font-bold text-emerald-400 mb-6 flex items-center gap-2"><i class="fa-solid fa-check"></i> <span data-i18n="workflow_new_title">Con WorkSpace Manager</span></h3>
                     <ul class="space-y-4 text-gray-300 text-sm">
-                        <li class="flex gap-3 items-center"><div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">1</div><span class="text-white font-medium">Clicca "Avvia" sulla Menu Bar.</span></li>
-                        <li class="flex gap-3 items-center"><div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">2</div><span>Fatto. Tutto aperto. ✨</span></li>
+                        <li class="flex gap-3 items-center"><div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">1</div><span class="text-white font-medium" data-i18n="workflow_new_1">Clicca "Avvia" sulla Menu Bar.</span></li>
+                        <li class="flex gap-3 items-center"><div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">2</div><span data-i18n="workflow_new_2">Fatto. Tutto aperto. ✨</span></li>
                     </ul>
                     <div class="mt-8 p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
-                        <p class="text-sm text-emerald-300 mb-2 font-semibold">In 2 secondi:</p>
+                        <p class="text-sm text-emerald-300 mb-2 font-semibold" data-i18n="workflow_new_time">In 2 secondi:</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-emerald-900/50 rounded text-xs text-emerald-200 border border-emerald-500/30">Desktop creato</span>
-                            <span class="px-2 py-1 bg-emerald-900/50 rounded text-xs text-emerald-200 border border-emerald-500/30">Venv attivato</span>
-                            <span class="px-2 py-1 bg-emerald-900/50 rounded text-xs text-emerald-200 border border-emerald-500/30">Browser pronto</span>
+                            <span class="px-2 py-1 bg-emerald-900/50 rounded text-xs text-emerald-200 border border-emerald-500/30" data-i18n="tag_desktop">Desktop creato</span>
+                            <span class="px-2 py-1 bg-emerald-900/50 rounded text-xs text-emerald-200 border border-emerald-500/30" data-i18n="tag_venv">Venv attivato</span>
+                            <span class="px-2 py-1 bg-emerald-900/50 rounded text-xs text-emerald-200 border border-emerald-500/30" data-i18n="tag_browser">Browser pronto</span>
                         </div>
                     </div>
-                    <div class="mt-6 pt-6 border-t border-emerald-500/20 text-center"><span class="text-emerald-400 font-bold text-lg">✅ Focus Immediato</span></div>
+                    <div class="mt-6 pt-6 border-t border-emerald-500/20 text-center"><span class="text-emerald-400 font-bold text-lg" data-i18n="workflow_new_result">✅ Focus Immediato</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-	<!-- FEATURES GRID -->
+	<!-- FEATURES GRID AGGIORNATA v1.1 -->
 	<section id="features" class="py-20 bg-[#0b0d10]">
 		<div class="max-w-7xl mx-auto px-4">
-			<h2 class="text-3xl font-bold text-center mb-16">Tutto quello che ti serve per <span class="text-blue-400">il focus.</span></h2>
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-				<div class="glass p-8 rounded-2xl hover:border-blue-500/50 transition duration-300 group">
-					<div class="w-12 h-12 bg-blue-900/50 rounded-lg flex items-center justify-center mb-6 text-blue-400 group-hover:scale-110 transition"><i class="fa-solid fa-terminal text-xl"></i></div>
-					<h3 class="text-xl font-bold mb-3">Automazione Terminale</h3>
-					<p class="text-gray-400 text-sm">Lancia comandi shell, attiva ambienti virtuali (venv) ed esegue script di setup in background automaticamente.</p>
+			<h2 class="text-3xl font-bold text-center mb-16" data-i18n="feat_title">Novità della versione 1.1</h2>
+			
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                
+                <!-- 1. Multilingua -->
+                <div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
+					<div class="w-10 h-10 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-4 text-indigo-400"><i class="fa-solid fa-language text-lg"></i></div>
+					<h3 class="text-lg font-bold mb-2" data-i18n="f_lang_t">Multilingua</h3>
+					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_lang_d">Interfaccia completa in Italiano e Inglese (EN/IT) selezionabile.</p>
 				</div>
-				<div class="glass p-8 rounded-2xl hover:border-purple-500/50 transition duration-300 group">
-					<div class="w-12 h-12 bg-purple-900/50 rounded-lg flex items-center justify-center mb-6 text-purple-400 group-hover:scale-110 transition"><i class="fa-solid fa-desktop text-xl"></i></div>
-					<h3 class="text-xl font-bold mb-3">Desktop Virtuali</h3>
-					<p class="text-gray-400 text-sm">Sfrutta Mission Control per creare una nuova scrivania pulita per ogni progetto. Niente più finestre mischiate.</p>
+
+                <!-- 2. Temi -->
+                <div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
+					<div class="w-10 h-10 bg-blue-900/50 rounded-lg flex items-center justify-center mb-4 text-blue-400"><i class="fa-solid fa-moon text-lg"></i></div>
+					<h3 class="text-lg font-bold mb-2" data-i18n="f_theme_t">Temi Chiaro/Scuro</h3>
+					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_theme_d">Scegli tra tema Light, Dark o sincronizza automaticamente con macOS.</p>
 				</div>
-				<div class="glass p-8 rounded-2xl hover:border-green-500/50 transition duration-300 group">
-					<div class="w-12 h-12 bg-green-900/50 rounded-lg flex items-center justify-center mb-6 text-green-400 group-hover:scale-110 transition"><i class="fa-brands fa-safari text-xl"></i></div>
-					<h3 class="text-xl font-bold mb-3">Smart Browser</h3>
-					<p class="text-gray-400 text-sm">Apre gruppi di URL specifici in tab ordinati. Perfetto per avere Jira, GitHub e Preview pronti all'avvio.</p>
+
+                <!-- 3. Backup -->
+                <div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
+					<div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4 text-emerald-400"><i class="fa-solid fa-floppy-disk text-lg"></i></div>
+					<h3 class="text-lg font-bold mb-2" data-i18n="f_backup_t">Backup & Restore</h3>
+					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_backup_d">Esporta i tuoi workspace in JSON e ripristinali ovunque in un attimo.</p>
 				</div>
-				<div class="md:col-span-3 glass p-8 rounded-2xl flex flex-col md:flex-row items-center gap-8 border-t-4 border-t-blue-500 hover:bg-white/5 transition">
+
+                <!-- 4. Scorciatoie -->
+                <div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
+					<div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mb-4 text-purple-400"><i class="fa-solid fa-keyboard text-lg"></i></div>
+					<h3 class="text-lg font-bold mb-2" data-i18n="f_short_t">Shortcuts</h3>
+					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_short_d">Richiama i tuoi work preferiti direttamente da tastiera.</p>
+				</div>
+
+                <!-- 5. Smart Relaunch -->
+                <div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
+					<div class="w-10 h-10 bg-orange-900/50 rounded-lg flex items-center justify-center mb-4 text-orange-400"><i class="fa-solid fa-arrow-rotate-right text-lg"></i></div>
+					<h3 class="text-lg font-bold mb-2" data-i18n="f_smart_t">Smart Relaunch</h3>
+					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_smart_d">Hai chiuso una cartella per sbaglio? Clicca sull'icona per riaprire solo quella.</p>
+				</div>
+
+                <!-- 6. Onboarding -->
+                <div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
+					<div class="w-10 h-10 bg-pink-900/50 rounded-lg flex items-center justify-center mb-4 text-pink-400"><i class="fa-solid fa-circle-info text-lg"></i></div>
+					<h3 class="text-lg font-bold mb-2" data-i18n="f_intro_t">Guida Interattiva</h3>
+					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_intro_d">Presentazione al primo avvio per imparare subito le funzioni (rivedibile).</p>
+				</div>
+
+                <!-- 7. Favorites -->
+                <div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
+					<div class="w-10 h-10 bg-yellow-900/50 rounded-lg flex items-center justify-center mb-4 text-yellow-400"><i class="fa-solid fa-star text-lg"></i></div>
+					<h3 class="text-lg font-bold mb-2" data-i18n="f_fav_t">Workspace Preferito</h3>
+					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_fav_d">Imposta un workspace di default per un accesso ancora più rapido.</p>
+				</div>
+
+                 <!-- 8. Reset -->
+                 <div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
+					<div class="w-10 h-10 bg-red-900/50 rounded-lg flex items-center justify-center mb-4 text-red-400"><i class="fa-solid fa-trash-can text-lg"></i></div>
+					<h3 class="text-lg font-bold mb-2" data-i18n="f_reset_t">App Reset</h3>
+					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_reset_d">Pulisci tutta la configurazione e riparti da zero con un click.</p>
+				</div>
+
+				<div class="md:col-span-3 lg:col-span-4 glass p-8 rounded-2xl flex flex-col md:flex-row items-center gap-8 border-t-4 border-t-blue-500 hover:bg-white/5 transition">
 					<div class="flex-1">
-						<h3 class="text-2xl font-bold mb-4">Menu Bar Resident</h3>
-						<p class="text-gray-400 mb-6">Controlla i tuoi workspace direttamente dalla barra dei menu. Switch rapido, riepilogo delle risorse attive e stato del sistema sempre visibile.</p>
+						<h3 class="text-2xl font-bold mb-4" data-i18n="f_menubar_t">Menu Bar Resident 2.0</h3>
+						<p class="text-gray-400 mb-6" data-i18n="f_menubar_d">Controlla tutto dalla barra dei menu. Ora puoi scegliere cosa avviare automaticamente e cosa manualmente.</p>
 						<ul class="space-y-2 text-sm text-gray-300">
-							<li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Accesso rapido alle configurazioni</li>
-							<li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Modalità "Stealth" (nascondi finestra principale)</li>
+							<li><i class="fa-solid fa-check text-blue-500 mr-2"></i> <span data-i18n="f_list_1">Switch rapido e stato risorse</span></li>
+							<li><i class="fa-solid fa-check text-blue-500 mr-2"></i> <span data-i18n="f_list_2">Controllo granulare avvio automatico</span></li>
 						</ul>
 					</div>
 					<div class="md:w-1/3">
@@ -283,8 +353,8 @@
 	<section id="gallery" class="py-20 bg-gradient-to-b from-[#0f1115] to-[#0b0d10]">
 		<div class="max-w-7xl mx-auto px-4">
 			<div class="text-center mb-16">
-				<h2 class="text-4xl font-bold mb-6">WorkSpace Manager in azione</h2>
-				<p class="text-xl text-gray-400 max-w-2xl mx-auto">Clicca sulle immagini per ingrandirle e vedere i dettagli.</p>
+				<h2 class="text-4xl font-bold mb-6" data-i18n="gallery_title">WorkSpace Manager in azione</h2>
+				<p class="text-xl text-gray-400 max-w-2xl mx-auto" data-i18n="gallery_subtitle">Clicca sulle immagini per ingrandirle e vedere i dettagli.</p>
 			</div>
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 				<div class="group relative overflow-hidden rounded-2xl glass hover:border-blue-500/50 transition-all duration-300 cursor-pointer" onclick="openModal('SCREEN_DASHBOARD.png')">
@@ -315,63 +385,44 @@
 	<section id="install" class="py-20 bg-gray-900/50 border-y border-white/5">
 		<div class="max-w-4xl mx-auto px-4 text-center">
 			<div class="inline-block p-3 rounded-full bg-yellow-500/10 text-yellow-500 mb-6 border border-yellow-500/20"><i class="fa-solid fa-shield-halved text-2xl"></i></div>
-			<h2 class="text-3xl font-bold mb-6">Come installare (Importante)</h2>
-			<p class="text-gray-400 mb-10 max-w-2xl mx-auto">WorkSpace Manager è un tool indipendente sviluppato da un freelance, non distribuito su App Store. Per questo motivo, macOS mostrerà un avviso la prima volta. Ecco come procedere:</p>
+			<h2 class="text-3xl font-bold mb-6" data-i18n="install_title">Come installare (Importante)</h2>
+			<p class="text-gray-400 mb-10 max-w-2xl mx-auto" data-i18n="install_subtitle">WorkSpace Manager è un tool indipendente sviluppato da un freelance, non distribuito su App Store. Per questo motivo, macOS mostrerà un avviso la prima volta. Ecco come procedere:</p>
 			<div class="grid md:grid-cols-3 gap-8 text-left">
 				<div class="glass p-6 rounded-xl relative hover:bg-white/5 transition">
 					<div class="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center font-bold shadow-lg">1</div>
-					<h4 class="font-bold mb-2">Scarica & Trascina</h4>
-					<p class="text-sm text-gray-400">Scarica il DMG, aprilo e trascina l'icona dell'app nella cartella <strong>Applicazioni</strong>.</p>
+					<h4 class="font-bold mb-2" data-i18n="step1_t">Scarica & Trascina</h4>
+					<p class="text-sm text-gray-400" data-i18n="step1_d">Scarica il DMG, aprilo e trascina l'icona dell'app nella cartella <strong>Applicazioni</strong>.</p>
 				</div>
 				<div class="glass p-6 rounded-xl relative border border-yellow-500/30 hover:bg-yellow-500/5 transition">
 					<div class="absolute -top-4 -left-4 w-8 h-8 bg-yellow-600 rounded-full flex items-center justify-center font-bold shadow-lg">2</div>
-					<h4 class="font-bold mb-2 text-yellow-400">Tasto Destro > Apri</h4>
-					<p class="text-sm text-gray-400">Non fare doppio click! Clicca col <strong>Tasto Destro</strong> sull'icona e seleziona <strong>Apri</strong> dal menu.</p>
+					<h4 class="font-bold mb-2 text-yellow-400" data-i18n="step2_t">Tasto Destro > Apri</h4>
+					<p class="text-sm text-gray-400" data-i18n="step2_d">Non fare doppio click! Clicca col <strong>Tasto Destro</strong> sull'icona e seleziona <strong>Apri</strong> dal menu.</p>
 				</div>
 				<div class="glass p-6 rounded-xl relative hover:bg-white/5 transition">
 					<div class="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center font-bold shadow-lg">3</div>
-					<h4 class="font-bold mb-2">Conferma</h4>
-					<p class="text-sm text-gray-400">Nel popup che appare, clicca su <strong>Apri</strong>. Questo va fatto solo al primo avvio assoluto.</p>
+					<h4 class="font-bold mb-2" data-i18n="step3_t">Conferma</h4>
+					<p class="text-sm text-gray-400" data-i18n="step3_d">Nel popup che appare, clicca su <strong>Apri</strong>. Questo va fatto solo al primo avvio assoluto.</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- ROADMAP / PROSSIME FUNZIONI -->
-<section class="py-16 bg-[#06070a] border-t border-white/5">
-  <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-2xl font-bold mb-4 text-center">In arrivo nelle prossime versioni</h2>
-    <p class="text-gray-400 text-sm text-center mb-8">
-      WorkSpace Manager è un progetto vivo. Alcune idee su cui potrei lavorare:
-    </p>
-    <ul class="space-y-3 text-sm text-gray-300">
-      <li>• Esporta / importa i workspace (file JSON) per backup o condivisione.</li>
-      <li>• Scorciatoie da tastiera globali per avviare rapidamente un workspace.</li>
-      <li>• Opzioni avanzate per browser (apri sempre in nuova finestra / profilo dedicato).</li>
-    </ul>
-    <p class="text-xs text-gray-500 mt-6">
-      Le funzionalità future non sono promesse commerciali, ma una direzione indicativa di sviluppo.
-    </p>
-  </div>
-</section>
-
-
 	<!-- DOWNLOAD SECTION -->
 	<section id="download" class="py-24 text-center">
 		<div class="max-w-3xl mx-auto px-4">
-			<h2 class="text-4xl font-bold mb-8">Ottimizza il tuo flusso di lavoro.</h2>
+			<h2 class="text-4xl font-bold mb-8" data-i18n="down_title">Ottimizza il tuo flusso di lavoro.</h2>
 			<div class="glass p-10 rounded-3xl inline-block w-full max-w-md mx-auto border border-white/10 hover:border-blue-500/30 transition shadow-2xl shadow-blue-900/20">
 				<!-- Icona App -->
                 <div class="mb-6 flex items-center justify-center">
                     <img src="app-icon.png" alt="WorkSpace Manager" class="w-20 h-20 rounded-2xl shadow-2xl object-cover ring-4 ring-white/20">
                 </div>
 				<h3 class="text-2xl font-bold mb-2">WorkSpace Manager</h3>
-				<p class="text-gray-500 text-sm mb-8">Versione 1.0.0 • macOS Sonoma/Sequoia • Universal</p>
-				<a href="https://github.com/frafra077/workspace-manager/releases/download/v1.0.0/WorkSpace.1.0.dmg" class="relative group w-full py-4 rounded-xl bg-white text-black font-bold text-lg hover:bg-gray-200 transition mb-4 flex flex-col items-center justify-center shadow-lg">
-					<span>Scarica Ora (.dmg)</span>
+				<p class="text-gray-500 text-sm mb-8" data-i18n="down_version">Versione 1.1.0 • macOS Sonoma/Sequoia • Universal</p>
+				<a href="https://github.com/frafra077/workspace-manager/releases/download/v1.1.0/WorkSpace.1.1.dmg" class="relative group w-full py-4 rounded-xl bg-white text-black font-bold text-lg hover:bg-gray-200 transition mb-4 flex flex-col items-center justify-center shadow-lg">
+					<span data-i18n="down_btn_dmg">Scarica Ora (.dmg)</span>
 					<span id="download-count" class="text-xs font-normal text-gray-500 mt-1 hidden"><i class="fa-solid fa-cloud-arrow-down mr-1"></i> Caricamento...</span>
 				</a>
-				<p class="text-xs text-gray-600">Gratuito & Privato. Nessun dato viene raccolto.</p>
+				<p class="text-xs text-gray-600" data-i18n="down_note">Gratuito & Privato. Nessun dato viene raccolto.</p>
 			</div>
 		</div>
 	</section>
@@ -383,11 +434,11 @@
 			<div class="glass p-10 rounded-3xl border border-yellow-500/20 text-center relative overflow-hidden">
 				<div class="absolute top-0 right-0 p-4 opacity-20"><i class="fa-solid fa-heart text-8xl text-yellow-500 transform rotate-12"></i></div>
 				<div class="relative z-10">
-					<h2 class="text-3xl font-bold mb-4">Ti piace <span class="text-yellow-400">WorkSpace Manager</span>?</h2>
-					<p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">L'app è completamente gratuita e priva di pubblicità. <br>Se ti fa risparmiare tempo ogni giorno e vuoi sostenere lo sviluppo di nuove funzionalità, il tuo supporto è preziosissimo.</p>
+					<h2 class="text-3xl font-bold mb-4" data-i18n="don_title">Ti piace <span class="text-yellow-400">WorkSpace Manager</span>?</h2>
+					<p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto leading-relaxed" data-i18n="don_desc">L'app è completamente gratuita e priva di pubblicità. <br>Se ti fa risparmiare tempo ogni giorno e vuoi sostenere lo sviluppo di nuove funzionalità, il tuo supporto è preziosissimo.</p>
 					<div class="flex flex-col sm:flex-row justify-center gap-4">
-						<a href="https://buymeacoffee.com/fra07" target="_blank" class="px-8 py-3 rounded-xl bg-[#FFDD00] text-black font-bold hover:bg-[#ffea00] transition flex items-center justify-center gap-2 shadow-lg shadow-yellow-900/20"><i class="fa-solid fa-mug-hot"></i> Offrimi un Caffè</a>
-						<a href="INSERISCI_TUO_LINK_PAYPAL" target="_blank" class="px-8 py-3 rounded-xl glass hover:bg-white/10 text-white font-semibold transition flex items-center justify-center gap-2"><i class="fa-brands fa-paypal"></i> Donazione PayPal</a>
+						<a href="https://buymeacoffee.com/fra07" target="_blank" class="px-8 py-3 rounded-xl bg-[#FFDD00] text-black font-bold hover:bg-[#ffea00] transition flex items-center justify-center gap-2 shadow-lg shadow-yellow-900/20"><i class="fa-solid fa-mug-hot"></i> <span data-i18n="btn_coffee">Offrimi un Caffè</span></a>
+						<a href="INSERISCI_TUO_LINK_PAYPAL" target="_blank" class="px-8 py-3 rounded-xl glass hover:bg-white/10 text-white font-semibold transition flex items-center justify-center gap-2"><i class="fa-brands fa-paypal"></i> <span data-i18n="btn_paypal">Donazione PayPal</span></a>
 					</div>
 				</div>
 			</div>
@@ -398,19 +449,19 @@
 	<section id="contact" class="py-16 bg-gray-900/30 border-y border-white/5">
 		<div class="max-w-4xl mx-auto px-4">
 			<div class="text-center mb-12">
-				<h2 class="text-3xl font-bold mb-4">Hai domande o feedback?</h2>
-				<p class="text-gray-400 text-lg">Contattami direttamente, rispondo entro 24h.</p>
+				<h2 class="text-3xl font-bold mb-4" data-i18n="contact_title">Hai domande o feedback?</h2>
+				<p class="text-gray-400 text-lg" data-i18n="contact_subtitle">Contattami direttamente, rispondo entro 24h.</p>
 			</div>
 			<div class="grid md:grid-cols-3 gap-6 max-w-2xl mx-auto">
 				<a href="mailto:francescoalg@gmail.com" class="glass p-6 rounded-xl hover:border-blue-500/50 transition-all duration-300 group text-center">
 					<div class="w-12 h-12 bg-blue-900/50 rounded-lg flex items-center justify-center mb-4 mx-auto group-hover:bg-blue-500 transition"><i class="fa-solid fa-envelope text-blue-400 text-xl group-hover:text-white"></i></div>
 					<h4 class="font-bold text-lg mb-2 group-hover:text-blue-400 transition">Email</h4>
-					<p class="text-sm text-gray-400">Invia email</p>
+					<p class="text-sm text-gray-400" data-i18n="c_email_txt">Invia email</p>
 				</a>
 				<a href="https://github.com/frafra077/workspace-manager/issues" target="_blank" class="glass p-6 rounded-xl hover:border-gray-500/50 transition-all duration-300 group text-center">
 					<div class="w-12 h-12 bg-gray-900/50 rounded-lg flex items-center justify-center mb-4 mx-auto group-hover:bg-gray-700 transition"><i class="fa-brands fa-github text-gray-400 text-xl group-hover:text-white"></i></div>
 					<h4 class="font-bold text-lg mb-2 group-hover:text-gray-300 transition">Bug Report</h4>
-					<p class="text-sm text-gray-400">Apri un Issue</p>
+					<p class="text-sm text-gray-400" data-i18n="c_bug_txt">Apri un Issue</p>
 				</a>
 				<a href="https://linkedin.com/in/francescowebdesign" target="_blank" class="glass p-6 rounded-xl hover:border-indigo-500/50 transition-all duration-300 group text-center">
 					<div class="w-12 h-12 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-4 mx-auto group-hover:bg-indigo-500 transition"><i class="fa-brands fa-linkedin text-indigo-400 text-xl group-hover:text-white"></i></div>
@@ -433,6 +484,187 @@
 	<script>
 		const githubUser = 'frafra077';
 		const githubRepo = 'workspace-manager';
+
+        // --- TRANSLATIONS (i18n) ---
+        const translations = {
+            it: {
+                nav_features: "Funzioni",
+                nav_gallery: "Gallery",
+                nav_install: "Installazione",
+                nav_support: "Supporta",
+                nav_support_long: "Supporta il progetto",
+                nav_download: "Download v1.1",
+                nav_contact: "Contatti",
+                mobile_download_btn: "Scarica App v1.1",
+                footer_version: "Versione 1.1.0 • macOS Universal",
+                hero_badge: "Nuova Release 1.1",
+                badge_swift: "100% SwiftUI Nativo",
+                badge_light: "Super Leggero",
+                hero_title: `Il tuo setup ideale <br><span class="text-gradient">in un solo click.</span>`,
+                hero_desc: "Smetti di aprire manualmente terminali, cartelle e browser ogni mattina. WorkSpace Manager configura la tua postazione di lavoro macOS all'istante.",
+                btn_download_mac: "Scarica per macOS",
+                btn_learn_more: "Scopri di più",
+                req_macos: "Richiede macOS Sonoma o superiore",
+                workflow_title: "Smetti di perdere tempo ogni mattina.",
+                workflow_subtitle: "Guadagna 15 minuti di focus ogni volta che cambi progetto.",
+                workflow_old_title: "Senza WorkSpace Manager",
+                workflow_old_1: "Apri iTerm, digita `cd`, cerca il path...",
+                workflow_old_2: "Cerca comandi `source venv/bin/activate`...",
+                workflow_old_3: "Apri Finder e Browser manualmente.",
+                workflow_old_result: "❌ 10 minuti persi + Distrazione",
+                workflow_new_title: "Con WorkSpace Manager",
+                workflow_new_1: "Clicca \"Avvia\" sulla Menu Bar.",
+                workflow_new_2: "Fatto. Tutto aperto. ✨",
+                workflow_new_time: "In 2 secondi:",
+                tag_desktop: "Desktop creato",
+                tag_venv: "Venv attivato",
+                tag_browser: "Browser pronto",
+                workflow_new_result: "✅ Focus Immediato",
+                feat_title: "Novità della versione 1.1",
+                f_lang_t: "Multilingua",
+                f_lang_d: "Interfaccia completa in Italiano e Inglese (EN/IT) selezionabile.",
+                f_theme_t: "Temi Chiaro/Scuro",
+                f_theme_d: "Scegli tra tema Light, Dark o sincronizza automaticamente con macOS.",
+                f_backup_t: "Backup & Restore",
+                f_backup_d: "Esporta i tuoi workspace in JSON e ripristinali ovunque in un attimo.",
+                f_short_t: "Shortcuts",
+                f_short_d: "Richiama i tuoi work preferiti direttamente da tastiera.",
+                f_smart_t: "Smart Relaunch",
+                f_smart_d: "Hai chiuso una cartella per sbaglio? Clicca sull'icona per riaprire solo quella.",
+                f_intro_t: "Guida Interattiva",
+                f_intro_d: "Presentazione al primo avvio per imparare subito le funzioni (rivedibile).",
+                f_fav_t: "Workspace Preferito",
+                f_fav_d: "Imposta un workspace di default per un accesso ancora più rapido.",
+                f_reset_t: "App Reset",
+                f_reset_d: "Pulisci tutta la configurazione e riparti da zero con un click.",
+                f_menubar_t: "Menu Bar Resident 2.0",
+                f_menubar_d: "Controlla tutto dalla barra dei menu. Ora puoi scegliere cosa avviare automaticamente e cosa manualmente.",
+                f_list_1: "Switch rapido e stato risorse",
+                f_list_2: "Controllo granulare avvio automatico",
+                gallery_title: "WorkSpace Manager in azione",
+                gallery_subtitle: "Clicca sulle immagini per ingrandirle e vedere i dettagli.",
+                install_title: "Come installare (Importante)",
+                install_subtitle: "WorkSpace Manager è un tool indipendente sviluppato da un freelance, non distribuito su App Store. Per questo motivo, macOS mostrerà un avviso la prima volta. Ecco come procedere:",
+                step1_t: "Scarica & Trascina",
+                step1_d: "Scarica il DMG, aprilo e trascina l'icona dell'app nella cartella <strong>Applicazioni</strong>.",
+                step2_t: "Tasto Destro > Apri",
+                step2_d: "Non fare doppio click! Clicca col <strong>Tasto Destro</strong> sull'icona e seleziona <strong>Apri</strong> dal menu.",
+                step3_t: "Conferma",
+                step3_d: "Nel popup che appare, clicca su <strong>Apri</strong>. Questo va fatto solo al primo avvio assoluto.",
+                down_title: "Ottimizza il tuo flusso di lavoro.",
+                down_version: "Versione 1.1.0 • macOS Sonoma/Sequoia • Universal",
+                down_btn_dmg: "Scarica Ora (.dmg)",
+                down_note: "Gratuito & Privato. Nessun dato viene raccolto.",
+                don_title: "Ti piace <span class=\"text-yellow-400\">WorkSpace Manager</span>?",
+                don_desc: "L'app è completamente gratuita e priva di pubblicità. <br>Se ti fa risparmiare tempo ogni giorno e vuoi sostenere lo sviluppo di nuove funzionalità, il tuo supporto è preziosissimo.",
+                btn_coffee: "Offrimi un Caffè",
+                btn_paypal: "Donazione PayPal",
+                contact_title: "Hai domande o feedback?",
+                contact_subtitle: "Contattami direttamente, rispondo entro 24h.",
+                c_email_txt: "Invia email",
+                c_bug_txt: "Apri un Issue"
+            },
+            en: {
+                nav_features: "Features",
+                nav_gallery: "Gallery",
+                nav_install: "Install",
+                nav_support: "Donate",
+                nav_support_long: "Support the Project",
+                nav_download: "Download v1.1",
+                nav_contact: "Contact",
+                mobile_download_btn: "Download App v1.1",
+                footer_version: "Version 1.1.0 • macOS Universal",
+                hero_badge: "New Release 1.1",
+                badge_swift: "100% Native SwiftUI",
+                badge_light: "Super Lightweight",
+                hero_title: `Your ideal setup <br><span class="text-gradient">in just one click.</span>`,
+                hero_desc: "Stop manually opening terminals, folders, and browsers every morning. WorkSpace Manager configures your macOS workstation instantly.",
+                btn_download_mac: "Download for macOS",
+                btn_learn_more: "Learn More",
+                req_macos: "Requires macOS Sonoma or newer",
+                workflow_title: "Stop wasting time every morning.",
+                workflow_subtitle: "Gain 15 minutes of focus every time you switch projects.",
+                workflow_old_title: "Without WorkSpace Manager",
+                workflow_old_1: "Open iTerm, type `cd`, find path...",
+                workflow_old_2: "Search commands `source venv/bin/activate`...",
+                workflow_old_3: "Open Finder and Browser manually.",
+                workflow_old_result: "❌ 10 mins lost + Distraction",
+                workflow_new_title: "With WorkSpace Manager",
+                workflow_new_1: "Click \"Start\" on Menu Bar.",
+                workflow_new_2: "Done. Everything open. ✨",
+                workflow_new_time: "In 2 seconds:",
+                tag_desktop: "Desktop created",
+                tag_venv: "Venv activated",
+                tag_browser: "Browser ready",
+                workflow_new_result: "✅ Instant Focus",
+                feat_title: "What's new in version 1.1",
+                f_lang_t: "Multilingual",
+                f_lang_d: "Full interface available in English and Italian (EN/IT).",
+                f_theme_t: "Light/Dark Themes",
+                f_theme_d: "Choose between Light, Dark mode, or sync automatically with macOS.",
+                f_backup_t: "Backup & Restore",
+                f_backup_d: "Export your workspaces to JSON and restore them anywhere instantly.",
+                f_short_t: "Shortcuts",
+                f_short_d: "Launch your favorite works directly via keyboard shortcuts.",
+                f_smart_t: "Smart Relaunch",
+                f_smart_d: "Closed a folder by mistake? Click the icon to reopen just that item.",
+                f_intro_t: "Interactive Guide",
+                f_intro_d: "Onboarding presentation to learn features fast (rewatchable).",
+                f_fav_t: "Favorite Workspace",
+                f_fav_d: "Set a default workspace for even faster access.",
+                f_reset_t: "App Reset",
+                f_reset_d: "Wipe configuration and start fresh with one click.",
+                f_menubar_t: "Menu Bar Resident 2.0",
+                f_menubar_d: "Control everything from the menu bar. Now choose what auto-starts and what launches manually.",
+                f_list_1: "Quick switch & resource status",
+                f_list_2: "Granular auto-start control",
+                gallery_title: "WorkSpace Manager in Action",
+                gallery_subtitle: "Click images to zoom in and see details.",
+                install_title: "How to Install (Important)",
+                install_subtitle: "WorkSpace Manager is an independent tool not on the App Store. macOS will show a warning the first time. Here is how to proceed:",
+                step1_t: "Download & Drag",
+                step1_d: "Download DMG, open it, and drag the app icon to <strong>Applications</strong> folder.",
+                step2_t: "Right Click > Open",
+                step2_d: "Do not double click! <strong>Right Click</strong> the icon and select <strong>Open</strong>.",
+                step3_t: "Confirm",
+                step3_d: "In the popup, click <strong>Open</strong>. This is only needed for the very first launch.",
+                down_title: "Optimize your workflow.",
+                down_version: "Version 1.1.0 • macOS Sonoma/Sequoia • Universal",
+                down_btn_dmg: "Download Now (.dmg)",
+                down_note: "Free & Private. No data collected.",
+                don_title: "Do you like <span class=\"text-yellow-400\">WorkSpace Manager</span>?",
+                don_desc: "The app is completely free and ad-free. <br>If it saves you time daily and you want to support development, your help is precious.",
+                btn_coffee: "Buy me a Coffee",
+                btn_paypal: "PayPal Donation",
+                contact_title: "Questions or Feedback?",
+                contact_subtitle: "Contact me directly, I reply within 24h.",
+                c_email_txt: "Send Email",
+                c_bug_txt: "Open an Issue"
+            }
+        };
+
+        function setLanguage(lang) {
+            // Update active button state
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            if(lang === 'it') {
+                document.getElementById('lang-it-d').classList.add('active');
+                document.getElementById('lang-it-m').classList.add('active');
+            } else {
+                document.getElementById('lang-en-d').classList.add('active');
+                document.getElementById('lang-en-m').classList.add('active');
+            }
+
+            // Update text content
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        // --- END TRANSLATIONS ---
 
         // MOBILE MENU (Aggiornato per background scuro)
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
