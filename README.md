@@ -14,6 +14,13 @@
   <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v1.1 (.dmg)</b></a>
 </p>
 
+<p align="center">
+  <a href="https://buymeacoffee.com/fra07">
+    <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee" />
+  </a>
+</p>
+
+
 ---
 
 ## 🎉 Novità v1.1.0
