@@ -1,0 +1,7 @@
+# Ignora file web per le statistiche del linguaggio
+*.html linguist-vendored
+*.css linguist-vendored
+*.js linguist-vendored
+
+# Forza i file Swift a essere conteggiati
+*.swift linguist-detectable
