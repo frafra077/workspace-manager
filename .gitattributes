@@ -1,7 +1,7 @@
-# Ignora file web per le statistiche del linguaggio
+# Nascondi completamente HTML e risorse web
 *.html linguist-vendored
 *.css linguist-vendored
 *.js linguist-vendored
 
-# Forza i file Swift a essere conteggiati
-*.swift linguist-detectable
+# FORZA questo file ad essere contato come Swift
+*.swift linguist-language=Swift
