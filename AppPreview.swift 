@@ -1,18 +1,49 @@
-// WorkSpace Manager - Preview File
-// SwiftUI macOS App per automazione workspace
-
 import SwiftUI
 
-struct WorkspaceManagerApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-        .windowResizability(.contentSize)
+// MARK: - Workspace Manager Core Logic
+// Questo codice serve a definire la struttura dati per l'analizzatore di GitHub
+
+struct WorkspaceModel: Identifiable, Codable {
+    let id: UUID
+    var name: String
+    var icon: String
+    var items: [WorkspaceItem]
+    var colorHex: String
+    
+    init(id: UUID = UUID(), name: String, icon: String, items: [WorkspaceItem], colorHex: String) {
+        self.id = id
+        self.name = name
+        self.icon = icon
+        self.items = items
+        self.colorHex = colorHex
     }
 }
 
-#Preview {
-    ContentView()
-        .frame(width: 800, height: 600)
+enum WorkspaceItemType: String, Codable {
+    case app
+    case folder
+    case terminal
+    case website
+    case script
+}
+
+struct WorkspaceItem: Identifiable, Codable {
+    let id: UUID
+    let type: WorkspaceItemType
+    let path: String
+    let arguments: String?
+}
+
+class AppState: ObservableObject {
+    @Published var workspaces: [WorkspaceModel] = []
+    
+    func loadWorkspaces() {
+        // Simulazione caricamento
+        print("Loading workspaces from disk...")
+    }
+    
+    func saveWorkspaces() {
+        // Simulazione salvataggio
+        print("Saving workspaces to disk...")
+    }
 }
