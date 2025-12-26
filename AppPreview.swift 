@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 // MARK: - Workspace Manager Core Logic
 // Questo codice serve a definire la struttura dati per l'analizzatore di GitHub
 
