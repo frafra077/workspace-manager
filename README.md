@@ -5,13 +5,13 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Versione 1.1.0</strong> • Automazione workspace per sviluppatori e freelance<br/>
+  <strong>Versione 1.2.0</strong> • Automazione workspace per sviluppatori e freelance<br/>
   Terminale, cartelle, app e siti web aperti in <strong>un click</strong>.
 </p>
 
 <p align="center">
   <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Sito ufficiale & Screenshot</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v1.1 (.dmg)</b></a>
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v1.2 (.dmg)</b></a>
 </p>
 
 <p align="center">
@@ -20,14 +20,18 @@
   </a>
 </p>
 
+> [!IMPORTANT]
+> **Aggiornamento Critico v1.2:**
+> Se stai usando una versione precedente, **aggiorna ora**.
+> La versione 1.2 introduce il nuovo motore di aggiornamenti necessario per ricevere le future funzionalità e patch di sicurezza.
 
 ---
 
-## 🎉 Novità v1.1.0
+## 🎉 Novità v1.2.0
 
-| 🌍 **Multilingua** | 🌗 **Temi** | 💾 **Backup** | ⌨️ **Shortcuts** |
+| 🚀 **Motore Update** | 🌍 **Multilingua** | 🌗 **Temi** | 💾 **Backup** |
 |---|---|---|---|
-| Italiano 🇮🇹 / English 🇬🇧 | Light/Dark/System | Esporta/Importa JSON | Tastiera globale |
+| Auto-Check Versioni | Italiano 🇮🇹 / English 🇬🇧 | Light/Dark/System | Esporta/Importa JSON |
 
 | 🔄 **Smart Relaunch** | ⭐ **Preferito** | 📖 **Onboarding** | 🗑️ **Reset** |
 |---|---|---|---|
@@ -67,7 +71,7 @@ Temi (Light/Dark/System), shortcuts globali, workspace preferito ⭐.
 
 ## 📦 Installazione
 
-1. **Scarica** `WorkSpace.1.1.dmg` dalla [Release](https://github.com/frafra077/workspace-manager/releases/latest)
+1. **Scarica** `WorkSpace.1.2.dmg` dalla [Release](https://github.com/frafra077/workspace-manager/releases/latest)
 2. **Trascina** l'app in `/Applicazioni`
 3. **Prima volta**: Tasto destro → "Apri" (bypassa Gatekeeper)
 4. **Aggiornamento**: Sostituisci l'app vecchia (i workspace sono preservati!)
