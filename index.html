@@ -730,37 +730,45 @@
 		document.getElementById('imageModal').addEventListener('click', (e) => { if(e.target.id === 'imageModal') closeModal(); });
 
 		// --- TOTAL DOWNLOAD COUNT (All releases) ---
+				// --- GITHUB DOWNLOAD COUNTER (TOTAL + HISTORY) ---
 		async function fetchTotalDownloads() {
-			const counterElement = document.getElementById('download-count');
-			
+			const url = `https://api.github.com/repos/${githubUser}/${githubRepo}/releases`;
+
+			// Qui inseriamo il numero di download persi cancellando i vecchi file
+			// Se eri a 64 e ora sei sceso (es. a 40), metti la differenza (es. 24).
+			// Oppure metti direttamente un numero base di partenza.
+			const historicalDownloads = 20; 
+
 			try {
-				const response = await fetch(`https://api.github.com/repos/${githubUser}/${githubRepo}/releases`);
+				const response = await fetch(url);
 				if (!response.ok) throw new Error('Network response was not ok');
 				
 				const releases = await response.json();
-				let totalDownloads = 0;
-		
-				// Sum downloads from ALL assets in ALL releases
+				let totalDownloads = historicalDownloads; // Partiamo dalla base storica
+
 				releases.forEach(release => {
-					if (release.assets && release.assets.length > 0) {
-						release.assets.forEach(asset => {
-							totalDownloads += asset.download_count;
-						});
-					}
+					release.assets.forEach(asset => {
+						totalDownloads += asset.download_count;
+					});
 				});
-		
-				if (totalDownloads > 0) {
-					counterElement.innerHTML = `<i class="fa-solid fa-cloud-arrow-down mr-1"></i> <strong>${totalDownloads}</strong> Download Totali`;
-					counterElement.classList.remove('hidden');
-					counterElement.classList.add('block');
+
+				// Aggiorna il DOM
+				const countElement = document.getElementById('total-downloads');
+				const containerElement = document.getElementById('download-count-container');
+				
+				if (countElement && containerElement) {
+					countElement.innerText = totalDownloads.toLocaleString(); 
+					containerElement.classList.remove('opacity-0'); 
 				}
+
 			} catch (error) {
-				console.error('Error fetching downloads:', error);
-				// Fallback
-				counterElement.innerHTML = `<i class="fa-solid fa-check mr-1"></i> 50+ Users`;
-				counterElement.classList.remove('hidden');
+				console.error('Error fetching download count:', error);
+				// In caso di errore mostriamo almeno quelli storici o nascondiamo
+				const container = document.getElementById('download-count-container');
+				if (container) container.style.display = 'none';
 			}
 		}
+
 		document.addEventListener('DOMContentLoaded', fetchTotalDownloads);
 	</script>
 </body>
