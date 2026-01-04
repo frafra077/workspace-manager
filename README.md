@@ -101,7 +101,7 @@ Temi (Light/Dark/System), shortcuts globali, workspace preferito ⭐.
 ---
 
 <div align="center">
-  <img src="https://img.shields.io/github/downloads/frafra077/workspace-manager/total?style=for-the-badge&logo=github&logoColor=white&color=3b82f6" alt="Downloads" />
+ 
   <img src="https://img.shields.io/badge/SwiftUI-100%25%20Nativo-blueviolet?style=for-the-badge&logo=swift&logoColor=white" alt="SwiftUI" />
   <img src="https://img.shields.io/badge/macOS-Sonoma%2B-green?style=for-the-badge&logo=apple&logoColor=white" alt="macOS" />
 </div>
