@@ -1,7 +1,6 @@
 {
-  "version": "2.1",
-  "minimumRequiredVersion": "2.0",
+  "version": "1.2",
   "downloadURL": "https://frafra077.github.io/workspace-manager/#download",
-  "releaseNotes": "Versione 2.0 - App Certificata da Apple, aggiornamento IMPORTANTE ⚠️. Le versioni precedenti smetteranno di funzionare il 19/01/2026. Aggiorna immediatamente per non perdere tutto",
-  "force": true
+  "releaseNotes": "Risolti bug critici e migliorata la UI.",
+  "force": false
 }
