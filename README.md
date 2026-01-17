@@ -1,112 +1,116 @@
 <p align="center">
-  <img src="app-icon.png" alt="WorkSpace Manager Icon" width="96" height="96" style="border-radius: 20px;" />
+  <img src="app-icon.png" alt="WorkSpace Manager Icon" width="120" height="120" style="border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);" />
 </p>
 
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Versione 1.2.0</strong> • Automazione workspace per sviluppatori e freelance<br/>
-  Terminale, cartelle, app e siti web aperti in <strong>un click</strong>.
+  <strong>Versione 2.0.0</strong> • Automazione Pro per macOS<br/>
+  App, Siti, Cartelle e Terminali aperti in <strong>un click</strong>.
 </p>
 
 <p align="center">
-  <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Sito ufficiale & Screenshot</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v1.2 (.dmg)</b></a>
+  <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Sito Ufficiale & Offerta</b></a> •
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0 (.dmg)</b></a>
 </p>
 
-<p align="center">
-  <a href="https://buymeacoffee.com/fra07">
-    <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee" />
-  </a>
-</p>
-
-> [!IMPORTANT]
-> **Aggiornamento Critico v1.2:**
-> Se stai usando una versione precedente, **aggiorna ora**.
-> La versione 1.2 introduce il nuovo motore di aggiornamenti necessario per ricevere le future funzionalità e patch di sicurezza.
-
----
-
-## 🎉 Novità v1.2.0
-
-| 🚀 **Motore Update** | 🌍 **Multilingua** | 🌗 **Temi** | 💾 **Backup** |
-|---|---|---|---|
-| Auto-Check Versioni | Italiano 🇮🇹 / English 🇬🇧 | Light/Dark/System | Esporta/Importa JSON |
-
-| 🔄 **Smart Relaunch** | ⭐ **Preferito** | 📖 **Onboarding** | 🗑️ **Reset** |
-|---|---|---|---|
-| Riapri elementi singoli | Workspace default | Guida interattiva | Pulizia totale |
-
----
-
-## Anteprima
-
-<p align="center">
-  <img src="SCREEN_DASHBOARD.png" alt="WorkSpace Manager Dashboard" width="800" style="border-radius: 16px;" />
-</p>
-
----
-
-## Caratteristiche principali
-
-✅ **Automazione Completa**  
-Terminale con venv/script già attivi, Finder, app e siti web in workspace dedicato.
-
-✅ **Menu Bar Resident 2.0**  
-Controllo granulare: scegli cosa avvia automaticamente, cosa manualmente.
-
-✅ **100% SwiftUI Nativo**  
-Leggerissimo (~15MB RAM), senza Electron, look nativo macOS.
-
-✅ **Smart Relaunch**  
-Hai chiuso una cartella per sbaglio? Clicca l'icona per riaprirla sola.
-
-✅ **Backup & Restore**  
-Esporta i tuoi workspace in JSON, ripristinali ovunque.
-
-✅ **Personalizzazione Totale**  
-Temi (Light/Dark/System), shortcuts globali, workspace preferito ⭐.
-
----
-
-## 📦 Installazione
-
-1. **Scarica** `WorkSpace.1.2.dmg` dalla [Release](https://github.com/frafra077/workspace-manager/releases/latest)
-2. **Trascina** l'app in `/Applicazioni`
-3. **Prima volta**: Tasto destro → "Apri" (bypassa Gatekeeper)
-4. **Aggiornamento**: Sostituisci l'app vecchia (i workspace sono preservati!)
-
----
-
-## 🌐 Multilingua
-
-- **Italiano 🇮🇹** (predefinito)
-- **English 🇬🇧** (selezionabile dalle impostazioni)
-
----
-
-## Feedback & Supporto
-
-- 🐞 **Bug Report**: [Apri Issue](https://github.com/frafra077/workspace-manager/issues)
-- ☕ **Supportami**: [Buy Me a Coffee](https://buymeacoffee.com/fra07)
-
-
----
-
-## 📱 Requisiti
-
-- macOS **Sonoma 14.0** o superiore
-- Architettura **Universal** (Intel + Apple Silicon)
-
----
-
+<!-- BADGES -->
 <div align="center">
- 
+  <img src="https://img.shields.io/badge/Apple-Notarized_%26_Signed-success?style=for-the-badge&logo=apple&logoColor=white" alt="Apple Notarized" />
+<!-- download  <img src="https://img.shields.io/github/downloads/frafra077/workspace-manager/total?style=for-the-badge&logo=github&logoColor=white&color=3b82f6" alt="Downloads" />-->
   <img src="https://img.shields.io/badge/SwiftUI-100%25%20Nativo-blueviolet?style=for-the-badge&logo=swift&logoColor=white" alt="SwiftUI" />
-  <img src="https://img.shields.io/badge/macOS-Sonoma%2B-green?style=for-the-badge&logo=apple&logoColor=white" alt="macOS" />
 </div>
 
+<br/>
+
+> [!TIP]
+> **Nuovo in v2.0:** Supporto completo **TouchID**, sicurezza biometrica e automazioni avanzate.
+> L'app è ora **Notarizzata da Apple**: installazione sicura senza avvisi.
+
 ---
+
+## ⚡️ Perché WorkSpace Manager?
+
+Smetti di perdere 10 minuti ogni mattina per preparare la tua scrivania digitale.
+Con WorkSpace Manager crei dei "contesti" (es. *Lavoro, Università, Freelance*) e li lanci in un istante.
+
+### ✨ Novità v2.0.0
+
+| 🔒 **Privacy & Sicurezza** | 🚀 **Performance** | 🌍 **Multilingua** | 🌗 **Temi** |
+|---|---|---|---|
+| **TouchID / FaceID** support | Motore nativo riscritto | Italiano 🇮🇹 / English 🇬🇧 | Light/Dark/System |
+
+| 💾 **Backup** | 🔄 **Smart Relaunch** | ⭐ **Preferito** | 📖 **Onboarding** |
+|---|---|---|---|
+| Esporta/Importa JSON | Riapri elementi singoli | Workspace default | Guida interattiva |
+
+---
+
+## 📸 Anteprima
+
+<p align="center">
+  <img src="SCREEN_DASHBOARD.png" alt="WorkSpace Manager Dashboard" width="100%" style="border-radius: 12px; border: 1px solid #333;" />
+</p>
+
+---
+
+## 💎 Caratteristiche Principali
+
+✅ **Automazione in un Click**  
+Definisci un workspace e WorkSpace Manager aprirà simultaneamente:
+- Applicazioni multiple
+- Siti web (nel browser predefinito)
+- Cartelle del Finder
+- Finestre di Terminale (con percorsi specifici)
+
+✅ **Sicurezza Biometrica (New v2.0)**  
+Proteggi i tuoi workspace sensibili con **TouchID** o password di sistema.
+
+✅ **Menu Bar Resident 2.0**  
+Un'icona discreta nella barra dei menu per lanciare i tuoi setup senza aprire la finestra principale.
+
+✅ **100% macOS Nativo**  
+Sviluppato in Swift e SwiftUI. Pesa solo **~15MB**. Niente Electron, niente ventole al massimo.
+
+✅ **Backup & Restore**  
+Esporta i tuoi profili in formato JSON e portali su un altro Mac in un secondo.
+
+---
+
+## 📦 Installazione Sicura
+
+Essendo un software certificato Apple, l'installazione è standard:
+
+1. **Scarica** `WorkSpace.2.0.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
+2. **Trascina** l'icona nella cartella `Applicazioni`
+3. **Avvia** e goditi il tuo tempo risparmiato 🚀
+
+*(Nessun avviso di sicurezza strano, nessun "Tasto destro -> Apri" necessario)*
+
+---
+
+## 💼 Licenza & Supporto
+
+WorkSpace Manager è distribuito con modello **Freemium**.
+- **Starter (Gratis):** Funzionalità base illimitate nel tempo.
+- **Pro License:** Sblocca TouchID, Workspace illimitati e Supporto Prioritario.
+
+👉 [Acquista Licenza PRO sul Sito Ufficiale](https://frafra077.github.io/workspace-manager/#download)
+
+Per segnalare bug o richiedere feature:
+- 🐞 **Issue Tracker**: [GitHub Issues](https://github.com/frafra077/workspace-manager/issues)
+
+---
+
+## 📱 Requisiti di Sistema
+
+- macOS **Sonoma 14.0** o superiore
+- Processore: Apple Silicon (M1/M2/M3) o Intel
+
+
+![Notarized](https://img.shields.io/badge/macOS-Notarized_%26_Signed-brightgreen?style=for-the-badge&logo=apple&logoColor=white)
+
+-------
 
 ⭐ **Star this repo if you find it useful!**
 
