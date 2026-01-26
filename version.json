@@ -1,6 +1,6 @@
 {
   "version": "2.0.1",
-  "minimumRequiredVersion": "2.0",
+  "minimumRequiredVersion": "2.0.0",
   "downloadURL": "https://frafra077.github.io/workspace-manager/#download",
   "releaseNotes": "Version 2.0.1 - English localization improvements and bug fixes | Versione 2.0.1 - Miglioramenti localizzazione inglese e correzioni bug",
   "force": true
