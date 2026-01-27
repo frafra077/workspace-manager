@@ -5,7 +5,7 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Versione 2.0.0</strong> • Automazione Pro per macOS<br/>
+  <strong>Versione 2.0.1</strong> • Automazione Pro per macOS<br/>
   App, Siti, Cartelle e Terminali aperti in <strong>un click</strong>.
 </p>
 
@@ -24,6 +24,7 @@
 <br/>
 
 > [!TIP]
+> **Nuovo in v2.0.1:** Localizzazione inglese migliorata e correzioni bug.
 > **Nuovo in v2.0:** Supporto completo **TouchID**, sicurezza biometrica e automazioni avanzate.
 > L'app è ora **Notarizzata da Apple**: installazione sicura senza avvisi.
 
@@ -81,7 +82,7 @@ Esporta i tuoi profili in formato JSON e portali su un altro Mac in un secondo.
 
 Essendo un software certificato Apple, l'installazione è standard:
 
-1. **Scarica** `WorkSpace.2.0.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
+1. **Scarica** `WorkSpace.2.0.1.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
 2. **Trascina** l'icona nella cartella `Applicazioni`
 3. **Avvia** e goditi il tuo tempo risparmiato 🚀
 
@@ -101,6 +102,25 @@ Per segnalare bug o richiedere feature:
 - 🐞 **Issue Tracker**: [GitHub Issues](https://github.com/frafra077/workspace-manager/issues)
 
 ---
+
+## 📋 Changelog
+
+### v2.0.1 (27 Gennaio 2026)
+- ✅ Enhanced English localization (Settings section fully translated)
+- 🐛 Minor bug fixes and performance improvements
+
+### v2.0.0 (19 Gennaio 2026)
+- 🔒 TouchID / FaceID support
+- 🌍 Full Italian & English localization
+- 🌗 Light/Dark theme support
+- 💾 Backup & Restore
+- ⭐ Favorite workspace
+- 📖 Interactive onboarding
+
+[View all releases →](https://github.com/frafra077/workspace-manager/releases)
+
+---
+
 
 ## 📱 Requisiti di Sistema
 
