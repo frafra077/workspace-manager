@@ -1,7 +1,7 @@
 {
-  "version": "2.0.1",
+  "version": "2.0.2",
   "minimumRequiredVersion": "2.0.0",
   "downloadURL": "https://frafra077.github.io/workspace-manager/#download",
-  "releaseNotes": "Version 2.0.1 - English localization improvements and bug fixes | Versione 2.0.1 - Miglioramenti localizzazione inglese e correzioni bug",
+  "releaseNotes": "v2.0.2 - New: Close Workspace (session-based) · Fixed: websites now open in new window · UI improvements | v2.0.2 - Nuovo: Chiudi Workspace (session-based) · Risolto: apertura siti in nuova finestra · Miglioramenti grafici",
   "force": true
 }
