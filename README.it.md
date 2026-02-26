@@ -5,26 +5,25 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Versione 2.0.1</strong> • Automazione Pro per macOS<br/>
+  <strong>Versione 2.0.2</strong> • Automazione Pro per macOS<br/>
   App, Siti, Cartelle e Terminali aperti in <strong>un click</strong>.
 </p>
 
 <p align="center">
   <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Sito Ufficiale & Offerta</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0 (.dmg)</b></a>
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.2 (.dmg)</b></a>
 </p>
 
 <!-- BADGES -->
 <div align="center">
   <img src="https://img.shields.io/badge/Apple-Notarized_%26_Signed-success?style=for-the-badge&logo=apple&logoColor=white" alt="Apple Notarized" />
-<!-- download  <img src="https://img.shields.io/github/downloads/frafra077/workspace-manager/total?style=for-the-badge&logo=github&logoColor=white&color=3b82f6" alt="Downloads" />-->
   <img src="https://img.shields.io/badge/SwiftUI-100%25%20Nativo-blueviolet?style=for-the-badge&logo=swift&logoColor=white" alt="SwiftUI" />
 </div>
 
 <br/>
 
 > [!TIP]
-> **Nuovo in v2.0.1:** Localizzazione inglese migliorata e correzioni bug.
+> **Nuovo in v2.0.2:** Funzione "Chiudi Workspace" (session-based) + correzione apertura siti in nuova finestra.
 > **Nuovo in v2.0:** Supporto completo **TouchID**, sicurezza biometrica e automazioni avanzate.
 > L'app è ora **Notarizzata da Apple**: installazione sicura senza avvisi.
 
@@ -35,15 +34,15 @@
 Smetti di perdere 10 minuti ogni mattina per preparare la tua scrivania digitale.
 Con WorkSpace Manager crei dei "contesti" (es. *Lavoro, Università, Freelance*) e li lanci in un istante.
 
-### ✨ Novità v2.0.0
+### ✨ Funzionalità Principali
 
 | 🔒 **Privacy & Sicurezza** | 🚀 **Performance** | 🌍 **Multilingua** | 🌗 **Temi** |
 |---|---|---|---|
 | **TouchID / FaceID** support | Motore nativo riscritto | Italiano 🇮🇹 / English 🇬🇧 | Light/Dark/System |
 
-| 💾 **Backup** | 🔄 **Smart Relaunch** | ⭐ **Preferito** | 📖 **Onboarding** |
+| 💾 **Backup** | 🔄 **Chiudi Workspace** | ⭐ **Preferito** | 📖 **Onboarding** |
 |---|---|---|---|
-| Esporta/Importa JSON | Riapri elementi singoli | Workspace default | Guida interattiva |
+| Esporta/Importa JSON | Chiude solo ciò che hai aperto | Workspace default | Guida interattiva |
 
 ---
 
@@ -55,6 +54,20 @@ Con WorkSpace Manager crei dei "contesti" (es. *Lavoro, Università, Freelance*)
 
 ---
 
+## 💎 Free vs Pro
+
+| Funzione | Free | Pro |
+|---|---|---|
+| Workspace | 1 | Illimitati |
+| Lancia App, Cartelle, Siti | ✅ | ✅ |
+| Menu Bar Resident | ✅ | ✅ |
+| Chiudi Workspace | 3x / mese | ✅ Illimitato |
+| Protezione TouchID | ❌ | ✅ |
+| Backup & Restore | ❌ | ✅ |
+| Supporto Prioritario | ❌ | ✅ |
+
+---
+
 ## 💎 Caratteristiche Principali
 
 ✅ **Automazione in un Click**  
@@ -63,6 +76,11 @@ Definisci un workspace e WorkSpace Manager aprirà simultaneamente:
 - Siti web (nel browser predefinito)
 - Cartelle del Finder
 - Finestre di Terminale (con percorsi specifici)
+
+✅ **Chiudi Workspace (Nuovo v2.0.2)**  
+Chiude **solo** ciò che è stato aperto da quel workspace. Non tocca nulla che avevi già aperto prima o apri manualmente dopo.
+> ⚠️ I siti web sono esclusi per limiti del sistema/browser.
+> Free: 3 utilizzi/mese · Pro: illimitato
 
 ✅ **Sicurezza Biometrica (New v2.0)**  
 Proteggi i tuoi workspace sensibili con **TouchID** o password di sistema.
@@ -82,7 +100,7 @@ Esporta i tuoi profili in formato JSON e portali su un altro Mac in un secondo.
 
 Essendo un software certificato Apple, l'installazione è standard:
 
-1. **Scarica** `WorkSpace.2.0.1.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
+1. **Scarica** `WorkSpaceManager-2.0.2.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
 2. **Trascina** l'icona nella cartella `Applicazioni`
 3. **Avvia** e goditi il tuo tempo risparmiato 🚀
 
@@ -94,7 +112,7 @@ Essendo un software certificato Apple, l'installazione è standard:
 
 WorkSpace Manager è distribuito con modello **Freemium**.
 - **Starter (Gratis):** Funzionalità base illimitate nel tempo.
-- **Pro License:** Sblocca TouchID, Workspace illimitati e Supporto Prioritario.
+- **Pro License:** Sblocca TouchID, Workspace illimitati, Chiudi Workspace illimitato e Supporto Prioritario.
 
 👉 [Acquista Licenza PRO sul Sito Ufficiale](https://frafra077.github.io/workspace-manager/#download)
 
@@ -105,30 +123,34 @@ Per segnalare bug o richiedere feature:
 
 ## 📋 Changelog
 
+### v2.0.2 (26 Febbraio 2026)
+- ✅ Chiudi Workspace (session-based, 3x/mese Free – Illimitato Pro)
+- 🐛 Risolto bug apertura siti web in nuova finestra
+- ✨ Piccoli miglioramenti grafici
+
 ### v2.0.1 (27 Gennaio 2026)
-- ✅ Enhanced English localization (Settings section fully translated)
-- 🐛 Minor bug fixes and performance improvements
+- ✅ Localizzazione inglese migliorata
+- 🐛 Correzioni bug minori
 
 ### v2.0.0 (19 Gennaio 2026)
-- 🔒 TouchID / FaceID support
-- 🌍 Full Italian & English localization
-- 🌗 Light/Dark theme support
+- 🔒 Supporto TouchID / FaceID
+- 🌍 Localizzazione Italiano & Inglese
+- 🌗 Tema Light/Dark/System
 - 💾 Backup & Restore
-- ⭐ Favorite workspace
-- 📖 Interactive onboarding
+- ⭐ Workspace preferito
+- 📖 Onboarding interattivo
 
-[View all releases →](https://github.com/frafra077/workspace-manager/releases)
+[Vedi tutte le release →](https://github.com/frafra077/workspace-manager/releases)
 
 ---
-
 
 ## 📱 Requisiti di Sistema
 
 - macOS **Sonoma 14.0** o superiore
 - Processore: Apple Silicon (M1/M2/M3) o Intel
 
-
 ![Notarized](https://img.shields.io/badge/macOS-Notarized_%26_Signed-brightgreen?style=for-the-badge&logo=apple&logoColor=white)
+
 
 -------
 
