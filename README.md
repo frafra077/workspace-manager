@@ -5,7 +5,7 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Version 2.0.2</strong> • Native macOS Automation<br/>
+  <strong>Version 2.0.3</strong> • Native macOS Automation<br/>
   Apps, Websites, Folders, and Terminals launched in <strong>one click</strong>.
 </p>
 
@@ -15,7 +15,7 @@
 
 <p align="center">
   <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Official Website</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.2 (.dmg)</b></a>
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.3 (.dmg)</b></a>
 </p>
 
 <!-- BADGES -->
@@ -27,8 +27,8 @@
 <br/>
 
 > [!TIP]
-> **New in v2.0.2:** Close Workspace feature (session-based) + web window bug fix.
-> **v2.0:** Full **TouchID** support, biometric security, and advanced automation.
+> **New in v2.0.3:** Hide Dock Icon (Pro) — keep only the Menu Bar icon for a cleaner desktop.
+> **v2.0.2:** Close Workspace (session-based) + web window bug fix.
 > Now **Apple Notarized**: safe installation with no security warnings.
 
 ---
@@ -44,9 +44,9 @@ Create "Contexts" (e.g., *Work, University, Freelance*) and launch them instantl
 |---|---|---|---|
 | **TouchID / FaceID** support | Native engine rewritten | English 🇬🇧 / Italian 🇮🇹 | Light/Dark/System |
 
-| 💾 **Backup** | 🔄 **Close Workspace** | ⭐ **Favorites** | 📖 **Onboarding** |
+| 💾 **Backup** | 🔄 **Close Workspace** | 🞃 **Hide Dock Icon** | 📖 **Onboarding** |
 |---|---|---|---|
-| JSON Export/Import | Close only what was opened | Default Workspace | Interactive Guide |
+| JSON Export/Import | Close only what was opened | Menu Bar only mode (Pro) | Interactive Guide |
 
 ---
 
@@ -66,6 +66,7 @@ Create "Contexts" (e.g., *Work, University, Freelance*) and launch them instantl
 | Launch Apps, Folders, Websites | ✅ | ✅ |
 | Menu Bar Resident | ✅ | ✅ |
 | Close Workspace | 3x / month | ✅ Unlimited |
+| Hide Dock Icon | ❌ | ✅ |
 | TouchID Protection | ❌ | ✅ |
 | Backup & Restore | ❌ | ✅ |
 | Priority Support | ❌ | ✅ |
@@ -76,7 +77,7 @@ Create "Contexts" (e.g., *Work, University, Freelance*) and launch them instantl
 
 As fully notarized software, installation is standard:
 
-1. **Download** `WorkSpaceManager-2.0.2.dmg` from the [Releases Section](https://github.com/frafra077/workspace-manager/releases/latest)
+1. **Download** `WorkSpaceManager-2.0.3.dmg` from the [Releases Section](https://github.com/frafra077/workspace-manager/releases/latest)
 2. **Drag** the icon into your `Applications` folder
 3. **Launch** and enjoy your saved time 🚀
 
@@ -84,18 +85,35 @@ As fully notarized software, installation is standard:
 
 ---
 
+## 💼 License & Support
+
+WorkSpace Manager uses a **Freemium** model.
+- **Starter (Free):** Core functionality forever, no time limit.
+- **Pro License:** Unlocks TouchID, Unlimited Workspaces, Close Workspace (unlimited), Hide Dock Icon, and Priority Support.
+
+👉 [Get PRO License](https://frafra077.github.io/workspace-manager/#download)
+
+For bug reports or feature requests:
+- 🐞 **Issue Tracker**: [GitHub Issues](https://github.com/frafra077/workspace-manager/issues)
+
+---
+
 ## 📋 Changelog
 
-### v2.0.2 (26 Febbraio 2026)
+### v2.0.3 (March 13, 2026)
+- ✅ Hide Dock Icon — toggle from Settings → General (Pro only)
+- 🐛 Bug fixes and stability improvements
+
+### v2.0.2 (February 26, 2026)
 - ✅ Close Workspace (session-based, 3x/month Free – Unlimited Pro)
 - 🐛 Fixed website opening in new window
 - ✨ Minor UI improvements
 
-### v2.0.1 (27 Gennaio 2026)
+### v2.0.1 (January 27, 2026)
 - ✅ Enhanced English localization
 - 🐛 Minor bug fixes
 
-### v2.0.0 (19 Gennaio 2026)
+### v2.0.0 (January 19, 2026)
 - 🔒 TouchID / FaceID support
 - 🌍 English & Italian localization
 - 🌗 Light/Dark/System theme
@@ -107,22 +125,10 @@ As fully notarized software, installation is standard:
 
 ---
 
-## 💼 License & Support
-
-WorkSpace Manager uses a **Freemium** model.
-- **Starter (Free):** Core functionality forever, no time limit.
-- **Pro License:** Unlocks TouchID, Unlimited Workspaces, Close Workspace (unlimited), and Priority Support.
-
-👉 [Get PRO License](https://frafra077.github.io/workspace-manager/#download)
-
-For bug reports or feature requests:
-- 🐞 **Issue Tracker**: [GitHub Issues](https://github.com/frafra077/workspace-manager/issues)
-
----
-
 ## 📱 System Requirements
 
-- macOS **Sonoma 14.0** or later
-- Processor: Apple Silicon (M1/M2/M3) or Intel
+- macOS **Monterey 12.0** or later
+- Processor: Apple Silicon (M1/M2/M3/M4) or Intel
 
 ![Notarized](https://img.shields.io/badge/macOS-Notarized_%26_Signed-brightgreen?style=for-the-badge&logo=apple&logoColor=white)
+
