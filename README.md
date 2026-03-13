@@ -127,7 +127,7 @@ For bug reports or feature requests:
 
 ## 📱 System Requirements
 
-- macOS **Monterey 12.0** or later
+- macOS **Sonoma 14.0** or later
 - Processor: Apple Silicon (M1/M2/M3/M4) or Intel
 
 ![Notarized](https://img.shields.io/badge/macOS-Notarized_%26_Signed-brightgreen?style=for-the-badge&logo=apple&logoColor=white)
