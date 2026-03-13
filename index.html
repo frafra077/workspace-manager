@@ -152,9 +152,9 @@
 				</a>
 				<div class="h-px bg-white/10 my-2"></div>
 				<a href="#download" onclick="closeMobileMenu()" class="block w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold text-lg text-center shadow-lg shadow-blue-900/40 hover:scale-[1.02] active:scale-95 transition-all mt-4" data-i18n="mobile_download_btn">
-					Scarica App v2.0.2
+					Scarica App v2.0.3
 				</a>
-				<p class="text-center text-xs text-gray-500 mt-4 pb-8" data-i18n="footer_version">Versione 2.0.2 • macOS Universal</p>
+				<p class="text-center text-xs text-gray-500 mt-4 pb-8" data-i18n="footer_version">Versione 2.0.3 • macOS Universal</p>
 			</div>
 		</div>
 	</nav>
@@ -264,12 +264,25 @@
 		</div>
 	</section>
 
-	<!-- FEATURES GRID v2.0.2 -->
+	<!-- FEATURES GRID v2.0.3 -->
 	<section id="features" class="py-20 bg-[#0b0d10]">
 		<div class="max-w-7xl mx-auto px-4">
-			<h2 class="text-3xl font-bold text-center mb-16" data-i18n="feat_title">Tutto quello che puoi fare con v2.0.2</h2>
+			<h2 class="text-3xl font-bold text-center mb-16" data-i18n="feat_title">Tutto quello che puoi fare con v2.0.3</h2>
 
 			<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+				<!-- NUOVO: HIDE DOCK ICON (v2.0.3) -->
+				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300 border border-emerald-500/30 relative overflow-hidden">
+				    <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] px-2 py-1 font-bold uppercase rounded-bl-lg">New 2.0.3</div>
+				    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4 text-emerald-400">
+				        <i class="fa-solid fa-eye-slash text-lg"></i>
+				    </div>
+				    <h3 class="text-lg font-bold mb-2" data-i18n="f_dock_t">Nascondi Dock Icon</h3>
+				    <p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_dock_d">
+				        Tieni solo l'icona nel Menu Bar. Attivabile da Impostazioni → Generali. Solo Pro.
+				    </p>
+				</div>
+
 
 				<!-- NUOVO: CHIUDI WORKSPACE (v2.0.2) -->
 				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300 border border-blue-500/30 relative overflow-hidden">
@@ -449,9 +462,12 @@
 						<li class="flex gap-2 opacity-60"><i class="fa-solid fa-circle-half-stroke text-yellow-500"></i> <span data-i18n="p_no_close">Chiudi Workspace (3x/mese)</span></li>
 						<li class="flex gap-2 opacity-50"><i class="fa-solid fa-xmark text-gray-600"></i> <span data-i18n="p_no_touch">No TouchID Security</span></li>
 						<li class="flex gap-2 opacity-50"><i class="fa-solid fa-xmark text-gray-600"></i> <span data-i18n="p_no_auto">Automazioni Limitate</span></li>
+						<li class="flex gap-2 opacity-50">
+    					<i class="fa-solid fa-xmark text-gray-600"></i><span data-i18n="p_no_dock">No Hide Dock Icon</span></li>
+
 					</ul>
 
-					<a href="https://github.com/frafra077/workspace-manager/releases/download/v.2.0.2/WorkSpace.2.0.2.dmg" class="w-full py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white font-semibold transition flex flex-col items-center justify-center gap-2 group">
+					<a href="https://github.com/frafra077/workspace-manager/releases/download/v.2.0.3/WorkSpace.2.0.3.dmg" class="w-full py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white font-semibold transition flex flex-col items-center justify-center gap-2 group">
 						<span class="flex items-center gap-2"><i class="fa-brands fa-apple"></i> <span data-i18n="btn_free">Scarica Gratis (.dmg)</span></span>
 					</a>
 
@@ -461,7 +477,7 @@
 						<span><span id="total-downloads" class="font-bold text-gray-300">...</span> downloads totali</span>
 					</div>
 
-					<p class="text-[10px] text-gray-600 mt-1">v2.0.2 &#8226; macOS Sonoma+</p>
+					<p class="text-[10px] text-gray-600 mt-1">v2.0.3 &#8226; macOS Sonoma+</p>
 				</div>
 
 				<!-- CARD PRO -->
@@ -485,6 +501,8 @@
 						<li class="flex gap-2"><i class="fa-solid fa-check text-blue-400"></i> <span data-i18n="p_pro_3">Apertura Multipla App &amp; File</span></li>
 						<li class="flex gap-2"><i class="fa-solid fa-check text-blue-400"></i> <span data-i18n="p_pro_4">Backup/Ripristino</span></li>
 						<li class="flex gap-2"><i class="fa-solid fa-check text-blue-400"></i> <span data-i18n="p_pro_5">Supporto Prioritario</span></li>
+						<li class="flex gap-2"><i class="fa-solid fa-check text-blue-400"></i><span data-i18n="p_pro_dock">Nascondi icona dal Dock</span></li>
+
 					</ul>
 					<a href="https://dodo.pe/workspacemanagerpro" class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold shadow-lg shadow-blue-900/50 transition flex flex-col items-center justify-center gap-1 group">
 						<span class="flex items-center gap-2"><i class="fa-solid fa-key"></i> <span data-i18n="btn_buy">Acquista Licenza</span></span>
@@ -587,9 +605,9 @@
 				nav_install: "Sicurezza",
 				nav_download: "Download",
 				nav_contact: "Contatti",
-				mobile_download_btn: "Scarica App v2.0.2",
-				footer_version: "Versione 2.0.2 &#8226; macOS Universal",
-				hero_badge: "Novit&#224; v2.0.2 &#8226; Close Workspace",
+				mobile_download_btn: "Scarica App v2.0.3",
+				footer_version: "Versione 2.0.3 &#8226; macOS Universal",
+				hero_badge: "Novità v2.0.3 • Hide Dock Icon",
 				badge_swift: "100% Native",
 				badge_notarized: "Apple Notarized",
 				hero_title: `Il tuo setup ideale <br><span class="text-gradient">in un solo click.</span>`,
@@ -612,7 +630,7 @@
 				tag_web: "4 Siti Web",
 				tag_finder: "2 Cartelle",
 				workflow_new_result: "&#9989; Subito operativo",
-				feat_title: "Tutto quello che puoi fare con v2.0.2",
+				feat_title: "Tutto quello che puoi fare con v2.0.3",
 				f_close_t: "Chiudi Workspace",
 				f_close_d: "Chiude solo le app aperte da quel workspace. Session-based: non tocca nulla che avevi gi&#224; aperto.",
 				f_touch_t: "Privacy & TouchID",
@@ -674,6 +692,10 @@
 				faq_a3: "No. La licenza <strong>Lifetime</strong> &#232; un acquisto unico. Paghi una volta ed &#232; tua per sempre, inclusi tutti gli aggiornamenti futuri della versione 2.x.",
 				faq_q4: "Su quanti Mac posso usarla?",
 				faq_a4: "Una singola licenza personale ti permette di attivare l'app su <strong>2 Mac</strong> (ad esempio il tuo iMac fisso e il MacBook portatile).",
+				f_dock_t: "Nascondi Dock Icon",
+				f_dock_d: "Tieni solo l'icona nel Menu Bar. Attivabile da Impostazioni → Generali. Solo Pro.",
+				p_no_dock: "No Hide Dock Icon",
+				p_pro_dock: "Nascondi icona dal Dock",
 			},
 			en: {
 				nav_features: "Features",
@@ -682,8 +704,8 @@
 				nav_download: "Download",
 				nav_contact: "Contact",
 				mobile_download_btn: "Download App v2.0.2",
-				footer_version: "Version 2.0.2 &#8226; macOS Universal",
-				hero_badge: "New v2.0.2 &#8226; Close Workspace",
+				footer_version: "Version 2.0.3 &#8226; macOS Universal",
+				hero_badge: "New v2.0.3 • Hide Dock Icon",
 				badge_swift: "100% Native",
 				badge_notarized: "Apple Notarized",
 				hero_title: `Your ideal setup <br><span class="text-gradient">in just one click.</span>`,
@@ -706,7 +728,7 @@
 				tag_web: "4 Websites",
 				tag_finder: "2 Folders",
 				workflow_new_result: "&#9989; Instant Focus",
-				feat_title: "Everything you can do with v2.0.2",
+				feat_title: "Everything you can do with v2.0.3",
 				f_close_t: "Close Workspace",
 				f_close_d: "Closes only the apps opened by that workspace. Session-based: doesn't touch what was already open.",
 				f_touch_t: "Privacy & TouchID",
@@ -768,6 +790,10 @@
 				faq_a3: "No. The <strong>Lifetime</strong> license is a one-time purchase. You pay once and own it forever, including all future v2.x updates.",
 				faq_q4: "How many Macs can I use it on?",
 				faq_a4: "A single personal license allows you to activate the app on <strong>2 Macs</strong> (e.g., your desktop iMac and your portable MacBook).",
+				f_dock_t: "Hide Dock Icon",
+				f_dock_d: "Keep only the Menu Bar icon. Toggle anytime from Settings → General. Pro only.",
+				p_no_dock: "No Hide Dock Icon",
+				p_pro_dock: "Hide Dock Icon",
 			}
 		};
 
