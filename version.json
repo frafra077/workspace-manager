@@ -1,7 +1,7 @@
 {
-  "version": "2.0.2",
+  "version": "2.0.3",
   "minimumRequiredVersion": "2.0.0",
   "downloadURL": "https://frafra077.github.io/workspace-manager/#download",
-  "releaseNotes": "v2.0.2 - New: Close Workspace (session-based) · Fixed: websites now open in new window · UI improvements | v2.0.2 - Nuovo: Chiudi Workspace (session-based) · Risolto: apertura siti in nuova finestra · Miglioramenti grafici",
+  "releaseNotes": "v2.0.3 - New: Hide Dock Icon (Pro, keep only Menu Bar) · Bug fixes | v2.0.3 - Nuovo: Nascondi icona dal Dock (Pro, solo Menu Bar) · Correzioni bug",
   "force": true
 }
