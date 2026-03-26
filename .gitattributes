@@ -1,8 +1,8 @@
-# Nascondi completamente HTML e risorse web
-*.html linguist-vendored
-*.css linguist-vendored
-*.js linguist-vendored
+# Nascondi completamente HTML, CSS e JS dalle statistiche
+*.html linguist-detectable=false
+*.css linguist-detectable=false
+*.js linguist-detectable=false
 
-# FORZA questo file ad essere contato come Swift
-*.swift linguist-language=Swift
- 
+# FORZA questo file ad essere contato nelle statistiche
+*.swift linguist-detectable=true
+
