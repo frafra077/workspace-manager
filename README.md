@@ -5,7 +5,7 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Version 2.0.3</strong> • Native macOS Automation<br/>
+  <strong>Version 2.0.4</strong> • Native macOS Automation<br/>
   Apps, Websites, Folders, and Terminals launched in <strong>one click</strong>.
 </p>
 
@@ -15,7 +15,7 @@
 
 <p align="center">
   <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Official Website</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.3 (.dmg)</b></a>
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.4 (.dmg)</b></a>
 </p>
 
 <!-- BADGES -->
@@ -27,9 +27,9 @@
 <br/>
 
 > [!TIP]
-> **New in v2.0.3:** Hide Dock Icon (Pro) — keep only the Menu Bar icon for a cleaner desktop.
-> **v2.0.2:** Close Workspace (session-based) + web window bug fix.
-> Now **Apple Notarized**: safe installation with no security warnings.
+> **New in v2.0.4:** Automatic Updates • macOS Sonoma support restored • Manual update check from Settings Info tab
+> **v2.0.3:** Hide Dock Icon (Pro)
+> Now **fully automatic updates** — always stay up to date!
 
 ---
 
@@ -65,6 +65,7 @@ Create "Contexts" (e.g., *Work, University, Freelance*) and launch them instantl
 | Workspaces | 1 | Unlimited |
 | Launch Apps, Folders, Websites | ✅ | ✅ |
 | Menu Bar Resident | ✅ | ✅ |
+| **Automatic Updates** | ✅ | ✅ |
 | Close Workspace | 3x / month | ✅ Unlimited |
 | Hide Dock Icon | ❌ | ✅ |
 | TouchID Protection | ❌ | ✅ |
@@ -77,8 +78,8 @@ Create "Contexts" (e.g., *Work, University, Freelance*) and launch them instantl
 
 As fully notarized software, installation is standard:
 
-1. **Download** `WorkSpaceManager-2.0.3.dmg` from the [Releases Section](https://github.com/frafra077/workspace-manager/releases/latest)
-2. **Drag** the icon into your `Applications` folder
+1. **Download** `WorkSpace.2.0.4.dmg` from the [Releases Section](https://github.com/frafra077/workspace-manager/releases/latest)
+2. **Drag** the app into your `Applications` folder
 3. **Launch** and enjoy your saved time 🚀
 
 *(No weird security warnings, no "Right Click -> Open" needed)*
@@ -99,6 +100,13 @@ For bug reports or feature requests:
 ---
 
 ## 📋 Changelog
+
+### v2.0.4 (April 13, 2026)
+- ✅ **Automatic Updates** — faster & more secure
+- ✅ **macOS Sonoma Support** restored (macOS 14.0+)
+- ✅ Manual update check from Settings → Info tab
+- ✅ Smart startup update checks (non-intrusive)
+- 🎨 Settings UI refinements
 
 ### v2.0.3 (March 13, 2026)
 - ✅ Hide Dock Icon — toggle from Settings → General (Pro only)
@@ -131,4 +139,3 @@ For bug reports or feature requests:
 - Processor: Apple Silicon (M1/M2/M3/M4) or Intel
 
 ![Notarized](https://img.shields.io/badge/macOS-Notarized_%26_Signed-brightgreen?style=for-the-badge&logo=apple&logoColor=white)
-
