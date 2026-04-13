@@ -1,7 +1,7 @@
 {
-  "version": "2.0.3",
+  "version": "2.0.4",
   "minimumRequiredVersion": "2.0.0",
   "downloadURL": "https://frafra077.github.io/workspace-manager/#download",
-  "releaseNotes": "v2.0.3 - New: Hide Dock Icon (Pro, keep only Menu Bar) · Bug fixes | v2.0.3 - Nuovo: Nascondi icona dal Dock (Pro, solo Menu Bar) · Correzioni bug",
+  "releaseNotes": "v2.0.4 - New: Automatic updates, Sonoma support restored, manual update check in Settings, smarter startup checks · UI refinements | v2.0.4 - Nuovo: aggiornamenti automatici, supporto Sonoma ripristinato, controllo manuale update nelle Impostazioni, verifica automatica all’avvio · Rifiniture UI",
   "force": true
 }
