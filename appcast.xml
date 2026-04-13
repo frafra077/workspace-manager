@@ -5,7 +5,7 @@
         <item>
             <title>2.0.4</title>
             <pubDate>Mon, 13 Apr 2026 18:10:13 +0200</pubDate>
-            <sparkle:version>1</sparkle:version>
+            <sparkle:version>100</sparkle:version>
             <sparkle:shortVersionString>2.0.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
             <enclosure url="https://raw.githubusercontent.com/frafra077/workspace-manager/main/WorkSpace%202.0.4.dmg" length="6319991" type="application/octet-stream" sparkle:edSignature="0Q8Qi2ihRmSUPFnD0M2h8CrbffPvoQc5xELz8ylpXj3NFoQ6gSC9XO290c6yyLDW+QLp4l/T63Ja2tIQ3IzrDQ=="/>
