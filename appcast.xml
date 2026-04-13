@@ -5,7 +5,7 @@
         <item>
             <title>Version 2.0.4</title>
             <pubDate>Mon, 13 Apr 2026 18:58:11 +0200</pubDate>
-            <sparkle:releaseNotesLink>https://raw.githubusercontent.com/frafra077/workspace-manager/main/notes.html</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink>https://frafra077.github.io/workspace-manager/notes.html</sparkle:releaseNotesLink>
             <sparkle:version>100</sparkle:version>
             <sparkle:shortVersionString>2.0.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
