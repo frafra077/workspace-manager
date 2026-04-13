@@ -9,8 +9,8 @@
         <sparkle:releaseNotesLink xml:lang="en">https://frafra077.github.io/workspace-manager/notes-en.html</sparkle:releaseNotesLink>
             <sparkle:version>204</sparkle:version>
             <sparkle:shortVersionString>2.0.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/frafra077/workspace-manager/releases/download/v.2.0.4/WorkSpace.2.0.4.dmg" length="6319991" type="application/octet-stream" sparkle:edSignature="0Q8Qi2ihRmSUPFnD0M2h8CrbffPvoQc5xELz8ylpXj3NFoQ6gSC9XO290c6yyLDW+QLp4l/T63Ja2tIQ3IzrDQ=="/>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/frafra077/workspace-manager/releases/download/v.2.0.4/WorkSpace.2.0.4.dmg" length="6370278" type="application/octet-stream" sparkle:edSignature="YgowmoQxWsBNzlENsrZD+UhdCG5lifSpqbVWlTCcr9FCmjwKrLRa5QjgC1+YatWdIVAWG1tl3V7HWjkOC4AuCg=="/>
         </item>
     </channel>
 </rss>
