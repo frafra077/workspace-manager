@@ -5,27 +5,27 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Versione 2.0.3</strong> • Automazione Pro per macOS<br/>
+  <strong>Versione 2.0.4</strong> • Automazione Pro per macOS<br/>
   App, Siti, Cartelle e Terminali aperti in <strong>un click</strong>.
 </p>
 
 <p align="center">
   <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Sito Ufficiale & Offerta</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.3 (.dmg)</b></a>
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.4 (.dmg)</b></a>
 </p>
 
 <!-- BADGES -->
 <div align="center">
-  <img src="https://img.shields.io/badge/Apple-Notarized_%26_Signed-success?style=for-the-badge&logo=apple&logoColor=white" alt="Apple Notarized" />
+  <img src="https://img.shields.io/badge/Apple-Notarized_%26_Signed-success?style=for-the-badge&logo=apple&logoColor=white" alt="Apple Notarizzata" />
   <img src="https://img.shields.io/badge/SwiftUI-100%25%20Nativo-blueviolet?style=for-the-badge&logo=swift&logoColor=white" alt="SwiftUI" />
 </div>
 
 <br/>
 
 > [!TIP]
-> **Nuovo in v2.0.3:** Nascondi icona dal Dock (Pro) — tieni solo l'icona nel Menu Bar.
-> **Nuovo in v2.0.2:** Chiudi Workspace (session-based) · Risolto bug apertura siti.
-> L'app è ora **Notarizzata da Apple**: installazione sicura senza avvisi.
+> **Nuovo in v2.0.4:** Aggiornamenti automatici • Supporto macOS Sonoma ripristinato • Controllo manuale update da scheda Info
+> **v2.0.3:** Nascondi icona dal Dock (Pro)
+> Ora **aggiornamenti completamente automatici** — sempre aggiornato!
 
 ---
 
@@ -61,6 +61,7 @@ Con WorkSpace Manager crei dei "contesti" (es. *Lavoro, Università, Freelance*)
 | Workspace | 1 | Illimitati |
 | Lancia App, Cartelle, Siti | ✅ | ✅ |
 | Menu Bar Resident | ✅ | ✅ |
+| **Aggiornamenti Automatici** | ✅ | ✅ |
 | Chiudi Workspace | 3x / mese | ✅ Illimitato |
 | Nascondi icona Dock | ❌ | ✅ |
 | Protezione TouchID | ❌ | ✅ |
@@ -106,7 +107,7 @@ Esporta i tuoi profili in formato JSON e portali su un altro Mac in un secondo.
 
 Essendo un software certificato Apple, l'installazione è standard:
 
-1. **Scarica** `WorkSpaceManager-2.0.3.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
+1. **Scarica** `WorkSpace.2.0.4.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
 2. **Trascina** l'icona nella cartella `Applicazioni`
 3. **Avvia** e goditi il tuo tempo risparmiato 🚀
 
@@ -128,6 +129,13 @@ Per segnalare bug o richiedere feature:
 ---
 
 ## 📋 Changelog
+
+### v2.0.4 (13 Aprile 2026)
+- ✅ **Aggiornamenti Automatici** — più rapidi e sicuri
+- ✅ **Supporto macOS Sonoma** ripristinato (macOS 14.0+)
+- ✅ Controllo manuale update da Impostazioni → scheda Info
+- ✅ Verifica automatica update all'avvio (non intrusiva)
+- 🎨 Ottimizzazioni interfaccia Impostazioni
 
 ### v2.0.3 (13 Marzo 2026)
 - ✅ Nascondi icona dal Dock — attivabile da Impostazioni → Generali (solo Pro)
@@ -159,9 +167,7 @@ Per segnalare bug o richiedere feature:
 - macOS **Sonoma 14.0** o superiore
 - Processore: Apple Silicon (M1/M2/M3) o Intel
 
-![Notarized](https://img.shields.io/badge/macOS-Notarized_%26_Signed-brightgreen?style=for-the-badge&logo=apple&logoColor=white)
-
-
+![Notarizzata](https://img.shields.io/badge/macOS-Notarizzata_%26_Firmata-brightgreen?style=for-the-badge&logo=apple&logoColor=white)
 
 -------
 
