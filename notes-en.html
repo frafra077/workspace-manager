@@ -7,27 +7,45 @@
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #e1e1e1; background: #1a1a1a; padding: 25px; margin: 0; }
         .container { max-width: 500px; margin: auto; }
         h2 { color: #00aaff; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 20px; }
+        h3 { color: #ffffff; font-size: 15px; margin-top: 28px; margin-bottom: 12px; }
         .badge { background: #00aaff; color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+        .badge.secondary { background: #333; color: #bbb; margin-top: 20px; }
         ul { padding-left: 20px; list-style-type: none; }
         li { margin-bottom: 15px; position: relative; }
         li::before { content: "•"; color: #00aaff; font-weight: bold; position: absolute; left: -20px; }
         strong { color: #ffffff; }
+        .previous { opacity: 0.78; }
         .footer { margin-top: 30px; border-top: 1px solid #333; padding-top: 15px; font-size: 12px; color: #888; text-align: center; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="badge">What's New</div>
-        <h2>WorkSpace Manager 2.0.4</h2>
+        <h2>WorkSpace Manager 2.0.5</h2>
+
         <ul>
-            <li><strong>New Update Engine:</strong> We've implemented a faster, more secure, and fully automatic update delivery system.</li>
+            <li><strong>Advanced Finder Tabs:</strong> You can now open multiple workspace folders in a single Finder window using tabs.</li>
+            <li><strong>Finder Window Groups:</strong> Choose which folders open together in the same Finder window and which ones open in a separate window.</li>
+            <li><strong>Pro Demo for Advanced Finder:</strong> Free users can try the feature with a limited demo. After the demo ends, folders will still open normally in separate Finder windows.</li>
+            <li><strong>Clearer Pro Notice:</strong> When the demo ends, WorkSpace Manager explains why folders are opening separately and invites users to upgrade to Pro for the advanced workflow.</li>
+            <li><strong>Accessibility Permission Flow:</strong> The app now checks whether Accessibility permission is already enabled and only shows the notice when it is actually needed.</li>
+            <li><strong>Finder Fixes:</strong> Fixed issues where folders could open in separate windows even when tabs were enabled, including a case where the first folder could be duplicated.</li>
+        </ul>
+
+        <div class="badge secondary">Previous Update</div>
+        <h3>WorkSpace Manager 2.0.4</h3>
+
+        <ul class="previous">
+            <li><strong>New Update Engine:</strong> Faster, safer, and fully automatic update delivery system.</li>
             <li><strong>macOS Sonoma Compatibility:</strong> Restored full support for macOS 14.</li>
-            <li><strong>Advanced Controls:</strong> You can now manually check for updates directly from the Info tab in Settings.</li>
-            <li><strong>Smart Startup:</strong> The app now automatically checks for updates whenever launched, without interrupting your workflow.</li>
+            <li><strong>Advanced Controls:</strong> Manual update checks are now available directly from the Info tab in Settings.</li>
+            <li><strong>Smart Startup:</strong> The app automatically checks for updates whenever launched, without interrupting your workflow.</li>
             <li><strong>UI Enhancements:</strong> Settings interface optimized for smoother navigation.</li>
         </ul>
-        <div class="footer">Released on April 13, 2026 • Thanks for your support!</div>
+
+        <div class="footer">Released on April 14, 2026 • Thanks for your support!</div>
     </div>
 </body>
 </html>
+
 
