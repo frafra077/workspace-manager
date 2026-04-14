@@ -5,7 +5,7 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Version 2.0.4</strong> • Native macOS Automation<br/>
+  <strong>Version 2.0.5</strong> • Native macOS Automation<br/>
   Apps, Websites, Folders, and Terminals launched in <strong>one click</strong>.
 </p>
 
@@ -15,7 +15,7 @@
 
 <p align="center">
   <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Official Website</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.4 (.dmg)</b></a>
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.5 (.dmg)</b></a>
 </p>
 
 <!-- BADGES -->
@@ -27,8 +27,8 @@
 <br/>
 
 > [!TIP]
-> **New in v2.0.4:** Automatic Updates • macOS Sonoma support restored • Manual update check from Settings Info tab
-> **v2.0.3:** Hide Dock Icon (Pro)
+> **New in v2.0.5:** Finder Tabs — open multiple folders in a single Finder window with tabs · Folder Window Groups · Pro Demo for Free users
+> **v2.0.4:** Automatic Updates · macOS Sonoma support restored
 > Now **fully automatic updates** — always stay up to date!
 
 ---
@@ -44,9 +44,9 @@ Create "Contexts" (e.g., *Work, University, Freelance*) and launch them instantl
 |---|---|---|---|
 | **TouchID / FaceID** support | Native engine rewritten | English 🇬🇧 / Italian 🇮🇹 | Light/Dark/System |
 
-| 💾 **Backup** | 🔄 **Close Workspace** | 🞃 **Hide Dock Icon** | 📖 **Onboarding** |
+| 💾 **Backup** | 🔄 **Close Workspace** | 🞃 **Hide Dock Icon** | 🗂️ **Finder Tabs** |
 |---|---|---|---|
-| JSON Export/Import | Close only what was opened | Menu Bar only mode (Pro) | Interactive Guide |
+| JSON Export/Import | Close only what was opened | Menu Bar only mode (Pro) | Group folders in one window (Pro) |
 
 ---
 
@@ -67,6 +67,7 @@ Create "Contexts" (e.g., *Work, University, Freelance*) and launch them instantl
 | Menu Bar Resident | ✅ | ✅ |
 | **Automatic Updates** | ✅ | ✅ |
 | Close Workspace | 3x / month | ✅ Unlimited |
+| Finder Tabs (grouped folders) | 🔒 Demo | ✅ Unlimited |
 | Hide Dock Icon | ❌ | ✅ |
 | TouchID Protection | ❌ | ✅ |
 | Backup & Restore | ❌ | ✅ |
@@ -74,15 +75,27 @@ Create "Contexts" (e.g., *Work, University, Freelance*) and launch them instantl
 
 ---
 
+## 🗂️ Finder Tabs — Open Folders Smarter (New in v2.0.5)
+
+No more desktop chaos. WorkSpace Manager can now open multiple folders from the same workspace in a **single Finder window using tabs**, instead of cluttering your screen with separate windows.
+
+- **Group folders by window** — decide which folders open together in the same window and which open separately
+- **Free users** get a limited demo to try the feature; once the demo ends, folders continue opening in separate windows as before
+- A clear **Pro upgrade prompt** explains why separate windows are used when the demo expires
+
+> 🔒 Full Finder Tabs support is a **Pro** feature.
+
+---
+
 ## 📦 Secure Installation
 
 As fully notarized software, installation is standard:
 
-1. **Download** `WorkSpace.2.0.4.dmg` from the [Releases Section](https://github.com/frafra077/workspace-manager/releases/latest)
+1. **Download** `WorkSpace.2.0.5.dmg` from the [Releases Section](https://github.com/frafra077/workspace-manager/releases/latest)
 2. **Drag** the app into your `Applications` folder
 3. **Launch** and enjoy your saved time 🚀
 
-*(No weird security warnings, no "Right Click -> Open" needed)*
+*(No weird security warnings, no "Right Click → Open" needed)*
 
 ---
 
@@ -90,7 +103,7 @@ As fully notarized software, installation is standard:
 
 WorkSpace Manager uses a **Freemium** model.
 - **Starter (Free):** Core functionality forever, no time limit.
-- **Pro License:** Unlocks TouchID, Unlimited Workspaces, Close Workspace (unlimited), Hide Dock Icon, and Priority Support.
+- **Pro License:** Unlocks TouchID, Unlimited Workspaces, Close Workspace (unlimited), Finder Tabs, Hide Dock Icon, and Priority Support.
 
 👉 [Get PRO License](https://frafra077.github.io/workspace-manager/#download)
 
@@ -100,6 +113,15 @@ For bug reports or feature requests:
 ---
 
 ## 📋 Changelog
+
+### v2.0.5 (April 14, 2026)
+- ✅ **Finder Tabs** — open multiple workspace folders in a single Finder window using tabs (Pro)
+- ✅ **Folder Window Groups** — choose which folders open together and which open in a separate window
+- ✅ **Pro Demo for Finder Tabs** — Free users can try the feature with a limited demo
+- ✅ Clearer Pro upgrade prompt when demo ends
+- 🔧 Accessibility permissions check — alert shown only when actually needed
+- 🐛 Fixed folders opening in separate windows even with tabs enabled
+- 🐛 Fixed potential duplication of the first folder
 
 ### v2.0.4 (April 13, 2026)
 - ✅ **Automatic Updates** — faster & more secure
