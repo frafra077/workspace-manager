@@ -1,16 +1,16 @@
 <?xml version="1.0" standalone="yes"?>
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
-        <title>Version 2.0.4</title>
+        <title>WorkSpace Manager</title>
         <item>
-            <title>Version 2.0.4</title>
-            <pubDate>Mon, 13 Apr 2026 20:25:56 +0200</pubDate>
-        <sparkle:releaseNotesLink xml:lang="it">https://frafra077.github.io/workspace-manager/notes.html</sparkle:releaseNotesLink>
-        <sparkle:releaseNotesLink xml:lang="en">https://frafra077.github.io/workspace-manager/notes-en.html</sparkle:releaseNotesLink>
-            <sparkle:version>204</sparkle:version>
-            <sparkle:shortVersionString>2.0.4</sparkle:shortVersionString>
+            <title>Version 2.0.5</title>
+            <pubDate>Tue, 14 Apr 2026 13:06:22 +0200</pubDate>
+            <sparkle:releaseNotesLink xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xml:lang="it">https://frafra077.github.io/workspace-manager/notes.html</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xml:lang="en">https://frafra077.github.io/workspace-manager/notes-en.html</sparkle:releaseNotesLink>
+            <sparkle:version>205</sparkle:version>
+            <sparkle:shortVersionString>2.0.5</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/frafra077/workspace-manager/releases/download/v.2.0.4/WorkSpace.2.0.4.dmg" length="6370278" type="application/octet-stream" sparkle:edSignature="YgowmoQxWsBNzlENsrZD+UhdCG5lifSpqbVWlTCcr9FCmjwKrLRa5QjgC1+YatWdIVAWG1tl3V7HWjkOC4AuCg=="/>
+            <enclosure url="https://github.com/frafra077/workspace-manager/releases/download/v.2.0.5/WorkSpace.2.0.5.dmg" length="6383970" type="application/octet-stream" sparkle:edSignature="sZSh3n36O/5m+mZgd0cAQP7ndxB4GoRsh0NHZFJ8O1xBNMQ9t+2lTjt16sR3MqSpIdzjgHhgDCoGPS1SuqebDQ=="></enclosure>
         </item>
     </channel>
 </rss>
