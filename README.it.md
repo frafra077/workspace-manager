@@ -5,13 +5,13 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Versione 2.0.4</strong> • Automazione Pro per macOS<br/>
+  <strong>Versione 2.0.5</strong> • Automazione Pro per macOS<br/>
   App, Siti, Cartelle e Terminali aperti in <strong>un click</strong>.
 </p>
 
 <p align="center">
   <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Sito Ufficiale & Offerta</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.4 (.dmg)</b></a>
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.5 (.dmg)</b></a>
 </p>
 
 <!-- BADGES -->
@@ -23,8 +23,8 @@
 <br/>
 
 > [!TIP]
-> **Nuovo in v2.0.4:** Aggiornamenti automatici • Supporto macOS Sonoma ripristinato • Controllo manuale update da scheda Info
-> **v2.0.3:** Nascondi icona dal Dock (Pro)
+> **Nuovo in v2.0.5:** Tab Finder — apri più cartelle in un'unica finestra Finder con schede · Gruppi di Finestre · Demo Pro per utenti Free
+> **v2.0.4:** Aggiornamenti automatici · Supporto macOS Sonoma ripristinato
 > Ora **aggiornamenti completamente automatici** — sempre aggiornato!
 
 ---
@@ -40,9 +40,9 @@ Con WorkSpace Manager crei dei "contesti" (es. *Lavoro, Università, Freelance*)
 |---|---|---|---|
 | **TouchID / FaceID** support | Motore nativo riscritto | Italiano 🇮🇹 / English 🇬🇧 | Light/Dark/System |
 
-| 💾 **Backup** | 🔄 **Chiudi Workspace** | 🞃 **Nascondi Dock** | 📖 **Onboarding** |
+| 💾 **Backup** | 🔄 **Chiudi Workspace** | 🞃 **Nascondi Dock** | 🗂️ **Tab Finder** |
 |---|---|---|---|
-| Esporta/Importa JSON | Chiude solo ciò che hai aperto | Solo Menu Bar (Pro) | Guida interattiva |
+| Esporta/Importa JSON | Chiude solo ciò che hai aperto | Solo Menu Bar (Pro) | Cartelle in un'unica finestra (Pro) |
 
 ---
 
@@ -63,10 +63,23 @@ Con WorkSpace Manager crei dei "contesti" (es. *Lavoro, Università, Freelance*)
 | Menu Bar Resident | ✅ | ✅ |
 | **Aggiornamenti Automatici** | ✅ | ✅ |
 | Chiudi Workspace | 3x / mese | ✅ Illimitato |
+| Tab Finder (cartelle raggruppate) | 🔒 Demo | ✅ Illimitato |
 | Nascondi icona Dock | ❌ | ✅ |
 | Protezione TouchID | ❌ | ✅ |
 | Backup & Restore | ❌ | ✅ |
 | Supporto Prioritario | ❌ | ✅ |
+
+---
+
+## 🗂️ Tab Finder — Apri le Cartelle in Modo Intelligente (Novità v2.0.5)
+
+Niente più caos sul desktop. WorkSpace Manager può ora aprire più cartelle dello stesso workspace in una **singola finestra Finder con schede**, invece di aprire ogni cartella in una finestra separata.
+
+- **Gruppi di finestre** — scegli quali cartelle aprire insieme nella stessa finestra e quali aprire separatamente
+- Gli **utenti Free** possono provare la funzione con una demo limitata; terminata la demo, le cartelle continuano ad aprirsi in finestre separate come prima
+- Un chiaro **avviso Pro** spiega perché vengono usate finestre separate alla scadenza della demo
+
+> 🔒 Il supporto completo alle Tab Finder è una funzione **Pro**.
 
 ---
 
@@ -78,6 +91,10 @@ Definisci un workspace e WorkSpace Manager aprirà simultaneamente:
 - Siti web (nel browser predefinito)
 - Cartelle del Finder
 - Finestre di Terminale (con percorsi specifici)
+
+✅ **Tab Finder (Nuovo v2.0.5)**
+Apri più cartelle del workspace in un'unica finestra Finder usando le schede. Scegli quali cartelle raggruppare e quali aprire separatamente.
+> 🔒 Disponibile per utenti Pro. Gli utenti Free possono provare la demo.
 
 ✅ **Nascondi icona dal Dock (Nuovo v2.0.3)**
 Tieni solo l'icona nel Menu Bar per una scrivania più pulita.
@@ -107,11 +124,11 @@ Esporta i tuoi profili in formato JSON e portali su un altro Mac in un secondo.
 
 Essendo un software certificato Apple, l'installazione è standard:
 
-1. **Scarica** `WorkSpace.2.0.4.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
+1. **Scarica** `WorkSpace.2.0.5.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
 2. **Trascina** l'icona nella cartella `Applicazioni`
 3. **Avvia** e goditi il tuo tempo risparmiato 🚀
 
-*(Nessun avviso di sicurezza strano, nessun "Tasto destro -> Apri" necessario)*
+*(Nessun avviso di sicurezza strano, nessun "Tasto destro → Apri" necessario)*
 
 ---
 
@@ -119,7 +136,7 @@ Essendo un software certificato Apple, l'installazione è standard:
 
 WorkSpace Manager è distribuito con modello **Freemium**.
 - **Starter (Gratis):** Funzionalità base illimitate nel tempo.
-- **Pro License:** Sblocca TouchID, Workspace illimitati, Chiudi Workspace illimitato, Nascondi icona Dock e Supporto Prioritario.
+- **Pro License:** Sblocca TouchID, Workspace illimitati, Chiudi Workspace illimitato, Tab Finder, Nascondi icona Dock e Supporto Prioritario.
 
 👉 [Acquista Licenza PRO sul Sito Ufficiale](https://frafra077.github.io/workspace-manager/#download)
 
@@ -129,6 +146,15 @@ Per segnalare bug o richiedere feature:
 ---
 
 ## 📋 Changelog
+
+### v2.0.5 (14 Aprile 2026)
+- ✅ **Tab Finder** — apri più cartelle del workspace in un'unica finestra Finder con schede (Pro)
+- ✅ **Gruppi di Finestre Finder** — scegli quali cartelle aprire insieme e quali separatamente
+- ✅ **Demo Pro per Tab Finder** — gli utenti Free possono provare la funzione con una demo limitata
+- ✅ Avviso Pro più chiaro al termine della demo
+- 🔧 Controllo permessi Accessibilità — l'avviso viene mostrato solo quando serve davvero
+- 🐛 Risolto bug che apriva le cartelle in finestre separate anche con le tab abilitate
+- 🐛 Risolto potenziale duplicazione della prima cartella
 
 ### v2.0.4 (13 Aprile 2026)
 - ✅ **Aggiornamenti Automatici** — più rapidi e sicuri
@@ -165,10 +191,9 @@ Per segnalare bug o richiedere feature:
 ## 📱 Requisiti di Sistema
 
 - macOS **Sonoma 14.0** o superiore
-- Processore: Apple Silicon (M1/M2/M3) o Intel
+- Processore: Apple Silicon (M1/M2/M3/M4) o Intel
 
 ![Notarizzata](https://img.shields.io/badge/macOS-Notarizzata_%26_Firmata-brightgreen?style=for-the-badge&logo=apple&logoColor=white)
-
 -------
 
 ⭐ **Star this repo if you find it useful!**
