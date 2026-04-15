@@ -339,14 +339,14 @@
 
 				<!-- NUOVO: HIDE DOCK ICON (v2.0.3) -->
 				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300 border border-emerald-500/30 relative overflow-hidden">
-				    <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] px-2 py-1 font-bold uppercase rounded-bl-lg">New 2.0.3</div>
-				    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4 text-emerald-400">
-				        <i class="fa-solid fa-eye-slash text-lg"></i>
-				    </div>
-				    <h3 class="text-lg font-bold mb-2" data-i18n="f_dock_t">Nascondi Dock Icon</h3>
-				    <p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_dock_d">
-				        Tieni solo l'icona nel Menu Bar. Attivabile da Impostazioni → Generali. Solo Pro.
-				    </p>
+					<div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] px-2 py-1 font-bold uppercase rounded-bl-lg">New 2.0.3</div>
+					<div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4 text-emerald-400">
+						<i class="fa-solid fa-eye-slash text-lg"></i>
+					</div>
+					<h3 class="text-lg font-bold mb-2" data-i18n="f_dock_t">Nascondi Dock Icon</h3>
+					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_dock_d">
+						Tieni solo l'icona nel Menu Bar. Attivabile da Impostazioni → Generali. Solo Pro.
+					</p>
 				</div>
 
 
@@ -457,8 +457,13 @@
 					<img src="SCREEN_APPEARANCE.png" alt="Appearance" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
 					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i></div>
 				</div>
-				<div class="group relative overflow-hidden rounded-2xl glass hover:border-yellow-500/50 transition-all duration-300 cursor-pointer lg:col-span-2" onclick="openModal('SCREEN_ERRORS.png')">
-					<img src="SCREEN_ERRORS.png" alt="Errors" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+				<div class="group relative overflow-hidden rounded-2xl glass hover:border-green-500/50 transition-all duration-300 cursor-pointer" onclick="openModal('SCREEN_ERRORS.png')">
+					<img src="SCREEN_ERRORS.png" alt="Error" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i></div>
+				</div>
+			
+				<div class="group relative overflow-hidden rounded-2xl glass hover:border-green-500/50 transition-all duration-300 cursor-pointer" onclick="openModal('SCREEN_FINDER.png')">
+					<img src="SCREEN_FINDER.png" alt="Finder" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
 					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i></div>
 				</div>
 			</div>
@@ -530,7 +535,7 @@
 						<li class="flex gap-2 opacity-50"><i class="fa-solid fa-xmark text-gray-600"></i> <span data-i18n="p_no_touch">No TouchID Security</span></li>
 						<li class="flex gap-2 opacity-50"><i class="fa-solid fa-xmark text-gray-600"></i> <span data-i18n="p_no_auto">Automazioni Limitate</span></li>
 						<li class="flex gap-2 opacity-50">
-    					<i class="fa-solid fa-xmark text-gray-600"></i><span data-i18n="p_no_dock">No Hide Dock Icon</span></li>
+						<i class="fa-solid fa-xmark text-gray-600"></i><span data-i18n="p_no_dock">No Hide Dock Icon</span></li>
 
 					</ul>
 
@@ -942,7 +947,8 @@
 			'SCREEN_MENUBAR.png',
 			'SCREEN_SETTINGS.png',
 			'SCREEN_APPEARANCE.png',
-			'SCREEN_ERRORS.png'
+			'SCREEN_ERRORS.png',
+			'SCREEN_FINDER.png'
 		];
 		let currentImageIndex = 0;
 		const modal = document.getElementById('imageModal');
