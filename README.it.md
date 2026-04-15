@@ -5,13 +5,13 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Versione 2.0.5</strong> • Automazione Pro per macOS<br/>
+  <strong>Versione 2.0.6</strong> • Automazione Pro per macOS<br/>
   App, Siti, Cartelle e Terminali aperti in <strong>un click</strong>.
 </p>
 
 <p align="center">
   <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Sito Ufficiale & Offerta</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.5 (.dmg)</b></a>
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.6 (.dmg)</b></a>
 </p>
 
 <!-- BADGES -->
@@ -23,9 +23,9 @@
 <br/>
 
 > [!TIP]
-> **Nuovo in v2.0.5:** Tab Finder — apri più cartelle in un'unica finestra Finder con schede · Gruppi di Finestre · Demo Pro per utenti Free
+> **Nuovo in v2.0.6:** **Rivoluzione Finder** — Percorsi unificati, ordine deterministico e manuale · **Selettore Premium** con tecnologia Ghost Picker · Attivazione Intelligente (Smart Activation) 🔄
+> **v2.0.5:** Tab Finder — apri più cartelle in un'unica finestra Finder con schede · Gruppi di Finestre · Demo Pro per utenti Free
 > **v2.0.4:** Aggiornamenti automatici · Supporto macOS Sonoma ripristinato
-> Ora **aggiornamenti completamente automatici** — sempre aggiornato!
 
 ---
 
@@ -71,15 +71,18 @@ Con WorkSpace Manager crei dei "contesti" (es. *Lavoro, Università, Freelance*)
 
 ---
 
-## 🗂️ Tab Finder — Apri le Cartelle in Modo Intelligente (Novità v2.0.5)
+## 🗂️ Rivoluzione Finder — Controllo Totale delle Cartelle (Nuovo v2.0.6)
 
-Niente più caos sul desktop. WorkSpace Manager può ora aprire più cartelle dello stesso workspace in una **singola finestra Finder con schede**, invece di aprire ogni cartella in una finestra separata.
+Abbiamo completamente riprogettato la gestione delle cartelle. Non si tratta più solo di tab, ma di ordine e organizzazione assoluta.
 
-- **Gruppi di finestre** — scegli quali cartelle aprire insieme nella stessa finestra e quali aprire separatamente
-- Gli **utenti Free** possono provare la funzione con una demo limitata; terminata la demo, le cartelle continuano ad aprirsi in finestre separate come prima
-- Un chiaro **avviso Pro** spiega perché vengono usate finestre separate alla scadenza della demo
+- **Percorsi Unificati** — Eliminata la distinzione tra cartelle "Principali" e "Aggiuntive". Un unico elenco snello per tutto.
+- **Ordine di Apertura Deterministico** — Le cartelle si aprono esattamente nell'ordine in cui le vedi nelle impostazioni.
+- **Gruppi di Finestre (Pro)** — Decidi con precisione quali cartelle aprire come tab e quali in finestre separate.
+- **Ordinamento Manuale** — Nuove frecce direzionali per spostare le cartelle su o giù istantaneamente.
+- **Smart Activation** — L'app rileva le cartelle già aperte ed evita di creare duplicati inutili di finestre o tab.
+- **Persistenza Garantita** — Nuovo sistema di salvataggio che assicura che le tue configurazioni non vadano mai perse.
 
-> 🔒 Il supporto completo alle Tab Finder è una funzione **Pro**.
+> 🔒 Il supporto avanzato ai Gruppi di Finestre e Tab è una funzione **Pro** (Demo inclusa per utenti Free).
 
 ---
 
@@ -92,8 +95,8 @@ Definisci un workspace e WorkSpace Manager aprirà simultaneamente:
 - Cartelle del Finder
 - Finestre di Terminale (con percorsi specifici)
 
-✅ **Tab Finder (Nuovo v2.0.5)**
-Apri più cartelle del workspace in un'unica finestra Finder usando le schede. Scegli quali cartelle raggruppare e quali aprire separatamente.
+✅ **Rivoluzione Finder (Nuovo v2.0.6)**
+Percorsi unificati, ordine di apertura garantito e raggruppamento intelligente in tab e finestre multiple. Include manual sorting e prevenzione dei duplicati.
 > 🔒 Disponibile per utenti Pro. Gli utenti Free possono provare la demo.
 
 ✅ **Nascondi icona dal Dock (Nuovo v2.0.3)**
@@ -124,7 +127,7 @@ Esporta i tuoi profili in formato JSON e portali su un altro Mac in un secondo.
 
 Essendo un software certificato Apple, l'installazione è standard:
 
-1. **Scarica** `WorkSpace.2.0.5.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
+1. **Scarica** `WorkSpace.2.0.6.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
 2. **Trascina** l'icona nella cartella `Applicazioni`
 3. **Avvia** e goditi il tuo tempo risparmiato 🚀
 
@@ -146,6 +149,15 @@ Per segnalare bug o richiedere feature:
 ---
 
 ## 📋 Changelog
+
+### v2.0.6 (15 Aprile 2026)
+- ✅ **Rivoluzione Finder** — Percorsi unificati, ordine di apertura deterministico e nuove frecce di ordinamento
+- ✅ **Smart Activation** — Rileva automaticamente le cartelle già aperte per evitare tab o finestre ridondanti
+- ✅ **Selettore Workspace Premium** — Nuovo design a card nelle Impostazioni con tecnologia "Ghost Picker"
+- ✅ **Localizzazione 2.0** — Risolto il fallback linguistico (default inglese) e tradotte le stringhe dei permessi
+- ✅ **Window Grouping 2.0** — Modello dati rifatto per una persistenza garantita e raggruppamento visivo chiaro
+- ✅ **Persistenza Migliorata** — Implementazione `Codable` personalizzata per prevenire perdite di configurazione
+- 🔧 Ottimizzato il posizionamento del menu nella barra dei menu per evitare tagli fuori schermo
 
 ### v2.0.5 (14 Aprile 2026)
 - ✅ **Tab Finder** — apri più cartelle del workspace in un'unica finestra Finder con schede (Pro)
