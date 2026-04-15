@@ -5,7 +5,7 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Version 2.0.5</strong> • Native macOS Automation<br/>
+  <strong>Version 2.0.6</strong> • Native macOS Automation<br/>
   Apps, Websites, Folders, and Terminals launched in <strong>one click</strong>.
 </p>
 
@@ -15,7 +15,7 @@
 
 <p align="center">
   <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Official Website</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.5 (.dmg)</b></a>
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.6 (.dmg)</b></a>
 </p>
 
 <!-- BADGES -->
@@ -27,9 +27,9 @@
 <br/>
 
 > [!TIP]
-> **New in v2.0.5:** Finder Tabs — open multiple folders in a single Finder window with tabs · Folder Window Groups · Pro Demo for Free users
+> **New in v2.0.6:** **Finder Management Revolution** — Unified paths, deterministic opening order, and manual sorting UI · **Premium Workspace Selector** with Ghost Picker interaction · Reliable Data Persistence 🔄
+> **v2.0.5:** Finder Tabs · Folder Window Groups · Pro Demo for Free users
 > **v2.0.4:** Automatic Updates · macOS Sonoma support restored
-> Now **fully automatic updates** — always stay up to date!
 
 ---
 
@@ -75,15 +75,18 @@ Create "Contexts" (e.g., *Work, University, Freelance*) and launch them instantl
 
 ---
 
-## 🗂️ Finder Tabs — Open Folders Smarter (New in v2.0.5)
+## 🗂️ Finder Revolution — Total Folder Control (New in v2.0.6)
 
-No more desktop chaos. WorkSpace Manager can now open multiple folders from the same workspace in a **single Finder window using tabs**, instead of cluttering your screen with separate windows.
+We have completely redesigned how folders are handled. It's no longer just about tabs; it's about absolute order and organization.
 
-- **Group folders by window** — decide which folders open together in the same window and which open separately
-- **Free users** get a limited demo to try the feature; once the demo ends, folders continue opening in separate windows as before
-- A clear **Pro upgrade prompt** explains why separate windows are used when the demo expires
+- **Unified Paths** — No more distinction between "Main" and "Additional" folders. A single, streamlined list for everything.
+- **Deterministic Opening Order** — Folders open exactly in the order you set them in the UI. Every time.
+- **Window Groups (Pro)** — Truly decide which folders open as tabs and which open in separate windows.
+- **Manual Sorting UI** — New directional arrows to easily move folders up or down within your groups.
+- **Smart Activation** — The app intelligently detects already open folders and avoids opening redundant windows or tabs.
+- **Reliable Persistence** — A new saving engine ensures your window group configurations are never lost.
 
-> 🔒 Full Finder Tabs support is a **Pro** feature.
+> 🔒 Advanced Window Grouping and Tab support is a **Pro** feature (Demo included for Free users).
 
 ---
 
@@ -91,7 +94,7 @@ No more desktop chaos. WorkSpace Manager can now open multiple folders from the 
 
 As fully notarized software, installation is standard:
 
-1. **Download** `WorkSpace.2.0.5.dmg` from the [Releases Section](https://github.com/frafra077/workspace-manager/releases/latest)
+1. **Download** `WorkSpace.2.0.6.dmg` from the [Releases Section](https://github.com/frafra077/workspace-manager/releases/latest)
 2. **Drag** the app into your `Applications` folder
 3. **Launch** and enjoy your saved time 🚀
 
@@ -113,6 +116,16 @@ For bug reports or feature requests:
 ---
 
 ## 📋 Changelog
+
+### v2.0.6 (April 15, 2026)
+- ✅ **Finder Revolution** — Unified paths, deterministic opening order, and new sorting UI (arrows)
+- ✅ **Smart Activation** — Automatically detects already open folders to prevent redundant windows or tabs
+- ✅ **Window Grouping 2.0** — Refactored data model for reliable grouping and persistence
+- ✅ **Premium Workspace Selector** — High-fidelity card design in Settings with "Ghost Picker" interaction
+- ✅ **Localization 2.0** — Fixed language fallback logic (English now correctly defaults for non-Italian users) and translated system permission strings
+- ✅ **UI Grouping** — Settings now visually group folders by window ID for extreme clarity
+- ✅ **Reliable Saving Engine** — Switched to custom `Codable` implementation to prevent configuration loss
+- 🔧 Improved menu bar menu positioning to prevent clipping outside window bounds
 
 ### v2.0.5 (April 14, 2026)
 - ✅ **Finder Tabs** — open multiple workspace folders in a single Finder window using tabs (Pro)
