@@ -2,8 +2,12 @@
 <html lang="it" class="scroll-smooth overflow-x-hidden">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<title>WorkSpace Manager - macOS Automation</title>
+	<meta name="theme-color" content="#07090d">
+	<meta name="theme-color" content="#07090d" media="(prefers-color-scheme: dark)">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<!-- Tailwind CSS -->
 	<script src="https://cdn.tailwindcss.com"></script>
 	<!-- Font Inter -->
@@ -12,6 +16,27 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 	<style>
+		html {
+			background: #07090d;
+			color-scheme: dark;
+		}
+
+		html, body {
+			min-height: 100%;
+			background-color: #07090d;
+		}
+
+		body {
+			min-height: 100dvh;
+		}
+
+		@supports (padding: max(0px)) {
+			body {
+				padding-left: env(safe-area-inset-left);
+				padding-right: env(safe-area-inset-right);
+			}
+		}
+
 		body { font-family: 'Inter', sans-serif; background-color: #0f1115; color: #ffffff; }
 
 		/* Glassmorphism */
@@ -411,7 +436,7 @@
 		</div>
 
 		<!-- MOBILE MENU -->
-		<div id="mobileMenu" class="md:hidden fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-[#0b0d10]/95 backdrop-blur-2xl border-t border-white/10 opacity-0 invisible transform -translate-y-4 transition-all duration-300 ease-in-out z-40 overflow-y-auto shadow-2xl">
+		<div id="mobileMenu" class="md:hidden fixed top-16 left-0 w-full h-[calc(100dvh-4rem)] bg-[#0b0d10]/95 backdrop-blur-2xl border-t border-white/10 opacity-0 invisible transform -translate-y-4 transition-all duration-300 ease-in-out z-40 overflow-y-auto shadow-2xl">
 			<div class="flex flex-col p-4 space-y-2">
 				<a href="#features" onclick="closeMobileMenu()" class="block p-4 rounded-xl text-lg font-medium text-gray-200 hover:text-white hover:bg-white/10 transition border border-transparent hover:border-white/5 active:bg-white/20">
 				   <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400"><i class="fa-solid fa-layer-group"></i></div><span data-i18n="nav_features">Funzioni</span></div>
