@@ -256,8 +256,8 @@
 		.hero-image.is-hidden { display: none; }
 		.hero-status-card {
 			position: absolute;
-			right: -1rem;
-			top: 2rem;
+			right: -2.25rem;
+			top: 4.5rem;
 			width: min(17rem, 70vw);
 			background: rgba(7, 9, 13, 0.76);
 			border: 1px solid rgba(255,255,255,0.14);
@@ -267,8 +267,9 @@
 			z-index: 3;
 		}
 		.command-stack {
-			left: -2rem;
-			bottom: 2rem;
+			left: auto;
+			right: -2.25rem;
+			bottom: -1.25rem;
 			z-index: 3;
 		}
 		.hero-rail {
@@ -307,10 +308,16 @@
 		@keyframes railGlow { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
 		@keyframes orbitSpin { from { rotate: 0deg; } to { rotate: 360deg; } }
 
+		@media (max-width: 1024px) {
+			.hero-status-card { right: 1rem; top: 1rem; }
+			.command-stack { right: 1rem; bottom: 1rem; }
+		}
+
 		@media (max-width: 768px) {
 			.hero-frame { transform: none; min-height: 22rem; animation: none; }
 			.hero-frame img { min-height: 22rem; }
 			.hero-status-card { position: relative; top: auto; right: auto; width: 100%; margin: 1rem auto 0; }
+			.command-stack { position: relative; left: auto; right: auto; bottom: auto; width: 100%; margin: 1rem auto 0; }
 			.hero-orbit { display: none; }
 		}
 
