@@ -91,35 +91,302 @@
 		}
 		.lang-btn:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3); }
 		.lang-btn.active { background: rgba(59, 130, 246, 0.5); border-color: #3b82f6; }
+
+		:root {
+			--bg: #07090d;
+			--panel: rgba(255, 255, 255, 0.07);
+			--line: rgba(255, 255, 255, 0.12);
+			--blue: #38bdf8;
+			--green: #34d399;
+			--violet: #a78bfa;
+			--rose: #fb7185;
+		}
+
+		body {
+			background:
+				radial-gradient(circle at 18% 8%, rgba(56, 189, 248, 0.16), transparent 28rem),
+				radial-gradient(circle at 76% 16%, rgba(167, 139, 250, 0.12), transparent 26rem),
+				linear-gradient(180deg, #07090d 0%, #0b0d10 45%, #07090d 100%);
+		}
+
+		body::before {
+			content: "";
+			position: fixed;
+			inset: 0;
+			pointer-events: none;
+			z-index: -3;
+			background-image:
+				linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+			background-size: 72px 72px;
+			mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent 78%);
+		}
+
+		.noise-layer {
+			position: fixed;
+			inset: 0;
+			pointer-events: none;
+			opacity: 0.18;
+			z-index: -2;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+		}
+
+		.aurora {
+			position: absolute;
+			inset: -18rem -10rem auto -10rem;
+			height: 44rem;
+			pointer-events: none;
+			z-index: -1;
+			background:
+				radial-gradient(circle at 25% 35%, rgba(56, 189, 248, 0.24), transparent 18rem),
+				radial-gradient(circle at 52% 12%, rgba(52, 211, 153, 0.16), transparent 16rem),
+				radial-gradient(circle at 82% 40%, rgba(251, 113, 133, 0.10), transparent 16rem);
+			filter: blur(16px);
+			animation: auroraShift 14s ease-in-out infinite alternate;
+		}
+
+		@keyframes auroraShift {
+			from { transform: translate3d(-2%, -1%, 0) rotate(-2deg); }
+			to { transform: translate3d(2%, 4%, 0) rotate(2deg); }
+		}
+
+		.pro-nav { background: rgba(7, 9, 13, 0.72); box-shadow: 0 18px 60px rgba(0,0,0,0.28); }
+		.pro-pill { border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06); box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
+		.pro-card { position: relative; overflow: hidden; box-shadow: 0 24px 90px rgba(0,0,0,0.25); }
+		.pro-card::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(135deg, rgba(255,255,255,0.16), transparent 38%, rgba(56,189,248,0.08));
+			opacity: 0;
+			transition: opacity .35s ease;
+			pointer-events: none;
+		}
+		.pro-card:hover::before { opacity: 1; }
+		.lift { transition: transform .35s ease, border-color .35s ease, background .35s ease, box-shadow .35s ease; }
+		.lift:hover { transform: translateY(-6px); box-shadow: 0 26px 80px rgba(0,0,0,0.36); }
+
+		.text-gradient {
+			background: linear-gradient(90deg, #f8fafc, #7dd3fc 38%, #86efac 72%, #fda4af);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		.hero-shell { transform-style: preserve-3d; perspective: 1200px; }
+		.hero-image {
+			transform: perspective(1200px) rotateY(-13deg) rotateX(7deg) translateZ(0);
+			box-shadow: 0 40px 120px rgba(0,0,0,0.58), 0 0 0 1px rgba(255,255,255,0.12);
+			transition: transform 0.45s ease, box-shadow 0.45s ease;
+			animation: heroFloat 7s ease-in-out infinite;
+		}
+		.hero-image:hover { transform: perspective(1200px) rotateY(-4deg) rotateX(2deg) translateY(-8px); }
+		@keyframes heroFloat { 0%,100% { translate: 0 0; } 50% { translate: 0 -12px; } }
+
+		.command-stack {
+			position: absolute;
+			left: -1rem;
+			bottom: 1.5rem;
+			width: min(20rem, 72vw);
+			background: rgba(7, 9, 13, 0.82);
+			border: 1px solid rgba(255,255,255,0.14);
+			backdrop-filter: blur(18px);
+			box-shadow: 0 22px 70px rgba(0,0,0,0.45);
+			animation: panelRise 6s ease-in-out infinite;
+		}
+		.command-row { animation: pulseRow 3.6s ease-in-out infinite; }
+		.command-row:nth-child(2) { animation-delay: .45s; }
+		.command-row:nth-child(3) { animation-delay: .9s; }
+		@keyframes panelRise { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+		@keyframes pulseRow { 0%,100% { opacity: .72; } 50% { opacity: 1; } }
+
+		.stat-tile { background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035)); border: 1px solid rgba(255,255,255,0.1); }
+		.reveal { opacity: 0; transform: translateY(24px); transition: opacity .75s ease, transform .75s ease; }
+		.reveal.in-view { opacity: 1; transform: translateY(0); }
+		.reveal-delay-1 { transition-delay: .08s; }
+		.reveal-delay-2 { transition-delay: .16s; }
+		.reveal-delay-3 { transition-delay: .24s; }
+
+		@media (max-width: 768px) {
+			.command-stack { position: relative; left: auto; bottom: auto; margin: -1rem auto 0; }
+			.hero-image { transform: none; animation: none; }
+		}
+
+
+		.hero-stage {
+			position: relative;
+			isolation: isolate;
+		}
+		.hero-stage::before {
+			content: "";
+			position: absolute;
+			inset: -2rem;
+			z-index: -1;
+			background:
+				radial-gradient(circle at 28% 22%, rgba(56, 189, 248, 0.18), transparent 16rem),
+				radial-gradient(circle at 78% 70%, rgba(52, 211, 153, 0.12), transparent 15rem);
+			filter: blur(10px);
+		}
+		.hero-frame {
+			position: relative;
+			min-height: 30rem;
+			border: 1px solid rgba(255,255,255,0.14);
+			background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025));
+			box-shadow: 0 40px 130px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.12);
+			transform: perspective(1200px) rotateY(-8deg) rotateX(4deg);
+			transition: transform .5s ease, box-shadow .5s ease;
+			animation: heroFrameFloat 8s ease-in-out infinite;
+		}
+		.hero-frame:hover { transform: perspective(1200px) rotateY(-3deg) rotateX(1deg) translateY(-6px); }
+		.hero-frame img { min-height: 30rem; }
+		.hero-frame .hero-image { transform: none; animation: none; box-shadow: none; transition: opacity .35s ease, transform .7s ease; }
+		.hero-frame:hover .hero-image { transform: scale(1.025); }
+		.hero-fallback {
+			position: absolute;
+			inset: 0;
+			display: grid;
+			place-items: center;
+			background:
+				linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+				linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+				linear-gradient(145deg, rgba(56,189,248,0.12), rgba(52,211,153,0.05));
+			background-size: 34px 34px, 34px 34px, auto;
+			color: rgba(255,255,255,0.62);
+		}
+		.hero-image { position: relative; z-index: 1; }
+		.hero-image.is-hidden { display: none; }
+		.hero-status-card {
+			position: absolute;
+			right: -1rem;
+			top: 2rem;
+			width: min(17rem, 70vw);
+			background: rgba(7, 9, 13, 0.76);
+			border: 1px solid rgba(255,255,255,0.14);
+			backdrop-filter: blur(18px);
+			box-shadow: 0 24px 80px rgba(0,0,0,0.46);
+			animation: panelRise 6s ease-in-out infinite;
+			z-index: 3;
+		}
+		.command-stack {
+			left: -2rem;
+			bottom: 2rem;
+			z-index: 3;
+		}
+		.hero-rail {
+			position: absolute;
+			left: 1.25rem;
+			top: 1.25rem;
+			bottom: 1.25rem;
+			width: .25rem;
+			border-radius: 999px;
+			background: linear-gradient(to bottom, rgba(56,189,248,0.3), rgba(52,211,153,0.55), rgba(251,113,133,0.3));
+			animation: railGlow 3.8s ease-in-out infinite;
+			z-index: 2;
+		}
+		.hero-orbit {
+			position: absolute;
+			inset: 9%;
+			border: 1px solid rgba(125,211,252,0.18);
+			border-radius: 999px;
+			transform: rotate(-8deg);
+			animation: orbitSpin 18s linear infinite;
+			pointer-events: none;
+			z-index: 2;
+		}
+		.hero-orbit::after {
+			content: "";
+			position: absolute;
+			top: 10%;
+			left: 22%;
+			width: .65rem;
+			height: .65rem;
+			border-radius: 999px;
+			background: #7dd3fc;
+			box-shadow: 0 0 28px rgba(125,211,252,0.9);
+		}
+		@keyframes heroFrameFloat { 0%,100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+		@keyframes railGlow { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+		@keyframes orbitSpin { from { rotate: 0deg; } to { rotate: 360deg; } }
+
+		@media (max-width: 768px) {
+			.hero-frame { transform: none; min-height: 22rem; animation: none; }
+			.hero-frame img { min-height: 22rem; }
+			.hero-status-card { position: relative; top: auto; right: auto; width: 100%; margin: 1rem auto 0; }
+			.hero-orbit { display: none; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+			.reveal { opacity: 1; transform: none; }
+		}
+
+
+		.nav-link {
+			position: relative;
+			border: 1px solid transparent;
+			background: transparent;
+		}
+		.nav-link:hover {
+			background: rgba(255,255,255,0.06);
+			border-color: rgba(255,255,255,0.08);
+		}
+		.nav-link::after {
+			content: "";
+			position: absolute;
+			left: 50%;
+			bottom: 0.25rem;
+			width: 0;
+			height: 2px;
+			border-radius: 999px;
+			background: linear-gradient(90deg, #38bdf8, #34d399);
+			transform: translateX(-50%);
+			transition: width .25s ease;
+		}
+		.nav-link:hover::after { width: 38%; }
+		.brand-fallback {
+			display: none;
+		}
+		.brand-icon-wrap.icon-missing .brand-fallback {
+			display: flex;
+		}
+
 	</style>
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white overflow-x-hidden w-full">
+<body class="antialiased selection:bg-sky-500 selection:text-white overflow-x-hidden w-full">
+	<div class="noise-layer" aria-hidden="true"></div>
 
 	<!-- NAVIGAZIONE COMPLETA -->
-	<nav class="fixed w-full z-50 glass border-b-0">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="flex items-center justify-between h-16">
+	<nav class="fixed w-full z-50 glass pro-nav border-b border-white/10">
+		<div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+			<div class="flex items-center justify-between min-h-[4.5rem]">
 				<!-- Logo -->
-				<div class="flex items-center gap-2">
-					<img src="app-icon.png" alt="WorkSpace Manager" class="w-8 h-8 rounded-lg shadow-md object-cover flex-shrink-0" loading="lazy">
-					<span class="font-bold text-lg tracking-tight">WorkSpace Manager</span>
-				</div>
+				<a href="#" class="flex items-center gap-3 group" aria-label="WorkSpace Manager Home">
+					<span class="brand-icon-wrap relative w-10 h-10 rounded-lg border border-white/10 bg-white/[0.04] flex items-center justify-center overflow-hidden shadow-lg shadow-black/20">
+						<img src="app-icon.png" alt="" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('icon-missing')">
+						<span class="brand-fallback absolute inset-0 items-center justify-center text-sky-200"><i class="fa-solid fa-layer-group"></i></span>
+					</span>
+					<span class="leading-tight">
+						<span class="block font-bold text-lg tracking-tight text-white group-hover:text-sky-100 transition">WorkSpace Manager</span>
+						<span class="hidden sm:block text-[11px] text-gray-500 uppercase tracking-wider" data-i18n="nav_tagline">macOS automation</span>
+					</span>
+				</a>
 
 				<!-- Desktop Menu -->
-				<div class="hidden md:flex items-center gap-2">
-					<a href="#features" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition" data-i18n="nav_features">Funzioni</a>
-					<a href="#whats-new" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition" data-i18n="nav_updates">Novit&#224;</a>
-					<a href="#gallery" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition" data-i18n="nav_gallery">Gallery</a>
-					<a href="#install" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition" data-i18n="nav_install">Sicurezza</a>
+				<div class="hidden md:flex items-center gap-3">
+					<div class="flex items-center gap-1 rounded-lg border border-white/10 bg-white/[0.035] p-1">
+						<a href="#features" class="nav-link px-3 py-2 rounded-md text-sm text-gray-300 hover:text-white transition" data-i18n="nav_features">Funzioni</a>
+						<a href="#whats-new" class="nav-link px-3 py-2 rounded-md text-sm text-gray-300 hover:text-white transition" data-i18n="nav_updates">Novit&#224;</a>
+						<a href="#gallery" class="nav-link px-3 py-2 rounded-md text-sm text-gray-300 hover:text-white transition" data-i18n="nav_gallery">Gallery</a>
+						<a href="#install" class="nav-link px-3 py-2 rounded-md text-sm text-gray-300 hover:text-white transition" data-i18n="nav_install">Sicurezza</a>
+					</div>
 
 					<!-- Language Switcher Desktop -->
-					<div class="ml-2 flex items-center gap-1 bg-black/30 rounded-lg p-1">
+					<div class="flex items-center gap-1 bg-black/35 border border-white/10 rounded-lg p-1">
 						<button onclick="setLanguage('it')" class="lang-btn text-xs font-bold active" id="lang-it-d">IT</button>
 						<button onclick="setLanguage('en')" class="lang-btn text-xs font-bold" id="lang-en-d">EN</button>
 					</div>
 
-					<a href="#download" class="px-4 py-2 rounded-full bg-white text-black font-semibold text-sm hover:bg-gray-200 transition shadow-md ml-2" data-i18n="nav_download">Download</a>
-					<a href="#contact" class="px-3 py-2 text-sm text-gray-300 hover:text-white transition" data-i18n="nav_contact">Contatti</a>
+					<a href="#download" class="px-5 py-2.5 rounded-lg bg-white text-black font-bold text-sm hover:bg-sky-100 transition shadow-lg shadow-white/10 flex items-center gap-2" data-i18n="nav_download">Download</a>
+					<a href="#contact" class="px-3 py-2 rounded-md text-sm text-gray-300 hover:text-white hover:bg-white/[0.05] transition" data-i18n="nav_contact">Contatti</a>
 				</div>
 
 				<!-- Hamburger Mobile -->
@@ -173,478 +440,573 @@
 	</div>
 
 	<!-- HERO SECTION -->
-	<section class="relative pt-36 pb-20 overflow-hidden">
-		<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[120px] opacity-20 -z-10"></div>
+	<section class="relative min-h-screen pt-36 lg:pt-32 pb-20 overflow-hidden flex items-center">
+		<div class="aurora" aria-hidden="true"></div>
 
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
-			<div class="md:w-1/2 text-center md:text-left">
-				<div class="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-900/30 rounded-full border border-emerald-800" data-i18n="hero_badge">
+		<div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 grid lg:grid-cols-[0.92fr_1.08fr] items-center gap-14 lg:gap-20">
+			<div class="text-center lg:text-left">
+				<div class="inline-flex items-center gap-2 px-4 py-2 mb-6 text-xs font-semibold tracking-wider text-emerald-300 uppercase pro-pill" data-i18n="hero_badge">
 					Novit&#224; v2.0.6 &#8226; Rivoluzione Finder & Tab
 				</div>
 
-				<!-- Banner SwiftUI -->
-				<div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-6 p-3 glass rounded-xl border border-white/20 bg-gradient-to-r from-emerald-900/20 to-blue-900/20 w-fit mx-auto md:mx-0">
-					<div class="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-lg">
-						<i class="fa-brands fa-swift text-emerald-400 text-lg"></i>
-						<span class="font-semibold text-emerald-300 text-sm" data-i18n="badge_swift">100% Native</span>
-					</div>
-					<div class="w-px h-4 bg-white/20 hidden sm:block"></div>
-					<div class="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-lg">
-						<i class="fa-solid fa-certificate text-emerald-400 text-lg"></i>
-						<span class="font-semibold text-emerald-300 text-sm" data-i18n="badge_notarized">Apple Notarized</span>
+				<div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
+					<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/[0.07] border border-white/10 text-emerald-200 text-sm font-bold"><i class="fa-brands fa-swift"></i><span data-i18n="badge_swift">100% Native</span></div>
+					<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/[0.07] border border-white/10 text-emerald-200 text-sm font-bold"><i class="fa-solid fa-certificate"></i><span data-i18n="badge_notarized">Apple Notarized</span></div>
+					<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-300/15 text-sky-200 text-sm font-bold"><i class="fa-solid fa-bolt"></i><span data-i18n="hero_badge_fast">Setup immediato</span></div>
+				</div>
+
+				<div class="flex items-center justify-center lg:justify-start gap-4 mb-8">
+					<img src="app-icon.png" alt="WorkSpace Manager Icon" class="w-16 h-16 rounded-2xl shadow-2xl ring-8 ring-blue-500/15 object-cover transform hover:scale-105 transition" onerror="this.style.display='none'">
+					<div class="text-left hidden sm:block">
+						<div class="text-sm font-bold text-white">WorkSpace Manager</div>
+						<div class="text-xs text-gray-500" data-i18n="hero_product_line">macOS workspace automation</div>
 					</div>
 				</div>
 
-				<!-- Icona Grande Hero -->
-				<div class="flex items-center justify-center md:justify-start mb-8 mx-auto md:mx-0 max-w-xs">
-					<img src="app-icon.png" alt="WorkSpace Manager Icon" class="w-24 h-24 rounded-3xl shadow-2xl ring-8 ring-blue-500/20 object-cover transform hover:scale-105 transition">
-				</div>
-
-				<h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6" data-i18n="hero_title">
-					Il tuo setup ideale <br>
-					<span class="text-gradient">in un solo click.</span>
+				<h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-tight mb-7 max-w-3xl mx-auto lg:mx-0" data-i18n="hero_title">
+					Il tuo lavoro si apre <span class="text-gradient">già pronto.</span>
 				</h1>
-				<p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-lg mx-auto md:mx-0" data-i18n="hero_desc">
-					Basta cliccare icone una alla volta. Apri tutte le tue <strong>App</strong>, <strong>Siti Web</strong> e <strong>Cartelle</strong> in un solo colpo. Organizza il tuo lavoro in Workspaces intelligenti.
+				<p class="text-gray-400 text-lg mb-9 leading-relaxed max-w-2xl mx-auto lg:mx-0" data-i18n="hero_desc">
+					Avvia app, siti, file e cartelle come un unico ambiente di lavoro. Ogni progetto torna con il suo contesto, senza cercare tutto da capo.
 				</p>
 
-				<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-					<a href="#download" class="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg shadow-blue-900/50 transition flex items-center justify-center gap-2">
+				<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-4">
+					<a href="#download" class="px-8 py-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg shadow-blue-900/50 transition flex items-center justify-center gap-2">
 						<i class="fa-brands fa-apple text-xl"></i> <span data-i18n="btn_download_mac">Scarica Gratis</span>
 					</a>
-					<a href="#features" class="px-8 py-4 rounded-xl glass hover:bg-white/10 text-white font-semibold transition" data-i18n="btn_learn_more">
-						Scopri novit&#224;
+					<a href="#whats-new" class="px-8 py-4 rounded-lg glass hover:bg-white/10 text-white font-semibold transition flex items-center justify-center gap-2">
+						<span data-i18n="btn_learn_more">Scopri novit&#224;</span><i class="fa-solid fa-arrow-right text-sm"></i>
 					</a>
 				</div>
-				<p class="mt-4 text-xs text-gray-500 flex items-center justify-center md:justify-start gap-2">
+				<p class="text-xs text-gray-500 flex items-center justify-center lg:justify-start gap-2">
 					<i class="fa-solid fa-laptop text-gray-600"></i> <span data-i18n="req_macos">Richiede macOS Sonoma o superiore</span>
 				</p>
+
+				<div class="grid grid-cols-3 gap-3 sm:gap-4 mt-9 max-w-xl mx-auto lg:mx-0">
+					<div class="stat-tile rounded-lg p-4 text-left reveal reveal-delay-1"><div class="text-2xl font-bold text-white">1 click</div><div class="text-xs text-gray-400" data-i18n="stat_setup">setup pronto</div></div>
+					<div class="stat-tile rounded-lg p-4 text-left reveal reveal-delay-2"><div class="text-2xl font-bold text-white">Finder</div><div class="text-xs text-gray-400" data-i18n="stat_finder">tab e gruppi</div></div>
+					<div class="stat-tile rounded-lg p-4 text-left reveal reveal-delay-3"><div class="text-2xl font-bold text-white">Pro</div><div class="text-xs text-gray-400" data-i18n="stat_native">flusso nativo</div></div>
+				</div>
 			</div>
-			<div class="md:w-1/2 relative z-10 perspective-container px-4 md:px-0">
-				<img src="SCREEN_DASHBOARD.png" alt="App Dashboard" class="hero-image rounded-xl border border-white/20 w-full max-w-lg mx-auto shadow-2xl">
+
+			<div class="hero-stage relative z-10 reveal reveal-delay-2">
+				<div class="hero-frame rounded-2xl overflow-hidden">
+					<div class="hero-fallback"><div class="text-center"><i class="fa-solid fa-layer-group text-4xl text-sky-200/70 mb-4"></i><div class="font-bold text-white" data-i18n="hero_fallback_t">Dashboard workspace</div><div class="text-sm text-gray-400 mt-1" data-i18n="hero_fallback_d">Screenshot pronto quando l'asset è disponibile</div></div></div>
+					<div class="hero-rail" aria-hidden="true"></div>
+					<div class="hero-orbit" aria-hidden="true"></div>
+					<img src="SCREEN_DASHBOARD.png" alt="App Dashboard" class="hero-image w-full h-full object-cover opacity-95" onerror="this.classList.add('is-hidden')">
+				</div>
+
+				<div class="hero-status-card rounded-xl p-4">
+					<div class="flex items-center justify-between mb-3"><span class="text-xs uppercase tracking-wider text-emerald-300 font-bold" data-i18n="hero_status_title">Workspace attivo</span><span class="w-2 h-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(52,211,153,0.9)]"></span></div>
+					<div class="text-sm font-bold text-white mb-1" data-i18n="hero_status_name">Marketing Sprint</div>
+					<div class="text-xs text-gray-400" data-i18n="hero_status_desc">3 app, 4 siti, 2 cartelle</div>
+				</div>
+
+				<div class="command-stack rounded-xl p-4">
+					<div class="text-xs uppercase tracking-wider text-sky-300 mb-3 font-bold" data-i18n="launch_title">Workspace launch</div>
+					<div class="command-row flex items-center gap-3 py-2 text-sm text-gray-200"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> <span data-i18n="launch_apps">Apertura app essenziali</span></div>
+					<div class="command-row flex items-center gap-3 py-2 text-sm text-gray-200"><span class="w-2 h-2 rounded-full bg-sky-400"></span> <span data-i18n="launch_finder">Finder organizzato in tab</span></div>
+					<div class="command-row flex items-center gap-3 py-2 text-sm text-gray-200"><span class="w-2 h-2 rounded-full bg-rose-400"></span> <span data-i18n="launch_docs">Siti e documenti già pronti</span></div>
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- WORKFLOW COMPARISON -->
-	<section id="workflow" class="py-16 border-y border-white/5 bg-white/[0.02]">
-		<div class="max-w-7xl mx-auto px-4">
-			<div class="text-center mb-12">
-				<h2 class="text-3xl font-bold mb-4" data-i18n="workflow_title">Smetti di perdere tempo ogni mattina.</h2>
-				<p class="text-gray-400" data-i18n="workflow_subtitle">Guadagna 15 minuti di focus ogni volta che cambi progetto.</p>
+	<section id="workflow" class="reveal py-16 border-y border-white/5 bg-white/[0.02]">
+		<div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+			<div class="max-w-3xl mx-auto text-center mb-14">
+				<div class="inline-flex items-center gap-2 px-4 py-2 mb-5 text-xs font-bold uppercase tracking-wider text-sky-300 pro-pill">
+					<i class="fa-solid fa-route"></i>
+					<span data-i18n="workflow_badge">Dal caos al contesto</span>
+				</div>
+				<h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-5" data-i18n="workflow_title">Ogni workspace riapre il tuo mondo di lavoro.</h2>
+				<p class="text-gray-400 text-lg leading-relaxed" data-i18n="workflow_subtitle">Non è solo “aprire app”: è ritrovare subito cartelle, siti, strumenti e stato mentale del progetto giusto.</p>
 			</div>
-			<div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-				<!-- OLD WAY -->
-				<div class="p-8 rounded-2xl border border-red-500/10 bg-red-500/5 relative overflow-hidden">
-					<div class="absolute top-0 right-0 p-4 opacity-10"><i class="fa-solid fa-hourglass-start text-8xl text-red-500"></i></div>
-					<h3 class="text-xl font-bold text-red-400 mb-6 flex items-center gap-2"><i class="fa-solid fa-xmark"></i> <span data-i18n="workflow_old_title">Senza WorkSpace Manager</span></h3>
-					<ul class="space-y-4 text-gray-400 text-sm">
-						<li class="flex gap-3"><i class="fa-solid fa-minus text-red-500 mt-1"></i><span data-i18n="workflow_old_1">Apri il Finder e cerchi la cartella giusta...</span></li>
-						<li class="flex gap-3"><i class="fa-solid fa-minus text-red-500 mt-1"></i><span data-i18n="workflow_old_2">Lanci Chrome e apri a mano 5 siti web...</span></li>
-						<li class="flex gap-3"><i class="fa-solid fa-minus text-red-500 mt-1"></i><span data-i18n="workflow_old_3">Apri Word, Excel e la Posta una alla volta.</span></li>
-					</ul>
-					<div class="mt-8 pt-6 border-t border-red-500/20 text-center"><span class="text-red-300 font-semibold" data-i18n="workflow_old_result">&#10060; 5 minuti persi ogni volta</span></div>
+
+			<div class="grid lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto">
+				<div class="glass pro-card lift p-7 rounded-2xl border border-rose-500/20 bg-rose-500/5 relative overflow-hidden">
+					<div class="absolute -right-8 -top-8 w-36 h-36 rounded-full bg-rose-500/10 blur-2xl"></div>
+					<div class="flex items-start justify-between gap-6 mb-8">
+						<div>
+							<p class="text-xs uppercase tracking-wider text-rose-300 font-bold mb-2" data-i18n="workflow_old_kicker">Prima</p>
+							<h3 class="text-2xl font-bold text-white" data-i18n="workflow_old_title">Setup manuale, attenzione spezzata</h3>
+						</div>
+						<div class="w-12 h-12 rounded-lg bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-300"><i class="fa-solid fa-triangle-exclamation"></i></div>
+					</div>
+					<div class="space-y-4">
+						<div class="flex gap-4 p-4 rounded-lg bg-black/20 border border-white/5"><span class="mt-1 text-rose-300"><i class="fa-solid fa-folder-open"></i></span><p class="text-sm text-gray-300 leading-relaxed" data-i18n="workflow_old_1">Cerchi la cartella corretta tra progetto, documenti e download.</p></div>
+						<div class="flex gap-4 p-4 rounded-lg bg-black/20 border border-white/5"><span class="mt-1 text-rose-300"><i class="fa-solid fa-globe"></i></span><p class="text-sm text-gray-300 leading-relaxed" data-i18n="workflow_old_2">Riapri dashboard, email, task board e siti uno alla volta.</p></div>
+						<div class="flex gap-4 p-4 rounded-lg bg-black/20 border border-white/5"><span class="mt-1 text-rose-300"><i class="fa-solid fa-window-restore"></i></span><p class="text-sm text-gray-300 leading-relaxed" data-i18n="workflow_old_3">Ogni cambio progetto diventa una piccola interruzione ripetuta.</p></div>
+					</div>
+					<div class="mt-8 pt-6 border-t border-rose-500/20 flex items-center justify-between gap-4">
+						<span class="text-sm text-gray-400" data-i18n="workflow_old_result_label">Costo nascosto</span>
+						<span class="text-rose-200 font-bold text-lg" data-i18n="workflow_old_result">5-15 minuti persi</span>
+					</div>
 				</div>
 
-				<!-- NEW WAY -->
-				<div class="p-8 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 relative overflow-hidden shadow-2xl shadow-emerald-900/10">
-					<div class="absolute top-0 right-0 p-4 opacity-10"><i class="fa-solid fa-bolt text-8xl text-emerald-500"></i></div>
-					<h3 class="text-xl font-bold text-emerald-400 mb-6 flex items-center gap-2"><i class="fa-solid fa-check"></i> <span data-i18n="workflow_new_title">Con WorkSpace Manager</span></h3>
-					<ul class="space-y-4 text-gray-300 text-sm">
-						<li class="flex gap-3 items-center"><div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">1</div><span class="text-white font-medium" data-i18n="workflow_new_1">Scegli cosa fare (es. "Progetto Marketing").</span></li>
-						<li class="flex gap-3 items-center"><div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">2</div><span data-i18n="workflow_new_2">Boom. Tutto aperto e posizionato. &#10024;</span></li>
-					</ul>
-					<div class="mt-8 p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
-						<p class="text-sm text-emerald-300 mb-2 font-semibold" data-i18n="workflow_new_time">In 1 secondo apre:</p>
-						<div class="flex flex-wrap gap-2">
-							<span class="px-2 py-1 bg-emerald-900/50 rounded text-xs text-emerald-200 border border-emerald-500/30" data-i18n="tag_app">3 App</span>
-							<span class="px-2 py-1 bg-emerald-900/50 rounded text-xs text-emerald-200 border border-emerald-500/30" data-i18n="tag_web">4 Siti Web</span>
-							<span class="px-2 py-1 bg-emerald-900/50 rounded text-xs text-emerald-200 border border-emerald-500/30" data-i18n="tag_finder">2 Cartelle</span>
+				<div class="hidden lg:flex flex-col items-center justify-center gap-3">
+					<div class="w-px h-20 bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+					<div class="w-16 h-16 rounded-full bg-sky-500/15 border border-sky-300/25 flex items-center justify-center shadow-[0_0_45px_rgba(56,189,248,0.22)]">
+						<i class="fa-solid fa-arrow-right text-sky-200 text-xl"></i>
+					</div>
+					<div class="w-px h-20 bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+				</div>
+
+				<div class="glass pro-card lift p-7 rounded-2xl border border-emerald-400/25 bg-emerald-500/5 relative overflow-hidden shadow-2xl shadow-emerald-900/10">
+					<div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-emerald-400/12 blur-2xl"></div>
+					<div class="flex items-start justify-between gap-6 mb-8">
+						<div>
+							<p class="text-xs uppercase tracking-wider text-emerald-300 font-bold mb-2" data-i18n="workflow_new_kicker">Dopo</p>
+							<h3 class="text-2xl font-bold text-white" data-i18n="workflow_new_title">Un click, contesto pronto</h3>
+						</div>
+						<div class="w-12 h-12 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-300"><i class="fa-solid fa-bolt"></i></div>
+					</div>
+
+					<div class="rounded-xl border border-emerald-400/20 bg-black/20 p-5 mb-6">
+						<div class="flex items-center justify-between mb-5">
+							<span class="text-sm font-bold text-white" data-i18n="workflow_new_workspace">Workspace “Marketing Sprint”</span>
+							<span class="px-3 py-1 rounded-md bg-emerald-400/10 text-emerald-200 text-xs font-bold" data-i18n="workflow_new_ready">Ready</span>
+						</div>
+						<div class="space-y-3">
+							<div class="flex items-center gap-3 text-sm text-gray-300"><span class="w-7 h-7 rounded-md bg-emerald-400/10 text-emerald-200 flex items-center justify-center"><i class="fa-solid fa-check text-xs"></i></span><span data-i18n="workflow_new_1">App di lavoro aperte nella sequenza corretta.</span></div>
+							<div class="flex items-center gap-3 text-sm text-gray-300"><span class="w-7 h-7 rounded-md bg-sky-400/10 text-sky-200 flex items-center justify-center"><i class="fa-solid fa-check text-xs"></i></span><span data-i18n="workflow_new_2">Finder ordinato con tab e gruppi già pronti.</span></div>
+							<div class="flex items-center gap-3 text-sm text-gray-300"><span class="w-7 h-7 rounded-md bg-violet-400/10 text-violet-200 flex items-center justify-center"><i class="fa-solid fa-check text-xs"></i></span><span data-i18n="workflow_new_3">Siti, file e strumenti tornano nello stesso flusso.</span></div>
 						</div>
 					</div>
-					<div class="mt-6 pt-6 border-t border-emerald-500/20 text-center"><span class="text-emerald-400 font-bold text-lg" data-i18n="workflow_new_result">&#9989; Subito operativo</span></div>
+
+					<div class="grid grid-cols-3 gap-3">
+						<div class="stat-tile rounded-lg p-3"><div class="text-xl font-bold text-white" data-i18n="tag_app">3 App</div><div class="text-xs text-gray-400" data-i18n="workflow_stat_apps">native</div></div>
+						<div class="stat-tile rounded-lg p-3"><div class="text-xl font-bold text-white" data-i18n="tag_web">4 Siti Web</div><div class="text-xs text-gray-400" data-i18n="workflow_stat_web">pronti</div></div>
+						<div class="stat-tile rounded-lg p-3"><div class="text-xl font-bold text-white" data-i18n="tag_finder">2 Cartelle</div><div class="text-xs text-gray-400" data-i18n="workflow_stat_finder">ordinate</div></div>
+					</div>
+					<div class="mt-8 pt-6 border-t border-emerald-500/20 text-center"><span class="text-emerald-300 font-bold text-lg" data-i18n="workflow_new_result">Operativo prima di perdere il filo</span></div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- WHAT'S NEW v2.0.5 -->
-	<section id="whats-new" class="py-16 border-y border-white/5 bg-white/[0.02]">
-		<div class="max-w-7xl mx-auto px-4">
-			<div class="text-center mb-12">
-				<div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-900/30 rounded-full border border-emerald-800">
-					WorkSpace Manager 2.0.6
+	<!-- WHAT'S NEW v2.0.6 -->
+	<section id="whats-new" class="reveal py-24 border-y border-white/5 bg-white/[0.02] relative overflow-hidden">
+		<div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/25 to-transparent"></div>
+		<div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+			<div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-16 items-center">
+				<div>
+					<div class="inline-flex items-center gap-2 px-4 py-2 mb-6 text-xs font-bold uppercase tracking-wider text-emerald-300 pro-pill">
+						<i class="fa-solid fa-wand-magic-sparkles"></i>
+						<span>WorkSpace Manager 2.0.6</span>
+					</div>
+					<h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6" data-i18n="update_title">Finder finalmente lavora come lavori tu.</h2>
+					<p class="text-gray-400 text-lg leading-relaxed mb-8" data-i18n="update_subtitle">La 2.0.6 porta ordine reale nelle cartelle: tab, gruppi, sequenza stabile e una configurazione che resta esattamente come l’hai pensata.</p>
+					<div class="grid sm:grid-cols-3 gap-3">
+						<div class="stat-tile rounded-lg p-4"><div class="text-2xl font-bold text-white">01</div><div class="text-xs text-gray-400 mt-1" data-i18n="update_metric_1">unisci le cartelle</div></div>
+						<div class="stat-tile rounded-lg p-4"><div class="text-2xl font-bold text-white">02</div><div class="text-xs text-gray-400 mt-1" data-i18n="update_metric_2">scegli tab o finestre</div></div>
+						<div class="stat-tile rounded-lg p-4"><div class="text-2xl font-bold text-white">03</div><div class="text-xs text-gray-400 mt-1" data-i18n="update_metric_3">riapri tutto in ordine</div></div>
+					</div>
 				</div>
-				<h2 class="text-3xl font-bold mb-4" data-i18n="update_title">La rivoluzione del Finder: Tab, Gruppi e Ordine totale.</h2>
-				<p class="text-gray-400 max-w-2xl mx-auto" data-i18n="update_subtitle">Abbiamo riscritto la gestione delle cartelle. Ora hai il controllo totale su come, dove e in che ordine si aprono i tuoi tab nel Finder.</p>
+
+				<div class="glass pro-card rounded-2xl p-6 border border-emerald-400/20 bg-emerald-500/5 shadow-2xl shadow-emerald-950/20">
+					<div class="rounded-xl border border-white/10 bg-black/25 overflow-hidden">
+						<div class="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/[0.04]">
+							<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-rose-400"></span><span class="w-3 h-3 rounded-full bg-yellow-300"></span><span class="w-3 h-3 rounded-full bg-emerald-400"></span></div>
+							<span class="text-xs text-gray-400 font-semibold" data-i18n="update_mock_title">Finder workspace</span>
+						</div>
+						<div class="p-5">
+							<div class="flex flex-wrap gap-2 mb-5">
+								<span class="px-3 py-2 rounded-md bg-emerald-400/10 border border-emerald-400/20 text-emerald-200 text-xs font-bold" data-i18n="update_tab_1">Progetto</span>
+								<span class="px-3 py-2 rounded-md bg-sky-400/10 border border-sky-400/20 text-sky-200 text-xs font-bold" data-i18n="update_tab_2">Assets</span>
+								<span class="px-3 py-2 rounded-md bg-violet-400/10 border border-violet-400/20 text-violet-200 text-xs font-bold" data-i18n="update_tab_3">Documenti</span>
+							</div>
+							<div class="space-y-3">
+								<div class="flex items-center justify-between gap-4 rounded-lg bg-white/[0.04] border border-white/10 p-4"><div class="flex items-center gap-3"><i class="fa-solid fa-folder text-emerald-300"></i><span class="text-sm text-gray-200" data-i18n="update_flow_1">Cartelle principali e secondarie</span></div><i class="fa-solid fa-arrow-right text-gray-500"></i></div>
+								<div class="flex items-center justify-between gap-4 rounded-lg bg-white/[0.04] border border-white/10 p-4"><div class="flex items-center gap-3"><i class="fa-solid fa-layer-group text-sky-300"></i><span class="text-sm text-gray-200" data-i18n="update_flow_2">Gruppi Finder personalizzati</span></div><i class="fa-solid fa-arrow-right text-gray-500"></i></div>
+								<div class="flex items-center justify-between gap-4 rounded-lg bg-emerald-400/10 border border-emerald-400/20 p-4"><div class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-300"></i><span class="text-sm text-emerald-100 font-semibold" data-i18n="update_flow_3">Setup riaperto nello stesso ordine</span></div><span class="text-xs text-emerald-200 font-bold">Ready</span></div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-				<div class="glass p-5 rounded-xl hover:bg-white/5 transition">
-					<div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4 text-emerald-400"><i class="fa-solid fa-folder-tree text-lg"></i></div>
-					<h3 class="text-base font-bold mb-2" data-i18n="update_card_tabs_t">Tab Finder avanzate</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="update_card_tabs_d">Apri pi&#249; cartelle del workspace in una sola finestra Finder usando le schede.</p>
-				</div>
-				<div class="glass p-5 rounded-xl hover:bg-white/5 transition">
-					<div class="w-10 h-10 bg-blue-900/50 rounded-lg flex items-center justify-center mb-4 text-blue-400"><i class="fa-solid fa-layer-group text-lg"></i></div>
-					<h3 class="text-base font-bold mb-2" data-i18n="update_card_groups_t">Gruppi di finestre</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="update_card_groups_d">Scegli quali cartelle aprire insieme e quali tenere in finestre separate.</p>
-				</div>
-				<div class="glass p-5 rounded-xl hover:bg-white/5 transition">
-					<div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mb-4 text-purple-400"><i class="fa-solid fa-wand-magic-sparkles text-lg"></i></div>
-					<h3 class="text-base font-bold mb-2" data-i18n="update_card_demo_t">Demo Pro Finder</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="update_card_demo_d">Gli utenti Free possono provare il flusso avanzato con una demo limitata.</p>
-				</div>
-				<div class="glass p-5 rounded-xl hover:bg-white/5 transition">
-					<div class="w-10 h-10 bg-pink-900/50 rounded-lg flex items-center justify-center mb-4 text-pink-400"><i class="fa-solid fa-circle-exclamation text-lg"></i></div>
-					<h3 class="text-base font-bold mb-2" data-i18n="update_card_pro_t">Avviso Pro pi&#249; chiaro</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="update_card_pro_d">Quando la demo termina, l'app spiega perch&#233; le cartelle tornano in finestre separate.</p>
-				</div>
-				<div class="glass p-5 rounded-xl hover:bg-white/5 transition">
-					<div class="w-10 h-10 bg-yellow-900/50 rounded-lg flex items-center justify-center mb-4 text-yellow-400"><i class="fa-solid fa-universal-access text-lg"></i></div>
-					<h3 class="text-base font-bold mb-2" data-i18n="update_card_access_t">Permessi Accessibilit&#224;</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="update_card_access_d">L'avviso compare solo quando il permesso serve davvero.</p>
-				</div>
-				<div class="glass p-5 rounded-xl hover:bg-white/5 transition">
-					<div class="w-10 h-10 bg-red-900/50 rounded-lg flex items-center justify-center mb-4 text-red-400"><i class="fa-solid fa-screwdriver-wrench text-lg"></i></div>
-					<h3 class="text-base font-bold mb-2" data-i18n="update_card_fixes_t">Correzioni Finder</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="update_card_fixes_d">Risolte aperture separate indesiderate e duplicazioni della prima cartella.</p>
-				</div>
+			<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+				<div class="glass pro-card lift p-5 rounded-xl hover:bg-white/5 transition"><div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4 text-emerald-400"><i class="fa-solid fa-folder-tree text-lg"></i></div><h3 class="text-base font-bold mb-2" data-i18n="update_card_tabs_t">Gestione Cartelle 2.0</h3><p class="text-gray-400 text-xs leading-relaxed" data-i18n="update_card_tabs_d">Unificati i percorsi: nessuna distinzione tra cartelle principali e secondarie per una linearità totale.</p></div>
+				<div class="glass pro-card lift p-5 rounded-xl hover:bg-white/5 transition"><div class="w-10 h-10 bg-blue-900/50 rounded-lg flex items-center justify-center mb-4 text-blue-400"><i class="fa-solid fa-layer-group text-lg"></i></div><h3 class="text-base font-bold mb-2" data-i18n="update_card_groups_t">Window Groups</h3><p class="text-gray-400 text-xs leading-relaxed" data-i18n="update_card_groups_d">Crea gruppi di finestre Finder personalizzati. Decidi quali cartelle aprire come tab e quali in finestre separate.</p></div>
+				<div class="glass pro-card lift p-5 rounded-xl hover:bg-white/5 transition"><div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mb-4 text-purple-400"><i class="fa-solid fa-arrow-down-1-9 text-lg"></i></div><h3 class="text-base font-bold mb-2" data-i18n="update_card_demo_t">Ordine Deterministico</h3><p class="text-gray-400 text-xs leading-relaxed" data-i18n="update_card_demo_d">Le cartelle si aprono esattamente nell'ordine in cui le vedi. Massimo controllo sul setup.</p></div>
+				<div class="glass pro-card lift p-5 rounded-xl hover:bg-white/5 transition"><div class="w-10 h-10 bg-yellow-900/50 rounded-lg flex items-center justify-center mb-4 text-yellow-400"><i class="fa-solid fa-floppy-disk text-lg"></i></div><h3 class="text-base font-bold mb-2" data-i18n="update_card_access_t">Persistenza Garantita</h3><p class="text-gray-400 text-xs leading-relaxed" data-i18n="update_card_access_d">Nuovo motore di salvataggio: le tue configurazioni sono al sicuro e non verranno mai perse al riavvio.</p></div>
 			</div>
 		</div>
 	</section>
 
-	<!-- FEATURES GRID v2.0.5 -->
-	<section id="features" class="py-20 bg-[#0b0d10]">
-		<div class="max-w-7xl mx-auto px-4">
-			<h2 class="text-3xl font-bold text-center mb-16" data-i18n="feat_title">Tutto quello che puoi fare con v2.0.5</h2>
-
-			<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
-				<!-- NUOVO: FINDER 2.0 (v2.0.6) -->
-				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300 border border-emerald-500/30 relative overflow-hidden">
-					<div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] px-2 py-1 font-bold uppercase rounded-bl-lg">New 2.0.6</div>
-					<div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4 text-emerald-400"><i class="fa-solid fa-folder-tree text-lg"></i></div>
-					<h3 class="text-lg font-bold mb-2" data-i18n="f_update_t">Rivoluzione Finder</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_update_d">Cartelle unificate, ordine di apertura deterministico e raggruppamento intelligente in tab e finestre multiple.</p>
-				</div>
-
-				<!-- NUOVO: MOTORE AGGIORNAMENTO (v2.0.4) -->
-				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300 border border-blue-500/30 relative overflow-hidden">
-					<div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] px-2 py-1 font-bold uppercase rounded-bl-lg">New 2.0.4</div>
-					<div class="w-10 h-10 bg-blue-900/50 rounded-lg flex items-center justify-center mb-4 text-blue-400"><i class="fa-solid fa-cloud-arrow-down text-lg"></i></div>
-					<h3 class="text-lg font-bold mb-2" data-i18n="f_update_engine_t">Nuovo Motore</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_update_engine_d">Mantenere l’app aggiornata è ora molto più semplice, sicuro e immediato.</p>
-				</div>
-
-				<!-- NUOVO: HIDE DOCK ICON (v2.0.3) -->
-				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300 border border-emerald-500/30 relative overflow-hidden">
-					<div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] px-2 py-1 font-bold uppercase rounded-bl-lg">New 2.0.3</div>
-					<div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4 text-emerald-400">
-						<i class="fa-solid fa-eye-slash text-lg"></i>
+	<!-- FEATURES GRID v2.0.6 -->
+	<section id="features" class="reveal py-24 bg-[#0b0d10] relative overflow-hidden">
+		<div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"></div>
+		<div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+			<div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-end mb-14">
+				<div>
+					<div class="inline-flex items-center gap-2 px-4 py-2 mb-5 text-xs font-bold uppercase tracking-wider text-emerald-300 pro-pill">
+						<i class="fa-solid fa-layer-group"></i>
+						<span data-i18n="feat_badge">Toolkit operativo</span>
 					</div>
-					<h3 class="text-lg font-bold mb-2" data-i18n="f_dock_t">Nascondi Dock Icon</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_dock_d">
-						Tieni solo l'icona nel Menu Bar. Attivabile da Impostazioni → Generali. Solo Pro.
-					</p>
+					<h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight" data-i18n="feat_title">Tutto quello che serve per avviare, proteggere e riprendere il lavoro.</h2>
 				</div>
+				<p class="text-gray-400 text-lg leading-relaxed max-w-2xl" data-i18n="feat_subtitle">Le funzioni non sono una lista: lavorano insieme per trasformare ogni progetto in un ambiente pronto, ordinato e sicuro.</p>
+			</div>
 
-
-				<!-- NUOVO: CHIUDI WORKSPACE (v2.0.2) -->
-				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300 border border-blue-500/30 relative overflow-hidden">
-					<div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] px-2 py-1 font-bold uppercase rounded-bl-lg">New 2.0.2</div>
-					<div class="w-10 h-10 bg-blue-900/50 rounded-lg flex items-center justify-center mb-4 text-blue-400"><i class="fa-solid fa-xmark text-lg"></i></div>
-					<h3 class="text-lg font-bold mb-2" data-i18n="f_close_t">Chiudi Workspace</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_close_d">Chiude solo le app aperte da quel workspace. Session-based: non tocca nulla che avevi gi&#224; aperto.</p>
-				</div>
-
-				<!-- TouchID -->
-				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300 border border-purple-500/30 relative overflow-hidden">
-					<div class="absolute top-0 right-0 bg-purple-600 text-white text-[10px] px-2 py-1 font-bold uppercase rounded-bl-lg">New 2.0</div>
-					<div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mb-4 text-purple-400"><i class="fa-solid fa-fingerprint text-lg"></i></div>
-					<h3 class="text-lg font-bold mb-2" data-i18n="f_touch_t">Privacy &amp; TouchID</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_touch_d">Proteggi l'accesso ai tuoi progetti. Sblocca l'app istantaneamente con la tua impronta digitale.</p>
-				</div>
-
-				<!-- Multilingua -->
-				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
-					<div class="w-10 h-10 bg-indigo-900/50 rounded-lg flex items-center justify-center mb-4 text-indigo-400"><i class="fa-solid fa-language text-lg"></i></div>
-					<h3 class="text-lg font-bold mb-2" data-i18n="f_lang_t">Multilingua</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_lang_d">Interfaccia completa in Italiano e Inglese (EN/IT) selezionabile.</p>
-				</div>
-
-				<!-- Temi -->
-				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
-					<div class="w-10 h-10 bg-blue-900/50 rounded-lg flex items-center justify-center mb-4 text-blue-400"><i class="fa-solid fa-moon text-lg"></i></div>
-					<h3 class="text-lg font-bold mb-2" data-i18n="f_theme_t">Temi Chiaro/Scuro</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_theme_d">Scegli tra tema Light, Dark o sincronizza automaticamente con macOS.</p>
-				</div>
-
-				<!-- Backup -->
-				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
-					<div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4 text-emerald-400"><i class="fa-solid fa-floppy-disk text-lg"></i></div>
-					<h3 class="text-lg font-bold mb-2" data-i18n="f_backup_t">Backup &amp; Restore</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_backup_d">Esporta i tuoi workspace in JSON e ripristinali ovunque in un attimo.</p>
-				</div>
-
-				<!-- Shortcuts -->
-				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
-					<div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mb-4 text-purple-400"><i class="fa-solid fa-keyboard text-lg"></i></div>
-					<h3 class="text-lg font-bold mb-2" data-i18n="f_short_t">Shortcuts</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_short_d">Richiama i tuoi work preferiti direttamente da tastiera.</p>
-				</div>
-
-				<!-- Onboarding -->
-				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
-					<div class="w-10 h-10 bg-pink-900/50 rounded-lg flex items-center justify-center mb-4 text-pink-400"><i class="fa-solid fa-circle-info text-lg"></i></div>
-					<h3 class="text-lg font-bold mb-2" data-i18n="f_intro_t">Guida Interattiva</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_intro_d">Presentazione al primo avvio per imparare subito le funzioni (rivedibile).</p>
-				</div>
-
-				<!-- Favorites -->
-				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
-					<div class="w-10 h-10 bg-yellow-900/50 rounded-lg flex items-center justify-center mb-4 text-yellow-400"><i class="fa-solid fa-star text-lg"></i></div>
-					<h3 class="text-lg font-bold mb-2" data-i18n="f_fav_t">Workspace Preferito</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_fav_d">Imposta un workspace di default per un accesso ancora pi&#249; rapido.</p>
-				</div>
-
-				<!-- Reset -->
-				<div class="glass p-6 rounded-2xl hover:bg-white/5 transition duration-300">
-					<div class="w-10 h-10 bg-red-900/50 rounded-lg flex items-center justify-center mb-4 text-red-400"><i class="fa-solid fa-trash-can text-lg"></i></div>
-					<h3 class="text-lg font-bold mb-2" data-i18n="f_reset_t">App Reset</h3>
-					<p class="text-gray-400 text-xs leading-relaxed" data-i18n="f_reset_d">Pulisci tutta la configurazione e riparti da zero con un click.</p>
-				</div>
-
-				<!-- Menu Bar Wide Card -->
-				<div class="md:col-span-3 lg:col-span-4 glass p-8 rounded-2xl flex flex-col md:flex-row items-center gap-8 border-t-4 border-t-blue-500 hover:bg-white/5 transition">
-					<div class="flex-1">
-						<h3 class="text-2xl font-bold mb-4" data-i18n="f_menubar_t">Menu Bar Resident 2.0</h3>
-						<p class="text-gray-400 mb-6" data-i18n="f_menubar_d">Controlla tutto dalla barra dei menu. Ora completamente riscritta per consumare ancora meno RAM.</p>
-						<ul class="space-y-2 text-sm text-gray-300">
-							<li><i class="fa-solid fa-check text-blue-500 mr-2"></i> <span data-i18n="f_list_1">Switch rapido e stato risorse</span></li>
-							<li><i class="fa-solid fa-check text-blue-500 mr-2"></i> <span data-i18n="f_list_2">Controllo granulare avvio automatico</span></li>
-						</ul>
+			<div class="grid lg:grid-cols-3 gap-6 mb-8">
+				<div class="glass pro-card lift rounded-2xl p-7 border border-emerald-400/25 bg-emerald-500/5 lg:col-span-2 min-h-[22rem] flex flex-col justify-between">
+					<div>
+						<div class="flex items-start justify-between gap-6 mb-8">
+							<div class="w-14 h-14 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-300 border border-emerald-400/20"><i class="fa-solid fa-folder-tree text-xl"></i></div>
+							<span class="px-3 py-1 rounded-md bg-emerald-500/15 text-emerald-200 text-xs font-bold uppercase">New 2.0.6</span>
+						</div>
+						<h3 class="text-3xl font-bold mb-4" data-i18n="f_update_t">Rivoluzione Finder</h3>
+						<p class="text-gray-300 text-base leading-relaxed max-w-2xl" data-i18n="f_update_d">Cartelle unificate, ordine di apertura deterministico e raggruppamento intelligente in tab e finestre multiple.</p>
 					</div>
-					<div class="md:w-1/3">
-						<img src="SCREEN_MENUBAR.png" alt="Menu Bar" class="rounded-lg shadow-2xl border border-white/10 rotate-1 hover:rotate-0 transition duration-500 cursor-pointer" onclick="openModal('SCREEN_MENUBAR.png')">
+					<div class="grid sm:grid-cols-3 gap-3 mt-8">
+						<div class="stat-tile rounded-lg p-4"><div class="text-sm font-bold text-white" data-i18n="feat_finder_1_t">Tab ordinati</div><div class="text-xs text-gray-400 mt-1" data-i18n="feat_finder_1_d">Cartelle nello stesso contesto.</div></div>
+						<div class="stat-tile rounded-lg p-4"><div class="text-sm font-bold text-white" data-i18n="feat_finder_2_t">Gruppi Finder</div><div class="text-xs text-gray-400 mt-1" data-i18n="feat_finder_2_d">Finestre separate quando servono.</div></div>
+						<div class="stat-tile rounded-lg p-4"><div class="text-sm font-bold text-white" data-i18n="feat_finder_3_t">Ordine stabile</div><div class="text-xs text-gray-400 mt-1" data-i18n="feat_finder_3_d">Sempre come lo hai configurato.</div></div>
 					</div>
+				</div>
+
+				<div class="glass pro-card lift rounded-2xl p-7 border border-violet-400/25 bg-violet-500/5 min-h-[22rem]">
+					<div class="w-14 h-14 bg-violet-500/10 rounded-lg flex items-center justify-center text-violet-300 border border-violet-400/20 mb-8"><i class="fa-solid fa-fingerprint text-xl"></i></div>
+					<span class="inline-flex px-3 py-1 rounded-md bg-violet-500/15 text-violet-200 text-xs font-bold uppercase mb-5">Pro</span>
+					<h3 class="text-2xl font-bold mb-4" data-i18n="f_touch_t">Privacy &amp; TouchID</h3>
+					<p class="text-gray-300 leading-relaxed mb-8" data-i18n="f_touch_d">Proteggi l'accesso ai tuoi progetti. Sblocca l'app istantaneamente con la tua impronta digitale.</p>
+					<div class="flex items-center gap-3 text-sm text-gray-300"><i class="fa-solid fa-lock text-violet-300"></i><span data-i18n="feat_privacy_note">I workspace sensibili restano lontani da occhi curiosi.</span></div>
+				</div>
+			</div>
+
+			<div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-6 mb-8">
+				<div class="glass pro-card lift rounded-2xl p-7 border border-sky-400/25 bg-sky-500/5">
+					<div class="flex items-center gap-4 mb-6">
+						<div class="w-12 h-12 bg-sky-500/10 rounded-lg flex items-center justify-center text-sky-300 border border-sky-400/20"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+						<span class="px-3 py-1 rounded-md bg-sky-500/15 text-sky-200 text-xs font-bold uppercase">New 2.0.4</span>
+					</div>
+					<h3 class="text-2xl font-bold mb-3" data-i18n="f_update_engine_t">Nuovo Motore Aggiornamento</h3>
+					<p class="text-gray-400 text-sm leading-relaxed" data-i18n="f_update_engine_d">Aggiornamenti automatici rapidi e sicuri. Mantenere l'app aggiornata è ora semplicissimo.</p>
+				</div>
+
+				<div class="glass pro-card lift rounded-2xl p-7 border border-white/10 bg-white/[0.035]">
+					<div class="flex flex-col md:flex-row md:items-center gap-8">
+						<div class="flex-1">
+							<div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-500/10 text-blue-200 text-xs font-bold uppercase mb-5"><i class="fa-solid fa-bars-progress"></i><span data-i18n="feat_menubar_badge">Sempre a portata</span></div>
+							<h3 class="text-2xl font-bold mb-4" data-i18n="f_menubar_t">Menu Bar Resident 2.0</h3>
+							<p class="text-gray-400 mb-6 leading-relaxed" data-i18n="f_menubar_d">Controlla tutto dalla barra dei menu. Ora completamente riscritta per consumare ancora meno RAM.</p>
+							<div class="grid sm:grid-cols-2 gap-3 text-sm text-gray-300">
+								<div class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> <span data-i18n="f_list_1">Switch rapido e stato risorse</span></div>
+								<div class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> <span data-i18n="f_list_2">Controllo granulare avvio automatico</span></div>
+							</div>
+						</div>
+						<div class="md:w-64 shrink-0">
+							<img src="SCREEN_MENUBAR.png" alt="Menu Bar" class="rounded-lg shadow-2xl border border-white/10 rotate-1 hover:rotate-0 transition duration-500 cursor-pointer" onclick="openModal('SCREEN_MENUBAR.png')">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:p-6">
+				<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+					<h3 class="text-xl font-bold" data-i18n="feat_everyday_title">Dettagli che rendono l'app completa</h3>
+					<p class="text-sm text-gray-500" data-i18n="feat_everyday_subtitle">Meno attrito, più controllo quotidiano.</p>
+				</div>
+				<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+					<div class="glass pro-card lift rounded-xl p-4"><div class="flex items-center gap-3 mb-3"><span class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-300 flex items-center justify-center"><i class="fa-solid fa-eye-slash"></i></span><h4 class="font-bold" data-i18n="f_dock_t">Nascondi Icona Dock</h4></div><p class="text-xs text-gray-400 leading-relaxed" data-i18n="f_dock_d">Tieni solo l'icona nel Menu Bar. Attivabile da Impostazioni → Generali. Solo Pro.</p></div>
+					<div class="glass pro-card lift rounded-xl p-4"><div class="flex items-center gap-3 mb-3"><span class="w-9 h-9 rounded-lg bg-blue-500/10 text-blue-300 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></span><h4 class="font-bold" data-i18n="f_close_t">Chiudi Workspace</h4></div><p class="text-xs text-gray-400 leading-relaxed" data-i18n="f_close_d">Chiude solo le app aperte da quel workspace. Session-based: non tocca nulla che avevi già aperto.</p></div>
+					<div class="glass pro-card lift rounded-xl p-4"><div class="flex items-center gap-3 mb-3"><span class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-300 flex items-center justify-center"><i class="fa-solid fa-language"></i></span><h4 class="font-bold" data-i18n="f_lang_t">Multilingua</h4></div><p class="text-xs text-gray-400 leading-relaxed" data-i18n="f_lang_d">Interfaccia completa in Italiano e Inglese (EN/IT) selezionabile.</p></div>
+					<div class="glass pro-card lift rounded-xl p-4"><div class="flex items-center gap-3 mb-3"><span class="w-9 h-9 rounded-lg bg-sky-500/10 text-sky-300 flex items-center justify-center"><i class="fa-solid fa-moon"></i></span><h4 class="font-bold" data-i18n="f_theme_t">Temi Chiaro/Scuro</h4></div><p class="text-xs text-gray-400 leading-relaxed" data-i18n="f_theme_d">Scegli tra tema Light, Dark o sincronizza automaticamente con macOS.</p></div>
+					<div class="glass pro-card lift rounded-xl p-4"><div class="flex items-center gap-3 mb-3"><span class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-300 flex items-center justify-center"><i class="fa-solid fa-floppy-disk"></i></span><h4 class="font-bold" data-i18n="f_backup_t">Backup &amp; Restore</h4></div><p class="text-xs text-gray-400 leading-relaxed" data-i18n="f_backup_d">Esporta i tuoi workspace in JSON e ripristinali ovunque in un attimo.</p></div>
+					<div class="glass pro-card lift rounded-xl p-4"><div class="flex items-center gap-3 mb-3"><span class="w-9 h-9 rounded-lg bg-violet-500/10 text-violet-300 flex items-center justify-center"><i class="fa-solid fa-keyboard"></i></span><h4 class="font-bold" data-i18n="f_short_t">Shortcuts</h4></div><p class="text-xs text-gray-400 leading-relaxed" data-i18n="f_short_d">Richiama i tuoi work preferiti direttamente da tastiera.</p></div>
+					<div class="glass pro-card lift rounded-xl p-4"><div class="flex items-center gap-3 mb-3"><span class="w-9 h-9 rounded-lg bg-pink-500/10 text-pink-300 flex items-center justify-center"><i class="fa-solid fa-circle-info"></i></span><h4 class="font-bold" data-i18n="f_intro_t">Guida Interattiva</h4></div><p class="text-xs text-gray-400 leading-relaxed" data-i18n="f_intro_d">Presentazione al primo avvio per imparare subito le funzioni (rivedibile).</p></div>
+					<div class="glass pro-card lift rounded-xl p-4"><div class="flex items-center gap-3 mb-3"><span class="w-9 h-9 rounded-lg bg-yellow-500/10 text-yellow-300 flex items-center justify-center"><i class="fa-solid fa-star"></i></span><h4 class="font-bold" data-i18n="f_fav_t">Workspace Preferito</h4></div><p class="text-xs text-gray-400 leading-relaxed" data-i18n="f_fav_d">Imposta un workspace di default per un accesso ancora più rapido.</p></div>
+					<div class="glass pro-card lift rounded-xl p-4"><div class="flex items-center gap-3 mb-3"><span class="w-9 h-9 rounded-lg bg-rose-500/10 text-rose-300 flex items-center justify-center"><i class="fa-solid fa-trash-can"></i></span><h4 class="font-bold" data-i18n="f_reset_t">App Reset</h4></div><p class="text-xs text-gray-400 leading-relaxed" data-i18n="f_reset_d">Pulisci tutta la configurazione e riparti da zero con un click.</p></div>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- GALLERY -->
-	<section id="gallery" class="py-20 bg-gradient-to-b from-[#0f1115] to-[#0b0d10]">
-		<div class="max-w-7xl mx-auto px-4">
-			<div class="text-center mb-16">
-				<h2 class="text-4xl font-bold mb-6" data-i18n="gallery_title">WorkSpace Manager in azione</h2>
-				<p class="text-xl text-gray-400 max-w-2xl mx-auto" data-i18n="gallery_subtitle">Clicca sulle immagini per ingrandirle e vedere i dettagli.</p>
+	<section id="gallery" class="reveal py-24 bg-gradient-to-b from-[#0f1115] to-[#0b0d10] relative overflow-hidden">
+		<div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-300/20 to-transparent"></div>
+		<div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+			<div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-end mb-12">
+				<div>
+					<div class="inline-flex items-center gap-2 px-4 py-2 mb-5 text-xs font-bold uppercase tracking-wider text-sky-300 pro-pill">
+						<i class="fa-solid fa-images"></i>
+						<span data-i18n="gallery_badge">Product tour</span>
+					</div>
+					<h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight" data-i18n="gallery_title">Guarda come prende forma il tuo workspace.</h2>
+				</div>
+				<p class="text-gray-400 text-lg leading-relaxed max-w-2xl" data-i18n="gallery_subtitle">Dalla dashboard al Menu Bar, ogni schermata è pensata per farti arrivare al lavoro giusto senza attrito.</p>
 			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				<div class="group relative overflow-hidden rounded-2xl glass hover:border-blue-500/50 transition-all duration-300 cursor-pointer" onclick="openModal('SCREEN_DASHBOARD.png')">
-					<img src="SCREEN_DASHBOARD.png" alt="Dashboard" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
-					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i></div>
+
+			<div class="grid lg:grid-cols-[1.35fr_0.65fr] gap-6 mb-6">
+				<div class="group relative overflow-hidden rounded-2xl glass pro-card lift border border-sky-400/20 cursor-pointer min-h-[24rem]" onclick="openModal('SCREEN_DASHBOARD.png')">
+					<div class="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-emerald-500/10"></div>
+					<img src="SCREEN_DASHBOARD.png" alt="Dashboard" class="relative w-full h-full min-h-[24rem] object-cover opacity-95 group-hover:scale-[1.025] transition-transform duration-700" onerror="this.style.display='none'">
+					<div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/85 via-black/45 to-transparent">
+						<div class="flex items-end justify-between gap-6">
+							<div>
+								<span class="inline-flex px-3 py-1 rounded-md bg-sky-400/10 text-sky-200 text-xs font-bold uppercase mb-3" data-i18n="gallery_featured_badge">Vista principale</span>
+								<h3 class="text-2xl font-bold text-white mb-2" data-i18n="gallery_dashboard_t">Dashboard workspace</h3>
+								<p class="text-sm text-gray-300 max-w-xl" data-i18n="gallery_dashboard_d">Il centro di controllo dove scegli un contesto e avvii tutto quello che ti serve.</p>
+							</div>
+							<div class="hidden sm:flex w-12 h-12 rounded-lg bg-white/10 border border-white/15 items-center justify-center text-white"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+						</div>
+					</div>
 				</div>
-				<div class="group relative overflow-hidden rounded-2xl glass hover:border-purple-500/50 transition-all duration-300 cursor-pointer" onclick="openModal('SCREEN_MENUBAR.png')">
-					<img src="SCREEN_MENUBAR.png" alt="Menu Bar" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
-					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i></div>
+
+				<div class="grid gap-6">
+					<div class="glass pro-card lift rounded-2xl p-6 border border-white/10 bg-white/[0.035] cursor-pointer" onclick="openModal('SCREEN_MENUBAR.png')">
+						<div class="flex items-center gap-4 mb-5"><div class="w-11 h-11 rounded-lg bg-blue-500/10 text-blue-300 flex items-center justify-center"><i class="fa-solid fa-bars-progress"></i></div><div><h3 class="font-bold text-white" data-i18n="gallery_menubar_t">Menu Bar</h3><p class="text-xs text-gray-500" data-i18n="gallery_click">Clicca per ingrandire</p></div></div>
+						<div class="relative overflow-hidden rounded-lg border border-white/10 bg-black/20 h-36"><img src="SCREEN_MENUBAR.png" alt="Menu Bar" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'"></div>
+					</div>
+					<div class="glass pro-card lift rounded-2xl p-6 border border-white/10 bg-white/[0.035] cursor-pointer" onclick="openModal('SCREEN_FINDER.png')">
+						<div class="flex items-center gap-4 mb-5"><div class="w-11 h-11 rounded-lg bg-emerald-500/10 text-emerald-300 flex items-center justify-center"><i class="fa-solid fa-folder-tree"></i></div><div><h3 class="font-bold text-white" data-i18n="gallery_finder_t">Finder 2.0</h3><p class="text-xs text-gray-500" data-i18n="gallery_finder_d">Tab, gruppi e ordine stabile</p></div></div>
+						<div class="relative overflow-hidden rounded-lg border border-white/10 bg-black/20 h-36"><img src="SCREEN_FINDER.png" alt="Finder" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'"></div>
+					</div>
 				</div>
-				<div class="group relative overflow-hidden rounded-2xl glass hover:border-green-500/50 transition-all duration-300 cursor-pointer" onclick="openModal('SCREEN_SETTINGS.png')">
-					<img src="SCREEN_SETTINGS.png" alt="Settings" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
-					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i></div>
-				</div>
-				<div class="group relative overflow-hidden rounded-2xl glass hover:border-indigo-500/50 transition-all duration-300 cursor-pointer md:col-span-2 lg:col-span-1" onclick="openModal('SCREEN_APPEARANCE.png')">
-					<img src="SCREEN_APPEARANCE.png" alt="Appearance" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
-					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i></div>
-				</div>
-				<div class="group relative overflow-hidden rounded-2xl glass hover:border-green-500/50 transition-all duration-300 cursor-pointer" onclick="openModal('SCREEN_ERRORS.png')">
-					<img src="SCREEN_ERRORS.png" alt="Error" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
-					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i></div>
-				</div>
-			
-				<div class="group relative overflow-hidden rounded-2xl glass hover:border-green-500/50 transition-all duration-300 cursor-pointer" onclick="openModal('SCREEN_FINDER.png')">
-					<img src="SCREEN_FINDER.png" alt="Finder" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
-					<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fa-solid fa-magnifying-glass-plus text-3xl text-white"></i></div>
+			</div>
+
+			<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+				<div class="group relative overflow-hidden rounded-2xl glass pro-card lift border border-white/10 cursor-pointer" onclick="openModal('SCREEN_SETTINGS.png')"><div class="h-44 bg-black/25"><img src="SCREEN_SETTINGS.png" alt="Settings" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'"></div><div class="p-4"><h3 class="font-bold" data-i18n="gallery_settings_t">Impostazioni</h3><p class="text-xs text-gray-500 mt-1" data-i18n="gallery_settings_d">Controlli chiari per il comportamento dell'app.</p></div></div>
+				<div class="group relative overflow-hidden rounded-2xl glass pro-card lift border border-white/10 cursor-pointer" onclick="openModal('SCREEN_APPEARANCE.png')"><div class="h-44 bg-black/25"><img src="SCREEN_APPEARANCE.png" alt="Appearance" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'"></div><div class="p-4"><h3 class="font-bold" data-i18n="gallery_appearance_t">Aspetto</h3><p class="text-xs text-gray-500 mt-1" data-i18n="gallery_appearance_d">Tema chiaro, scuro o sincronizzato con macOS.</p></div></div>
+				<div class="group relative overflow-hidden rounded-2xl glass pro-card lift border border-white/10 cursor-pointer" onclick="openModal('SCREEN_ERRORS.png')"><div class="h-44 bg-black/25"><img src="SCREEN_ERRORS.png" alt="Error handling" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'"></div><div class="p-4"><h3 class="font-bold" data-i18n="gallery_errors_t">Avvisi guidati</h3><p class="text-xs text-gray-500 mt-1" data-i18n="gallery_errors_d">Messaggi utili quando serve un permesso o un'azione.</p></div></div>
+				<div class="rounded-2xl border border-sky-400/20 bg-sky-500/5 p-5 flex flex-col justify-between min-h-[16rem]">
+					<div><div class="w-11 h-11 rounded-lg bg-sky-400/10 text-sky-200 flex items-center justify-center mb-5"><i class="fa-solid fa-expand"></i></div><h3 class="font-bold text-white mb-2" data-i18n="gallery_modal_t">Preview a schermo intero</h3><p class="text-sm text-gray-400 leading-relaxed" data-i18n="gallery_modal_d">Ogni immagine si apre in overlay, con navigazione da tastiera e zoom.</p></div>
+					<a href="#download" class="mt-6 text-sm font-bold text-sky-200 hover:text-white transition" data-i18n="gallery_cta">Provalo sul tuo Mac</a>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- SICUREZZA & INSTALLAZIONE -->
-	<section id="install" class="py-20 bg-gray-900/50 border-y border-white/5">
-		<div class="max-w-4xl mx-auto px-4 text-center">
-			<div class="inline-block p-3 rounded-full bg-emerald-500/10 text-emerald-500 mb-6 border border-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
-				<i class="fa-solid fa-check-double text-2xl"></i>
-			</div>
-			<h2 class="text-3xl font-bold mb-6" data-i18n="install_title">Installazione Sicura e Verificata</h2>
-			<p class="text-gray-400 mb-10 max-w-2xl mx-auto" data-i18n="install_subtitle">
-				WorkSpace Manager &#232; ufficialmente <strong>Notarizzato da Apple</strong>. 
-				Nessun avviso strano, nessun trucco. Solo software pulito e sicuro per il tuo Mac.
-			</p>
-			<div class="grid md:grid-cols-3 gap-8 text-left">
-				<div class="glass p-6 rounded-xl relative hover:bg-white/5 transition border border-white/5 group">
-					<div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mb-4 text-blue-400 group-hover:scale-110 transition">
-						<i class="fa-solid fa-cloud-arrow-down text-xl"></i>
+	<section id="install" class="reveal py-24 bg-gray-900/40 border-y border-white/5 relative overflow-hidden">
+		<div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/20 to-transparent"></div>
+		<div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+			<div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-center">
+				<div>
+					<div class="inline-flex items-center gap-2 px-4 py-2 mb-6 text-xs font-bold uppercase tracking-wider text-emerald-300 pro-pill">
+						<i class="fa-solid fa-shield-halved"></i>
+						<span data-i18n="install_badge">Sicurezza macOS</span>
 					</div>
-					<h4 class="font-bold mb-2 text-white" data-i18n="step1_t">1. Scarica</h4>
-					<p class="text-sm text-gray-400 leading-relaxed" data-i18n="step1_d">Scarica l'ultima versione certificata direttamente dai nostri server sicuri GitHub.</p>
+					<h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6" data-i18n="install_title">Installazione pulita, firmata e verificata.</h2>
+					<p class="text-gray-400 text-lg leading-relaxed mb-8" data-i18n="install_subtitle">WorkSpace Manager è firmato con Apple Developer ID e notarizzato da Apple. Nessun installer invasivo: scarichi, trascini in Applicazioni e avvii.</p>
+					<div class="grid sm:grid-cols-3 gap-3">
+						<div class="stat-tile rounded-lg p-4"><div class="text-sm font-bold text-white" data-i18n="install_trust_1_t">Apple Notarized</div><div class="text-xs text-gray-400 mt-1" data-i18n="install_trust_1_d">Verifica malware Apple.</div></div>
+						<div class="stat-tile rounded-lg p-4"><div class="text-sm font-bold text-white" data-i18n="install_trust_2_t">Developer ID</div><div class="text-xs text-gray-400 mt-1" data-i18n="install_trust_2_d">Firma riconosciuta da macOS.</div></div>
+						<div class="stat-tile rounded-lg p-4"><div class="text-sm font-bold text-white" data-i18n="install_trust_3_t">DMG pulito</div><div class="text-xs text-gray-400 mt-1" data-i18n="install_trust_3_d">Niente processi nascosti.</div></div>
+					</div>
 				</div>
-				<div class="glass p-6 rounded-xl relative hover:bg-white/5 transition border border-white/5 group">
-					<div class="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center mb-4 text-purple-400 group-hover:scale-110 transition">
-						<i class="fa-solid fa-folder-open text-xl"></i>
+
+				<div class="glass pro-card rounded-2xl p-6 border border-emerald-400/20 bg-emerald-500/5">
+					<div class="flex items-center justify-between gap-4 mb-8">
+						<div><div class="text-xs uppercase tracking-wider text-emerald-300 font-bold mb-2" data-i18n="install_flow_label">Percorso consigliato</div><h3 class="text-2xl font-bold" data-i18n="install_flow_title">Tre passaggi, zero sorprese.</h3></div>
+						<div class="w-14 h-14 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-200"><i class="fa-brands fa-apple text-2xl"></i></div>
 					</div>
-					<h4 class="font-bold mb-2 text-white" data-i18n="step2_t">2. Trascina</h4>
-					<p class="text-sm text-gray-400 leading-relaxed" data-i18n="step2_d">Trascina l'icona nella cartella <strong>Applicazioni</strong>. Niente installer invasivi o file nascosti.</p>
-				</div>
-				<div class="glass p-6 rounded-xl relative border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 transition group">
-					<div class="absolute top-3 right-3 text-emerald-500/20 group-hover:text-emerald-500/40 transition">
-						<i class="fa-brands fa-apple text-4xl"></i>
+
+					<div class="space-y-4">
+						<div class="relative rounded-xl border border-white/10 bg-black/20 p-5 pl-16">
+							<div class="absolute left-5 top-5 w-9 h-9 rounded-lg bg-blue-500/10 text-blue-300 flex items-center justify-center"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+							<div class="text-xs text-blue-200 font-bold uppercase mb-2">01</div>
+							<h4 class="font-bold text-white mb-2" data-i18n="step1_t">Scarica il DMG</h4>
+							<p class="text-sm text-gray-400 leading-relaxed" data-i18n="step1_d">Scarica l'ultima versione certificata dal rilascio ufficiale GitHub.</p>
+						</div>
+						<div class="relative rounded-xl border border-white/10 bg-black/20 p-5 pl-16">
+							<div class="absolute left-5 top-5 w-9 h-9 rounded-lg bg-violet-500/10 text-violet-300 flex items-center justify-center"><i class="fa-solid fa-folder-open"></i></div>
+							<div class="text-xs text-violet-200 font-bold uppercase mb-2">02</div>
+							<h4 class="font-bold text-white mb-2" data-i18n="step2_t">Trascina in Applicazioni</h4>
+							<p class="text-sm text-gray-400 leading-relaxed" data-i18n="step2_d">Sposti l'app nella cartella Applicazioni. Non vengono installati helper nascosti o componenti invasivi.</p>
+						</div>
+						<div class="relative rounded-xl border border-emerald-400/20 bg-emerald-400/10 p-5 pl-16">
+							<div class="absolute left-5 top-5 w-9 h-9 rounded-lg bg-emerald-500/15 text-emerald-200 flex items-center justify-center"><i class="fa-solid fa-shield-halved"></i></div>
+							<div class="text-xs text-emerald-200 font-bold uppercase mb-2">03</div>
+							<h4 class="font-bold text-emerald-100 mb-2" data-i18n="step3_t">Avvia con Gatekeeper</h4>
+							<p class="text-sm text-emerald-50/75 leading-relaxed" data-i18n="step3_d">macOS verifica firma e notarizzazione Apple prima dell'apertura. Tu parti da un'app controllata e riconosciuta.</p>
+						</div>
 					</div>
-					<div class="w-12 h-12 bg-emerald-900/30 rounded-lg flex items-center justify-center mb-4 text-emerald-400 group-hover:scale-110 transition">
-						<i class="fa-solid fa-shield-cat text-xl"></i>
-					</div>
-					<h4 class="font-bold mb-2 text-emerald-400" data-i18n="step3_t">3. Avvia (Verified)</h4>
-					<p class="text-sm text-gray-300 leading-relaxed" data-i18n="step3_d">Gatekeeper verificher&#224; la firma Apple Developer ID e l'assenza di malware. Sicurezza garantita al 100%.</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- PRICING & DOWNLOAD -->
-	<section id="download" class="py-24 bg-gradient-to-b from-[#0b0d10] to-[#0f1115]">
-		<div class="max-w-5xl mx-auto px-4 text-center">
-			<h2 class="text-4xl font-bold mb-4" data-i18n="down_title">Inizia gratis oggi stesso.</h2>
-			<p class="text-gray-400 mb-12 text-lg" data-i18n="down_subtitle">Scarica la versione di prova illimitata nel tempo. Sblocca le funzioni Pro quando sei pronto.</p>
-
-			<div class="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
-
-				<!-- CARD FREE -->
-				<div class="glass p-8 rounded-3xl border border-white/5 hover:border-white/10 transition flex flex-col items-center">
-					<div class="mb-4 bg-gray-800/50 p-3 rounded-2xl">
-						<i class="fa-solid fa-cube text-3xl text-gray-400"></i>
+	<section id="download" class="reveal py-28 bg-gradient-to-b from-[#0b0d10] to-[#0f1115] relative overflow-hidden">
+		<div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/25 to-transparent"></div>
+		<div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+			<div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-16 items-end mb-12">
+				<div>
+					<div class="inline-flex items-center gap-2 px-4 py-2 mb-5 text-xs font-bold uppercase tracking-wider text-blue-300 pro-pill">
+						<i class="fa-solid fa-circle-down"></i>
+						<span data-i18n="down_badge">Download & licenza</span>
 					</div>
-					<h3 class="text-2xl font-bold mb-2">Download</h3>
-					<div class="text-3xl font-bold text-gray-300 mb-6" data-i18n="label_free">Gratis</div>
+					<h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight" data-i18n="down_title">Parti gratis. Passa a Pro quando il tuo workspace diventa essenziale.</h2>
+				</div>
+				<div>
+					<p class="text-gray-400 text-lg leading-relaxed mb-5" data-i18n="down_subtitle">Scarica subito l'app completa per provarla sul tuo Mac. La licenza Pro sblocca i flussi avanzati per chi usa WorkSpace Manager ogni giorno.</p>
+					<div class="flex flex-wrap gap-3 text-xs text-gray-400">
+						<span class="px-3 py-2 rounded-lg bg-white/[0.04] border border-white/10"><i class="fa-brands fa-apple text-emerald-300 mr-2"></i><span data-i18n="down_trust_1">macOS Sonoma+</span></span>
+						<span class="px-3 py-2 rounded-lg bg-white/[0.04] border border-white/10"><i class="fa-solid fa-shield-halved text-emerald-300 mr-2"></i><span data-i18n="down_trust_2">Notarizzato Apple</span></span>
+						<span class="px-3 py-2 rounded-lg bg-white/[0.04] border border-white/10"><i class="fa-solid fa-credit-card text-blue-300 mr-2"></i><span data-i18n="down_trust_3">Pagamento una tantum</span></span>
+					</div>
+				</div>
+			</div>
 
-					<ul class="text-left space-y-3 mb-8 text-sm text-gray-400 w-full px-4">
-						<li class="flex gap-2"><i class="fa-solid fa-check text-green-500"></i> <span data-i18n="p_free_1">Gestione Workspace Base</span></li>
-						<li class="flex gap-2"><i class="fa-solid fa-check text-green-500"></i> <span data-i18n="p_free_2">Lancio App e Cartelle</span></li>
-						<li class="flex gap-2"><i class="fa-solid fa-check text-green-500"></i> <span data-i18n="p_free_3">Menu Bar Resident</span></li>
-						<li class="flex gap-2"><i class="fa-solid fa-circle-half-stroke text-yellow-500"></i> <span data-i18n="p_free_finder_demo">Finder Tab & Gruppi (Demo 3x)</span></li>
-						<li class="flex gap-2 opacity-60"><i class="fa-solid fa-circle-half-stroke text-yellow-500"></i> <span data-i18n="p_no_close">Chiudi Workspace (3x/mese)</span></li>
-						<li class="flex gap-2 opacity-50"><i class="fa-solid fa-xmark text-gray-600"></i> <span data-i18n="p_no_touch">No TouchID Security</span></li>
-						<li class="flex gap-2 opacity-50"><i class="fa-solid fa-xmark text-gray-600"></i> <span data-i18n="p_no_auto">Automazioni Limitate</span></li>
-						<li class="flex gap-2 opacity-50">
-						<i class="fa-solid fa-xmark text-gray-600"></i><span data-i18n="p_no_dock">No Hide Dock Icon</span></li>
+			<div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-6 items-stretch max-w-6xl mx-auto">
+				<!-- CARD FREE -->
+				<div class="glass pro-card lift p-7 rounded-2xl border border-white/10 bg-white/[0.035] flex flex-col">
+					<div class="flex items-start justify-between gap-6 mb-8">
+						<div>
+							<div class="inline-flex px-3 py-1 rounded-md bg-white/[0.06] text-gray-300 text-xs font-bold uppercase mb-4" data-i18n="free_badge">Prova senza rischio</div>
+							<h3 class="text-3xl font-bold mb-2" data-i18n="free_title">Download gratuito</h3>
+							<p class="text-sm text-gray-400 leading-relaxed" data-i18n="free_desc">Perfetto per iniziare, creare i primi workspace e capire quanto tempo risparmi.</p>
+						</div>
+						<div class="w-14 h-14 bg-gray-800/70 border border-white/10 rounded-lg flex items-center justify-center text-gray-300"><i class="fa-solid fa-cube text-xl"></i></div>
+					</div>
 
+					<div class="rounded-xl border border-white/10 bg-black/20 p-5 mb-6">
+						<div class="text-sm text-gray-500 mb-1" data-i18n="free_price_label">Prezzo</div>
+						<div class="text-4xl font-bold text-white" data-i18n="label_free">Gratis</div>
+					</div>
+
+					<ul class="text-left space-y-3 mb-8 text-sm text-gray-300 grow">
+						<li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span data-i18n="p_free_1">Gestione Workspace Base</span></li>
+						<li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span data-i18n="p_free_2">Lancio App e Cartelle</span></li>
+						<li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span data-i18n="p_free_3">Menu Bar Resident</span></li>
+						<li class="flex gap-3"><i class="fa-solid fa-circle-half-stroke text-yellow-400 mt-1"></i> <span data-i18n="p_free_finder_demo">Finder Tab & Gruppi (Demo 3x)</span></li>
+						<li class="flex gap-3 opacity-70"><i class="fa-solid fa-lock text-gray-500 mt-1"></i> <span data-i18n="free_limit_note">Funzioni Pro disponibili con licenza.</span></li>
 					</ul>
 
-					<a href="https://github.com/frafra077/workspace-manager/releases/download/v.2.0.6/WorkSpace.2.0.6.dmg" class="w-full py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white font-semibold transition flex flex-col items-center justify-center gap-2 group">
-						<span class="flex items-center gap-2"><i class="fa-brands fa-apple"></i> <span data-i18n="btn_free">Scarica Gratis (.dmg)</span></span>
+					<a href="https://github.com/frafra077/workspace-manager/releases/download/v.2.0.6/WorkSpace.2.0.6.dmg" class="w-full py-4 rounded-lg bg-white/10 hover:bg-white/[0.16] border border-white/10 text-white font-bold transition flex items-center justify-center gap-2 group">
+						<i class="fa-brands fa-apple"></i> <span data-i18n="btn_free">Scarica Gratis (.dmg)</span>
 					</a>
 
-					<!-- CONTATORE DOWNLOAD -->
-					<div id="download-count-container" class="mt-3 flex items-center gap-2 text-xs text-gray-500 opacity-0 transition-opacity duration-1000">
-						<i class="fa-solid fa-download text-emerald-500"></i>
+					<div id="download-count-container" class="mt-4 flex items-center justify-center gap-2 text-xs text-gray-500 opacity-0 transition-opacity duration-1000">
+						<i class="fa-solid fa-download text-emerald-400"></i>
 						<span><span id="total-downloads" class="font-bold text-gray-300">...</span> <span data-i18n="label_downloads">downloads totali</span></span>
 					</div>
-
-					<p class="text-[10px] text-gray-600 mt-1">v2.0.6 &#8226; macOS Sonoma+</p>
+					<p class="text-[11px] text-gray-600 mt-2 text-center">v2.0.6 &#8226; macOS Sonoma+</p>
 				</div>
 
 				<!-- CARD PRO -->
-				<div class="glass p-8 rounded-3xl border border-blue-500/30 bg-blue-900/5 relative overflow-hidden transform md:scale-105 shadow-2xl shadow-blue-900/20 flex flex-col items-center">
-					<div class="absolute top-0 right-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
-						Best Value
+				<div class="glass pro-card lift p-7 rounded-2xl border border-blue-400/35 bg-blue-500/[0.055] relative overflow-hidden shadow-2xl shadow-blue-950/30 flex flex-col">
+					<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-sky-400 via-blue-500 to-violet-400"></div>
+					<div class="absolute top-5 right-5 bg-gradient-to-r from-blue-600 to-violet-600 text-white text-[10px] font-bold px-3 py-1 rounded-md uppercase tracking-wider" data-i18n="pro_badge">Scelta migliore</div>
+					<div class="flex items-start justify-between gap-8 mb-8 pr-20">
+						<div>
+							<div class="inline-flex px-3 py-1 rounded-md bg-blue-500/15 text-blue-200 text-xs font-bold uppercase mb-4" data-i18n="pro_label">Licenza Lifetime</div>
+							<h3 class="text-3xl font-bold mb-2 text-white" data-i18n="pro_title">WorkSpace Manager Pro</h3>
+							<p class="text-sm text-gray-300 leading-relaxed" data-i18n="pro_desc">Per chi vuole aprire, proteggere e chiudere interi contesti di lavoro senza limiti.</p>
+						</div>
+						<div class="w-14 h-14 bg-gradient-to-br from-blue-500/20 to-violet-500/20 rounded-lg border border-blue-400/20 flex items-center justify-center text-blue-200"><i class="fa-solid fa-rocket text-xl"></i></div>
 					</div>
-					<div class="mb-4 bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-3 rounded-2xl border border-blue-500/20">
-						<i class="fa-solid fa-rocket text-3xl text-blue-400"></i>
-					</div>
-					<h3 class="text-2xl font-bold mb-2 text-white">Pro License</h3>
-					<div class="flex items-end gap-2 mb-6">
-						<span class="text-gray-500 line-through text-lg decoration-red-500/50">&#8364;24,90</span>
-						<span class="text-4xl font-bold text-white">&#8364;17,90</span>
-						<span class="text-xs bg-blue-600 text-white px-2 py-1 rounded ml-1 mb-2" data-i18n="badge_launch">OFFERTA LANCIO</span>
-					</div>
-					<ul class="text-left space-y-3 mb-8 text-sm text-gray-300 w-full px-4">
-						<li class="flex gap-2"><i class="fa-solid fa-check text-blue-400"></i> <span data-i18n="p_pro_1">Workspace Illimitati</span></li>
-						<li class="flex gap-2"><i class="fa-solid fa-check text-blue-400"></i> <span data-i18n="p_pro_finder">Finder Tab & Gruppi illimitati</span></li>
-						<li class="flex gap-2"><i class="fa-solid fa-check text-blue-400"></i> <span data-i18n="p_pro_2">Sicurezza TouchID &amp; FaceID</span></li>
-						<li class="flex gap-2"><i class="fa-solid fa-check text-blue-400"></i> <span data-i18n="p_pro_close">Chiudi Workspace illimitato</span></li>
-						<li class="flex gap-2"><i class="fa-solid fa-check text-blue-400"></i> <span data-i18n="p_pro_3">Apertura Multipla App &amp; File</span></li>
-						<li class="flex gap-2"><i class="fa-solid fa-check text-blue-400"></i> <span data-i18n="p_pro_4">Backup/Ripristino</span></li>
-						<li class="flex gap-2"><i class="fa-solid fa-check text-blue-400"></i> <span data-i18n="p_pro_5">Supporto Prioritario</span></li>
-						<li class="flex gap-2"><i class="fa-solid fa-check text-blue-400"></i><span data-i18n="p_pro_dock">Nascondi icona dal Dock</span></li>
 
-					</ul>
-					<a href="https://dodo.pe/workspacemanagerpro" class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold shadow-lg shadow-blue-900/50 transition flex flex-col items-center justify-center gap-1 group">
+					<div class="rounded-xl border border-blue-300/20 bg-black/25 p-5 mb-6">
+						<div class="flex flex-wrap items-end gap-3 mb-2">
+							<span class="text-gray-500 line-through text-lg decoration-red-400/60">&#8364;24,90</span>
+							<span class="text-5xl font-bold text-white">&#8364;17,90</span>
+							<span class="text-xs bg-blue-600 text-white px-3 py-1 rounded-md mb-2 font-bold" data-i18n="badge_launch">OFFERTA LANCIO</span>
+						</div>
+						<div class="text-sm text-gray-400" data-i18n="pro_price_note">Pagamento unico, licenza personale per 2 Mac.</div>
+					</div>
+
+					<div class="grid sm:grid-cols-2 gap-3 mb-8 grow">
+						<div class="flex gap-3 rounded-lg bg-white/[0.04] border border-white/10 p-3"><i class="fa-solid fa-check text-blue-300 mt-1"></i><span class="text-sm text-gray-200" data-i18n="p_pro_1">Workspace Illimitati</span></div>
+						<div class="flex gap-3 rounded-lg bg-white/[0.04] border border-white/10 p-3"><i class="fa-solid fa-check text-blue-300 mt-1"></i><span class="text-sm text-gray-200" data-i18n="p_pro_finder">Finder Tab & Gruppi illimitati</span></div>
+						<div class="flex gap-3 rounded-lg bg-white/[0.04] border border-white/10 p-3"><i class="fa-solid fa-check text-blue-300 mt-1"></i><span class="text-sm text-gray-200" data-i18n="p_pro_2">Sicurezza TouchID &amp; FaceID</span></div>
+						<div class="flex gap-3 rounded-lg bg-white/[0.04] border border-white/10 p-3"><i class="fa-solid fa-check text-blue-300 mt-1"></i><span class="text-sm text-gray-200" data-i18n="p_pro_close">Chiudi Workspace illimitato</span></div>
+						<div class="flex gap-3 rounded-lg bg-white/[0.04] border border-white/10 p-3"><i class="fa-solid fa-check text-blue-300 mt-1"></i><span class="text-sm text-gray-200" data-i18n="p_pro_3">Apertura Multipla App &amp; File</span></div>
+						<div class="flex gap-3 rounded-lg bg-white/[0.04] border border-white/10 p-3"><i class="fa-solid fa-check text-blue-300 mt-1"></i><span class="text-sm text-gray-200" data-i18n="p_pro_4">Backup/Ripristino</span></div>
+						<div class="flex gap-3 rounded-lg bg-white/[0.04] border border-white/10 p-3"><i class="fa-solid fa-check text-blue-300 mt-1"></i><span class="text-sm text-gray-200" data-i18n="p_pro_dock">Nascondi icona dal Dock</span></div>
+						<div class="flex gap-3 rounded-lg bg-white/[0.04] border border-white/10 p-3"><i class="fa-solid fa-check text-blue-300 mt-1"></i><span class="text-sm text-gray-200" data-i18n="p_pro_5">Supporto Prioritario</span></div>
+					</div>
+
+					<a href="https://dodo.pe/workspacemanagerpro" class="w-full py-4 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-sky-400 text-white font-bold shadow-lg shadow-blue-900/50 transition flex flex-col items-center justify-center gap-1 group">
 						<span class="flex items-center gap-2"><i class="fa-solid fa-key"></i> <span data-i18n="btn_buy">Acquista Licenza</span></span>
-						<span class="text-[10px] font-normal opacity-80 group-hover:opacity-100 transition" data-i18n="label_payment">Pagamento sicuro una tantum</span>
+						<span class="text-[11px] font-normal opacity-85 group-hover:opacity-100 transition" data-i18n="label_payment">Pagamento sicuro una tantum</span>
 					</a>
-					<p class="text-xs text-gray-500 mt-4" data-i18n="label_devices">Puoi attivarlo su 2 dispositivi</p>
+					<div class="grid sm:grid-cols-3 gap-3 mt-5 text-center text-xs text-gray-500">
+						<div><i class="fa-solid fa-lock text-emerald-300 mr-1"></i><span data-i18n="pro_trust_1">Checkout sicuro</span></div>
+						<div><i class="fa-solid fa-computer text-blue-300 mr-1"></i><span data-i18n="label_devices">Puoi attivarlo su 2 dispositivi</span></div>
+						<div><i class="fa-solid fa-infinity text-violet-300 mr-1"></i><span data-i18n="pro_trust_3">Licenza lifetime</span></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- CONTATTI -->
-	<section id="contact" class="py-16 bg-gray-900/30 border-y border-white/5">
-		<div class="max-w-4xl mx-auto px-4">
-			<div class="text-center mb-12">
-				<h2 class="text-3xl font-bold mb-4" data-i18n="contact_title">Hai domande o feedback?</h2>
-				<p class="text-gray-400 text-lg" data-i18n="contact_subtitle">Contattami direttamente, rispondo entro 24h.</p>
-			</div>
-			<div class="grid md:grid-cols-3 gap-6 max-w-2xl mx-auto">
-				<a href="mailto:francescoalg@gmail.com" class="glass p-6 rounded-xl hover:border-blue-500/50 transition-all duration-300 group text-center">
-					<div class="w-12 h-12 bg-blue-900/50 rounded-lg flex items-center justify-center mb-4 mx-auto group-hover:bg-blue-500 transition"><i class="fa-solid fa-envelope text-blue-400 text-xl group-hover:text-white"></i></div>
-					<h4 class="font-bold text-lg mb-2 group-hover:text-blue-400 transition">Email</h4>
-					<p class="text-sm text-gray-400" data-i18n="c_email_txt">Invia email</p>
-				</a>
-				<a href="https://github.com/frafra077/workspace-manager/issues" target="_blank" class="glass p-6 rounded-xl hover:border-gray-500/50 transition-all duration-300 group text-center">
-					<div class="w-12 h-12 bg-gray-900/50 rounded-lg flex items-center justify-center mb-4 mx-auto group-hover:bg-gray-700 transition"><i class="fa-brands fa-github text-gray-400 text-xl group-hover:text-white"></i></div>
-					<h4 class="font-bold text-lg mb-2 group-hover:text-gray-300 transition">Bug Report</h4>
-					<p class="text-sm text-gray-400" data-i18n="c_bug_txt">Apri un Issue</p>
-				</a>
-				<a href="https://x.com/fraraf85" target="_blank" class="glass p-6 rounded-xl hover:border-blue-400/50 transition-all duration-300 group text-center">
-					<div class="w-12 h-12 bg-black/50 rounded-lg flex items-center justify-center mb-4 mx-auto group-hover:bg-black transition overflow-hidden">
-						<img src="social/x-icon.jpg" alt="X" class="w-full h-full object-cover">
+	<section id="contact" class="reveal py-24 bg-gray-900/30 border-y border-white/5 relative overflow-hidden">
+		<div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-300/20 to-transparent"></div>
+		<div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+			<div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-center">
+				<div>
+					<div class="inline-flex items-center gap-2 px-4 py-2 mb-6 text-xs font-bold uppercase tracking-wider text-sky-300 pro-pill">
+						<i class="fa-solid fa-headset"></i>
+						<span data-i18n="contact_badge">Supporto diretto</span>
 					</div>
-					<h4 class="font-bold text-lg mb-2 group-hover:text-blue-400 transition">X (Twitter)</h4>
-					<p class="text-sm text-gray-400">@fraraf85</p>
-				</a>
+					<h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6" data-i18n="contact_title">Hai domande, bug o idee per migliorare l'app?</h2>
+					<p class="text-gray-400 text-lg leading-relaxed mb-8" data-i18n="contact_subtitle">Scrivimi dal canale più comodo. Per bug tecnici GitHub è ideale; per domande su licenza, installazione o Pro, meglio email.</p>
+					<div class="rounded-2xl border border-white/10 bg-white/[0.035] p-5">
+						<div class="flex items-center gap-4"><div class="w-11 h-11 rounded-lg bg-emerald-500/10 text-emerald-300 flex items-center justify-center"><i class="fa-solid fa-clock"></i></div><div><div class="font-bold text-white" data-i18n="contact_response_t">Risposta rapida</div><div class="text-sm text-gray-400" data-i18n="contact_response_d">Di solito entro 24 ore nei giorni lavorativi.</div></div></div>
+					</div>
+				</div>
+
+				<div class="grid sm:grid-cols-3 gap-4">
+					<a href="mailto:francescoalg@gmail.com" class="glass pro-card lift p-6 rounded-2xl hover:border-blue-400/40 transition-all duration-300 group">
+						<div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition"><i class="fa-solid fa-envelope text-blue-300 text-xl"></i></div>
+						<h4 class="font-bold text-xl mb-2 text-white">Email</h4>
+						<p class="text-sm text-gray-400 mb-6" data-i18n="c_email_txt">Licenze, installazione e domande generali.</p>
+						<span class="text-sm font-bold text-blue-200 group-hover:text-white transition" data-i18n="contact_email_cta">Scrivimi via email</span>
+					</a>
+					<a href="https://github.com/frafra077/workspace-manager/issues" target="_blank" class="glass pro-card lift p-6 rounded-2xl hover:border-gray-400/40 transition-all duration-300 group">
+						<div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-white/10 transition"><i class="fa-brands fa-github text-gray-300 text-xl"></i></div>
+						<h4 class="font-bold text-xl mb-2 text-white">Bug Report</h4>
+						<p class="text-sm text-gray-400 mb-6" data-i18n="c_bug_txt">Segnala problemi con dettagli e screenshot.</p>
+						<span class="text-sm font-bold text-gray-200 group-hover:text-white transition" data-i18n="contact_open_issue">Apri un issue</span>
+					</a>
+					<a href="https://x.com/fraraf85" target="_blank" class="glass pro-card lift p-6 rounded-2xl hover:border-sky-400/40 transition-all duration-300 group">
+						<div class="w-12 h-12 bg-black/40 rounded-lg flex items-center justify-center mb-6 overflow-hidden border border-white/10">
+							<img src="social/x-icon.jpg" alt="X" class="w-full h-full object-cover" onerror="this.style.display='none'">
+							<i class="fa-brands fa-x-twitter text-gray-300"></i>
+						</div>
+						<h4 class="font-bold text-xl mb-2 text-white">X</h4>
+						<p class="text-sm text-gray-400 mb-6" data-i18n="contact_x_txt">Aggiornamenti rapidi e messaggi brevi.</p>
+						<span class="text-sm font-bold text-sky-200 group-hover:text-white transition">@fraraf85</span>
+					</a>
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- FAQ -->
-	<section id="faq" class="py-20 bg-[#0f1115] border-t border-white/5">
-		<div class="max-w-4xl mx-auto px-4">
-			<h2 class="text-3xl font-bold text-center mb-12" data-i18n="faq_title">Domande Frequenti</h2>
-			<div class="grid md:grid-cols-2 gap-8">
-				<div class="glass p-6 rounded-xl hover:bg-white/5 transition">
-					<h4 class="font-bold text-lg mb-2 text-white flex items-center gap-2">
-						<i class="fa-solid fa-shield-halved text-emerald-500"></i> <span data-i18n="faq_q1">L'app &#232; sicura?</span>
-					</h4>
-					<p class="text-gray-400 text-sm leading-relaxed" data-i18n="faq_a1">Assolutamente. WorkSpace Manager &#232; firmata digitalmente con un <strong>Apple Developer ID</strong> e autenticata (Notarized) dai server Apple per garantire l'assenza di malware.</p>
+	<section id="faq" class="reveal py-24 bg-[#0f1115] border-t border-white/5">
+		<div class="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10">
+			<div class="text-center mb-12">
+				<div class="inline-flex items-center gap-2 px-4 py-2 mb-5 text-xs font-bold uppercase tracking-wider text-violet-300 pro-pill">
+					<i class="fa-solid fa-circle-question"></i>
+					<span data-i18n="faq_badge">Prima di installare</span>
 				</div>
-				<div class="glass p-6 rounded-xl hover:bg-white/5 transition">
-					<h4 class="font-bold text-lg mb-2 text-white flex items-center gap-2">
-						<i class="fa-brands fa-app-store-ios text-blue-500"></i> <span data-i18n="faq_q2">Perch&#233; non &#232; sull'App Store?</span>
-					</h4>
-					<p class="text-gray-400 text-sm leading-relaxed" data-i18n="faq_a2">Le app sull'App Store sono "chiuse" in una sandbox. Per aprire file, terminali e gestire le tue finestre, WorkSpace Manager necessita di permessi di sistema che lo Store limita.</p>
-				</div>
-				<div class="glass p-6 rounded-xl hover:bg-white/5 transition">
-					<h4 class="font-bold text-lg mb-2 text-white flex items-center gap-2">
-						<i class="fa-solid fa-credit-card text-purple-500"></i> <span data-i18n="faq_q3">La licenza scade?</span>
-					</h4>
-					<p class="text-gray-400 text-sm leading-relaxed" data-i18n="faq_a3">No. La licenza <strong>Lifetime</strong> &#232; un acquisto unico. Paghi una volta ed &#232; tua per sempre, inclusi tutti gli aggiornamenti futuri della versione 2.x.</p>
-				</div>
-				<div class="glass p-6 rounded-xl hover:bg-white/5 transition">
-					<h4 class="font-bold text-lg mb-2 text-white flex items-center gap-2">
-						<i class="fa-solid fa-laptop text-gray-400"></i> <span data-i18n="faq_q4">Su quanti Mac posso usarla?</span>
-					</h4>
-					<p class="text-gray-400 text-sm leading-relaxed" data-i18n="faq_a4">Una singola licenza personale ti permette di attivare l'app su <strong>2 Mac</strong> (ad esempio il tuo iMac fisso e il MacBook portatile).</p>
-				</div>
+				<h2 class="text-4xl md:text-5xl font-bold tracking-tight" data-i18n="faq_title">Risposte chiare, niente sorprese.</h2>
+			</div>
+			<div class="space-y-3">
+				<details class="glass pro-card rounded-xl border border-white/10 bg-white/[0.035] p-5 group" open>
+					<summary class="cursor-pointer list-none flex items-center justify-between gap-6"><span class="font-bold text-lg text-white flex items-center gap-3"><i class="fa-solid fa-shield-halved text-emerald-400"></i><span data-i18n="faq_q1">L'app è sicura?</span></span><i class="fa-solid fa-chevron-down text-gray-500 group-open:rotate-180 transition"></i></summary>
+					<p class="text-gray-400 text-sm leading-relaxed mt-4 pl-8" data-i18n="faq_a1">Assolutamente. WorkSpace Manager è firmata digitalmente con un Apple Developer ID e autenticata da Apple per garantire l'assenza di malware.</p>
+				</details>
+				<details class="glass pro-card rounded-xl border border-white/10 bg-white/[0.035] p-5 group">
+					<summary class="cursor-pointer list-none flex items-center justify-between gap-6"><span class="font-bold text-lg text-white flex items-center gap-3"><i class="fa-brands fa-app-store-ios text-blue-400"></i><span data-i18n="faq_q2">Perché non è sull'App Store?</span></span><i class="fa-solid fa-chevron-down text-gray-500 group-open:rotate-180 transition"></i></summary>
+					<p class="text-gray-400 text-sm leading-relaxed mt-4 pl-8" data-i18n="faq_a2">Le app sull'App Store sono chiuse in una sandbox. Per aprire file, cartelle e gestire finestre in modo utile, WorkSpace Manager necessita di permessi di sistema che lo Store limita.</p>
+				</details>
+				<details class="glass pro-card rounded-xl border border-white/10 bg-white/[0.035] p-5 group">
+					<summary class="cursor-pointer list-none flex items-center justify-between gap-6"><span class="font-bold text-lg text-white flex items-center gap-3"><i class="fa-solid fa-credit-card text-violet-400"></i><span data-i18n="faq_q3">La licenza scade?</span></span><i class="fa-solid fa-chevron-down text-gray-500 group-open:rotate-180 transition"></i></summary>
+					<p class="text-gray-400 text-sm leading-relaxed mt-4 pl-8" data-i18n="faq_a3">No. La licenza Lifetime è un acquisto unico: paghi una volta e usi la versione 2.x senza abbonamento.</p>
+				</details>
+				<details class="glass pro-card rounded-xl border border-white/10 bg-white/[0.035] p-5 group">
+					<summary class="cursor-pointer list-none flex items-center justify-between gap-6"><span class="font-bold text-lg text-white flex items-center gap-3"><i class="fa-solid fa-laptop text-sky-400"></i><span data-i18n="faq_q4">Su quanti Mac posso usarla?</span></span><i class="fa-solid fa-chevron-down text-gray-500 group-open:rotate-180 transition"></i></summary>
+					<p class="text-gray-400 text-sm leading-relaxed mt-4 pl-8" data-i18n="faq_a4">Una singola licenza personale permette l'attivazione su 2 Mac, ad esempio desktop e portatile.</p>
+				</details>
 			</div>
 		</div>
 	</section>
@@ -683,31 +1045,59 @@
 				nav_contact: "Contatti",
 				mobile_download_btn: "Scarica App v2.0.6",
 				footer_version: "Versione 2.0.6 &#8226; macOS Universal",
+				nav_tagline: "macOS automation",
 				hero_badge: "Novità v2.0.6 • Rivoluzione Finder & Tab",
 				badge_swift: "100% Native",
 				badge_notarized: "Apple Notarized",
-				hero_title: `Il tuo setup ideale <br><span class="text-gradient">in un solo click.</span>`,
-				hero_desc: "Basta cliccare icone una alla volta. Apri tutte le tue <strong>App</strong>, <strong>Siti Web</strong> e <strong>Cartelle</strong> in un solo colpo. Organizza il tuo lavoro in Workspaces intelligenti.",
+				hero_title: `Il tuo lavoro si apre <span class="text-gradient">già pronto.</span>`,
+				hero_desc: "Avvia app, siti, file e cartelle come un unico ambiente di lavoro. Ogni progetto torna con il suo contesto, senza cercare tutto da capo.",
+				hero_badge_fast: "Setup immediato",
+				hero_product_line: "macOS workspace automation",
+				hero_fallback_t: "Dashboard workspace",
+				hero_fallback_d: "Screenshot pronto quando l'asset è disponibile",
+				hero_status_title: "Workspace attivo",
+				hero_status_name: "Marketing Sprint",
+				hero_status_desc: "3 app, 4 siti, 2 cartelle",
 				btn_download_mac: "Scarica Gratis",
 				btn_learn_more: "Scopri novit&#224;",
 				req_macos: "Richiede macOS Sonoma o superiore",
-				workflow_title: "Smetti di perdere tempo ogni mattina.",
-				workflow_subtitle: "Guadagna 15 minuti di focus ogni volta che cambi progetto.",
-				workflow_old_title: "Senza WorkSpace Manager",
-				workflow_old_1: "Apri il Finder e cerchi la cartella giusta...",
-				workflow_old_2: "Lanci Chrome e apri a mano 5 siti web...",
-				workflow_old_3: "Apri Word, Excel e la Posta una alla volta.",
-				workflow_old_result: "&#10060; 5 minuti persi ogni volta",
-				workflow_new_title: "Con WorkSpace Manager",
-				workflow_new_1: "Scegli cosa fare (es. 'Lavoro', 'Svago').",
-				workflow_new_2: "Fatto. Tutto aperto. &#10024;",
+				workflow_title: "Ogni workspace riapre il tuo mondo di lavoro.",
+				workflow_subtitle: "Non è solo aprire app: è ritrovare subito cartelle, siti, strumenti e stato mentale del progetto giusto.",
+				workflow_badge: "Dal caos al contesto",
+				workflow_old_kicker: "Prima",
+				workflow_old_result_label: "Costo nascosto",
+				workflow_new_kicker: "Dopo",
+				workflow_new_workspace: "Workspace “Marketing Sprint”",
+				workflow_new_ready: "Ready",
+				workflow_new_3: "Siti, file e strumenti tornano nello stesso flusso.",
+				workflow_stat_apps: "native",
+				workflow_stat_web: "pronti",
+				workflow_stat_finder: "ordinate",
+				workflow_old_title: "Setup manuale, attenzione spezzata",
+				workflow_old_1: "Cerchi la cartella corretta tra progetto, documenti e download.",
+				workflow_old_2: "Riapri dashboard, email, task board e siti uno alla volta.",
+				workflow_old_3: "Ogni cambio progetto diventa una piccola interruzione ripetuta.",
+				workflow_old_result: "5-15 minuti persi",
+				workflow_new_title: "Un click, contesto pronto",
+				workflow_new_1: "App di lavoro aperte nella sequenza corretta.",
+				workflow_new_2: "Finder ordinato con tab e gruppi già pronti.",
 				workflow_new_time: "In 2 secondi:",
 				tag_app: "3 App",
 				tag_web: "4 Siti Web",
 				tag_finder: "2 Cartelle",
-				workflow_new_result: "&#9989; Subito operativo",
-				update_title: "La rivoluzione del Finder: Tab, Gruppi e Ordine totale.",
-				update_subtitle: "Abbiamo riscritto la gestione delle cartelle. Ora hai il controllo totale su come, dove e in che ordine si aprono i tuoi tab nel Finder.",
+				workflow_new_result: "Operativo prima di perdere il filo",
+				update_title: "Finder finalmente lavora come lavori tu.",
+				update_subtitle: "La 2.0.6 porta ordine reale nelle cartelle: tab, gruppi, sequenza stabile e una configurazione che resta esattamente come l’hai pensata.",
+				update_metric_1: "unisci le cartelle",
+				update_metric_2: "scegli tab o finestre",
+				update_metric_3: "riapri tutto in ordine",
+				update_mock_title: "Finder workspace",
+				update_tab_1: "Progetto",
+				update_tab_2: "Assets",
+				update_tab_3: "Documenti",
+				update_flow_1: "Cartelle principali e secondarie",
+				update_flow_2: "Gruppi Finder personalizzati",
+				update_flow_3: "Setup riaperto nello stesso ordine",
 				update_card_tabs_t: "Gestione Cartelle 2.0",
 				update_card_tabs_d: "Unificati i percorsi: nessuna distinzione tra cartelle principali e secondarie per una linearità totale.",
 				update_card_groups_t: "Window Groups",
@@ -720,7 +1110,19 @@
 				update_card_access_d: "Nuovo motore di salvataggio: le tue configurazioni sono al sicuro e non verranno mai perse al riavvio.",
 				update_card_fixes_t: "Selettore Premium",
 				update_card_fixes_d: "Nuovo design delle card workspace con interazione Ghost Picker fluida e professionale.",
-				feat_title: "Tutto quello che puoi fare con v2.0.6",
+				feat_title: "Tutto quello che serve per avviare, proteggere e riprendere il lavoro.",
+				feat_badge: "Toolkit operativo",
+				feat_subtitle: "Le funzioni non sono una lista: lavorano insieme per trasformare ogni progetto in un ambiente pronto, ordinato e sicuro.",
+				feat_finder_1_t: "Tab ordinati",
+				feat_finder_1_d: "Cartelle nello stesso contesto.",
+				feat_finder_2_t: "Gruppi Finder",
+				feat_finder_2_d: "Finestre separate quando servono.",
+				feat_finder_3_t: "Ordine stabile",
+				feat_finder_3_d: "Sempre come lo hai configurato.",
+				feat_privacy_note: "I workspace sensibili restano lontani da occhi curiosi.",
+				feat_menubar_badge: "Sempre a portata",
+				feat_everyday_title: "Dettagli che rendono l'app completa",
+				feat_everyday_subtitle: "Meno attrito, più controllo quotidiano.",
 				f_update_t: "Rivoluzione Finder",
 				f_update_d: "Cartelle unificate, ordine di apertura deterministico e raggruppamento intelligente in tab e finestre multiple.",
 				f_update_engine_t: "Nuovo Motore Aggiornamento",
@@ -747,18 +1149,60 @@
 				f_menubar_d: "Controlla tutto dalla barra dei menu. Ora completamente riscritta per consumare ancora meno RAM.",
 				f_list_1: "Switch rapido e stato risorse",
 				f_list_2: "Controllo granulare avvio automatico",
-				gallery_title: "WorkSpace Manager in azione",
-				gallery_subtitle: "Clicca sulle immagini per ingrandirle e vedere i dettagli.",
-				install_title: "Installazione Sicura e Verificata",
-				install_subtitle: "WorkSpace Manager &#232; ufficialmente <strong>Notarizzato da Apple</strong>. Nessun avviso strano, nessun trucco. Solo software pulito e sicuro.",
-				step1_t: "1. Scarica",
-				step1_d: "Scarica l'ultima versione certificata direttamente dai nostri server sicuri GitHub.",
-				step2_t: "2. Trascina",
-				step2_d: "Trascina l'icona nella cartella <strong>Applicazioni</strong>. Niente installer invasivi.",
-				step3_t: "3. Avvia (Verified)",
-				step3_d: "Gatekeeper verificher&#224; la firma Apple Developer ID e l'assenza di malware. Sicurezza garantita al 100%.",
-				down_title: "Inizia gratis oggi stesso.",
-				down_subtitle: "Scarica la versione di prova illimitata nel tempo. Sblocca le funzioni Pro quando sei pronto.",
+				gallery_title: "Guarda come prende forma il tuo workspace.",
+				gallery_subtitle: "Dalla dashboard al Menu Bar, ogni schermata è pensata per farti arrivare al lavoro giusto senza attrito.",
+				gallery_badge: "Product tour",
+				gallery_featured_badge: "Vista principale",
+				gallery_dashboard_t: "Dashboard workspace",
+				gallery_dashboard_d: "Il centro di controllo dove scegli un contesto e avvii tutto quello che ti serve.",
+				gallery_menubar_t: "Menu Bar",
+				gallery_click: "Clicca per ingrandire",
+				gallery_finder_t: "Finder 2.0",
+				gallery_finder_d: "Tab, gruppi e ordine stabile",
+				gallery_settings_t: "Impostazioni",
+				gallery_settings_d: "Controlli chiari per il comportamento dell'app.",
+				gallery_appearance_t: "Aspetto",
+				gallery_appearance_d: "Tema chiaro, scuro o sincronizzato con macOS.",
+				gallery_errors_t: "Avvisi guidati",
+				gallery_errors_d: "Messaggi utili quando serve un permesso o un'azione.",
+				gallery_modal_t: "Preview a schermo intero",
+				gallery_modal_d: "Ogni immagine si apre in overlay, con navigazione da tastiera e zoom.",
+				gallery_cta: "Provalo sul tuo Mac",
+				install_title: "Installazione pulita, firmata e verificata.",
+				install_subtitle: "WorkSpace Manager è firmato con Apple Developer ID e notarizzato da Apple. Nessun installer invasivo: scarichi, trascini in Applicazioni e avvii.",
+				install_badge: "Sicurezza macOS",
+				install_trust_1_t: "Apple Notarized",
+				install_trust_1_d: "Verifica malware Apple.",
+				install_trust_2_t: "Developer ID",
+				install_trust_2_d: "Firma riconosciuta da macOS.",
+				install_trust_3_t: "DMG pulito",
+				install_trust_3_d: "Niente processi nascosti.",
+				install_flow_label: "Percorso consigliato",
+				install_flow_title: "Tre passaggi, zero sorprese.",
+				step1_t: "Scarica il DMG",
+				step1_d: "Scarica l'ultima versione certificata dal rilascio ufficiale GitHub.",
+				step2_t: "Trascina in Applicazioni",
+				step2_d: "Sposti l'app nella cartella Applicazioni. Non vengono installati helper nascosti o componenti invasivi.",
+				step3_t: "Avvia con Gatekeeper",
+				step3_d: "macOS verifica firma e notarizzazione Apple prima dell'apertura. Tu parti da un'app controllata e riconosciuta.",
+				down_title: "Parti gratis. Passa a Pro quando il tuo workspace diventa essenziale.",
+				down_subtitle: "Scarica subito l'app completa per provarla sul tuo Mac. La licenza Pro sblocca i flussi avanzati per chi usa WorkSpace Manager ogni giorno.",
+				down_badge: "Download & licenza",
+				down_trust_1: "macOS Sonoma+",
+				down_trust_2: "Notarizzato Apple",
+				down_trust_3: "Pagamento una tantum",
+				free_badge: "Prova senza rischio",
+				free_title: "Download gratuito",
+				free_desc: "Perfetto per iniziare, creare i primi workspace e capire quanto tempo risparmi.",
+				free_price_label: "Prezzo",
+				free_limit_note: "Funzioni Pro disponibili con licenza.",
+				pro_badge: "Scelta migliore",
+				pro_label: "Licenza Lifetime",
+				pro_title: "WorkSpace Manager Pro",
+				pro_desc: "Per chi vuole aprire, proteggere e chiudere interi contesti di lavoro senza limiti.",
+				pro_price_note: "Pagamento unico, licenza personale per 2 Mac.",
+				pro_trust_1: "Checkout sicuro",
+				pro_trust_3: "Licenza lifetime",
 				p_free_1: "Gestione Workspace Base",
 				p_free_2: "Lancio App e Cartelle",
 				p_free_3: "Menu Bar Resident",
@@ -775,11 +1219,18 @@
 				p_pro_4: "Backup/Ripristino",
 				p_pro_5: "Supporto Prioritario",
 				btn_buy: "Acquista Licenza",
-				contact_title: "Hai domande o feedback?",
-				contact_subtitle: "Contattami direttamente, rispondo entro 24h.",
-				c_email_txt: "Invia email",
-				c_bug_txt: "Apri un Issue",
-				faq_title: "Domande Frequenti",
+				contact_title: "Hai domande, bug o idee per migliorare l'app?",
+				contact_subtitle: "Scrivimi dal canale più comodo. Per bug tecnici GitHub è ideale; per domande su licenza, installazione o Pro, meglio email.",
+				contact_badge: "Supporto diretto",
+				contact_response_t: "Risposta rapida",
+				contact_response_d: "Di solito entro 24 ore nei giorni lavorativi.",
+				c_email_txt: "Licenze, installazione e domande generali.",
+				c_bug_txt: "Segnala problemi con dettagli e screenshot.",
+				contact_open_issue: "Apri un issue",
+				contact_email_cta: "Scrivimi via email",
+				contact_x_txt: "Aggiornamenti rapidi e messaggi brevi.",
+				faq_badge: "Prima di installare",
+				faq_title: "Risposte chiare, niente sorprese.",
 				faq_q1: "L'app &#232; sicura?",
 				faq_a1: "Assolutamente. WorkSpace Manager &#232; firmata digitalmente con un <strong>Apple Developer ID</strong> e autenticata (Notarized) dai server Apple per garantire l'assenza di malware.",
 				faq_q2: "Perch&#233; non &#232; sull'App Store?",
@@ -797,6 +1248,13 @@
 				label_devices: "Puoi attivarlo su 2 dispositivi",
 				label_payment: "Pagamento sicuro una tantum",
 				label_downloads: "downloads totali",
+				stat_setup: "setup pronto",
+				stat_finder: "tab e gruppi",
+				stat_native: "flusso nativo",
+				launch_title: "Workspace launch",
+				launch_apps: "Apertura app essenziali",
+				launch_finder: "Finder organizzato in tab",
+				launch_docs: "Siti e documenti già pronti",
 			},
 			en: {
 				nav_features: "Features",
@@ -807,31 +1265,59 @@
 				nav_contact: "Contact",
 				mobile_download_btn: "Download App v2.0.6",
 				footer_version: "Version 2.0.6 &#8226; macOS Universal",
+				nav_tagline: "macOS automation",
 				hero_badge: "New v2.0.6 • Finder & Tab Revolution",
 				badge_swift: "100% Native",
 				badge_notarized: "Apple Notarized",
-				hero_title: `Your ideal setup <br><span class="text-gradient">in just one click.</span>`,
-				hero_desc: "Stop clicking icons one by one. Open all your <strong>Apps</strong>, <strong>Websites</strong>, and <strong>Folders</strong> at once. Organize your work into smart Workspaces.",
+				hero_title: `Your work opens <span class="text-gradient">already ready.</span>`,
+				hero_desc: "Launch apps, sites, files, and folders as one work environment. Every project returns with its context, without hunting everything down again.",
+				hero_badge_fast: "Instant setup",
+				hero_product_line: "macOS workspace automation",
+				hero_fallback_t: "Workspace dashboard",
+				hero_fallback_d: "Screenshot ready when the asset is available",
+				hero_status_title: "Active workspace",
+				hero_status_name: "Marketing Sprint",
+				hero_status_desc: "3 apps, 4 sites, 2 folders",
 				btn_download_mac: "Free Download",
 				btn_learn_more: "Learn More",
 				req_macos: "Requires macOS Sonoma or newer",
-				workflow_title: "Stop wasting time every morning.",
-				workflow_subtitle: "Gain 15 minutes of focus every time you switch projects.",
-				workflow_old_title: "Without WorkSpace Manager",
-				workflow_old_1: "Open Finder and hunt for the right folder...",
-				workflow_old_2: "Launch Chrome and open 5 tabs manually...",
-				workflow_old_3: "Open Word, Excel, and Mail one by one.",
-				workflow_old_result: "&#10060; 5 minutes lost every time",
-				workflow_new_title: "With WorkSpace Manager",
-				workflow_new_1: "Choose context (e.g., 'Work', 'Relax').",
-				workflow_new_2: "Done. Everything open. &#10024;",
+				workflow_title: "Every workspace brings your work context back.",
+				workflow_subtitle: "It is not just opening apps: it brings back folders, sites, tools, and the right project mindset.",
+				workflow_badge: "From chaos to context",
+				workflow_old_kicker: "Before",
+				workflow_old_result_label: "Hidden cost",
+				workflow_new_kicker: "After",
+				workflow_new_workspace: "Workspace “Marketing Sprint”",
+				workflow_new_ready: "Ready",
+				workflow_new_3: "Sites, files, and tools return to the same flow.",
+				workflow_stat_apps: "native",
+				workflow_stat_web: "ready",
+				workflow_stat_finder: "organized",
+				workflow_old_title: "Manual setup, broken focus",
+				workflow_old_1: "You hunt for the right folder across projects, documents, and downloads.",
+				workflow_old_2: "You reopen dashboards, email, task boards, and sites one by one.",
+				workflow_old_3: "Every project switch becomes a repeated interruption.",
+				workflow_old_result: "5-15 minutes lost",
+				workflow_new_title: "One click, context ready",
+				workflow_new_1: "Work apps open in the right sequence.",
+				workflow_new_2: "Finder is organized with tabs and groups ready.",
 				workflow_new_time: "In 2 seconds:",
 				tag_app: "3 Apps",
 				tag_web: "4 Websites",
 				tag_finder: "2 Folders",
-				workflow_new_result: "&#9989; Instant Focus",
-				update_title: "The Finder Revolution: Tabs, Groups, and Total Order.",
-				update_subtitle: "We've rewritten folder management. Now you have total control over how, where, and in what order your Finder tabs open.",
+				workflow_new_result: "Ready before you lose the thread",
+				update_title: "Finder finally works the way you work.",
+				update_subtitle: "Version 2.0.6 brings real order to folders: tabs, groups, stable sequencing, and a setup that stays exactly as you designed it.",
+				update_metric_1: "merge folders",
+				update_metric_2: "choose tabs or windows",
+				update_metric_3: "reopen in order",
+				update_mock_title: "Finder workspace",
+				update_tab_1: "Project",
+				update_tab_2: "Assets",
+				update_tab_3: "Docs",
+				update_flow_1: "Primary and secondary folders",
+				update_flow_2: "Custom Finder groups",
+				update_flow_3: "Setup reopened in the same order",
 				update_card_tabs_t: "Folder Management 2.0",
 				update_card_tabs_d: "Unified paths: no more distinction between main and secondary folders for total linearity.",
 				update_card_groups_t: "Window Groups",
@@ -844,7 +1330,19 @@
 				update_card_access_d: "New saving engine: your configurations are safe and will never be lost on restart.",
 				update_card_fixes_t: "Premium Selector",
 				update_card_fixes_d: "New workspace card design with fluid and professional Ghost Picker interaction.",
-				feat_title: "Everything you can do with v2.0.6",
+				feat_title: "Everything you need to launch, protect, and resume work.",
+				feat_badge: "Operational toolkit",
+				feat_subtitle: "The features are not a checklist: they work together to turn each project into a ready, organized, secure environment.",
+				feat_finder_1_t: "Ordered tabs",
+				feat_finder_1_d: "Folders in the same context.",
+				feat_finder_2_t: "Finder groups",
+				feat_finder_2_d: "Separate windows when needed.",
+				feat_finder_3_t: "Stable order",
+				feat_finder_3_d: "Always as configured.",
+				feat_privacy_note: "Sensitive workspaces stay away from curious eyes.",
+				feat_menubar_badge: "Always within reach",
+				feat_everyday_title: "Details that make the app complete",
+				feat_everyday_subtitle: "Less friction, more everyday control.",
 				f_update_t: "Finder Revolution",
 				f_update_d: "Unified folders, deterministic opening order, and smart grouping into multiple tabs and windows.",
 				f_update_engine_t: "New Update Engine",
@@ -871,18 +1369,60 @@
 				f_menubar_d: "Control everything from the menu bar. Now rewritten to consume even less RAM.",
 				f_list_1: "Quick switch and resource status",
 				f_list_2: "Granular auto-start control",
-				gallery_title: "WorkSpace Manager in Action",
-				gallery_subtitle: "Click images to enlarge and see details.",
-				install_title: "Secure & Verified Installation",
-				install_subtitle: "WorkSpace Manager is officially <strong>Notarized by Apple</strong>. No warnings, no tricks. Just clean and secure software.",
-				step1_t: "1. Download",
-				step1_d: "Get the latest certified version directly from our secure GitHub servers.",
-				step2_t: "2. Drag & Drop",
-				step2_d: "Drag the icon into your <strong>Applications</strong> folder. No invasive installers.",
-				step3_t: "3. Launch (Verified)",
-				step3_d: "Gatekeeper will verify the Apple Developer ID signature and malware absence. 100% Guaranteed Security.",
-				down_title: "Start for free today.",
-				down_subtitle: "Download the unlimited trial version. Unlock Pro features whenever you're ready.",
+				gallery_title: "See your workspace take shape.",
+				gallery_subtitle: "From the dashboard to the Menu Bar, every screen is designed to get you to the right work without friction.",
+				gallery_badge: "Product tour",
+				gallery_featured_badge: "Main view",
+				gallery_dashboard_t: "Workspace dashboard",
+				gallery_dashboard_d: "The control center where you choose a context and launch everything you need.",
+				gallery_menubar_t: "Menu Bar",
+				gallery_click: "Click to enlarge",
+				gallery_finder_t: "Finder 2.0",
+				gallery_finder_d: "Tabs, groups, and stable order",
+				gallery_settings_t: "Settings",
+				gallery_settings_d: "Clear controls for app behavior.",
+				gallery_appearance_t: "Appearance",
+				gallery_appearance_d: "Light, dark, or synced with macOS.",
+				gallery_errors_t: "Guided alerts",
+				gallery_errors_d: "Useful messages when a permission or action is needed.",
+				gallery_modal_t: "Fullscreen preview",
+				gallery_modal_d: "Each image opens in an overlay with keyboard navigation and zoom.",
+				gallery_cta: "Try it on your Mac",
+				install_title: "Clean, signed, and verified installation.",
+				install_subtitle: "WorkSpace Manager is signed with Apple Developer ID and notarized by Apple. No invasive installer: download, drag to Applications, and launch.",
+				install_badge: "macOS security",
+				install_trust_1_t: "Apple Notarized",
+				install_trust_1_d: "Apple malware check.",
+				install_trust_2_t: "Developer ID",
+				install_trust_2_d: "Signature recognized by macOS.",
+				install_trust_3_t: "Clean DMG",
+				install_trust_3_d: "No hidden processes.",
+				install_flow_label: "Recommended path",
+				install_flow_title: "Three steps, no surprises.",
+				step1_t: "Download the DMG",
+				step1_d: "Download the latest certified version from the official GitHub release.",
+				step2_t: "Drag to Applications",
+				step2_d: "Move the app into Applications. No hidden helpers or invasive components are installed.",
+				step3_t: "Launch with Gatekeeper",
+				step3_d: "macOS verifies the Apple signature and notarization before opening. You start from a checked and recognized app.",
+				down_title: "Start free. Go Pro when your workspace becomes essential.",
+				down_subtitle: "Download the full app now and try it on your Mac. The Pro license unlocks advanced flows for people who use WorkSpace Manager every day.",
+				down_badge: "Download & license",
+				down_trust_1: "macOS Sonoma+",
+				down_trust_2: "Apple notarized",
+				down_trust_3: "One-time payment",
+				free_badge: "Risk-free trial",
+				free_title: "Free download",
+				free_desc: "Perfect to start, create your first workspaces, and see how much time you save.",
+				free_price_label: "Price",
+				free_limit_note: "Pro features available with a license.",
+				pro_badge: "Best choice",
+				pro_label: "Lifetime license",
+				pro_title: "WorkSpace Manager Pro",
+				pro_desc: "For people who want to open, protect, and close entire work contexts without limits.",
+				pro_price_note: "One-time payment, personal license for 2 Macs.",
+				pro_trust_1: "Secure checkout",
+				pro_trust_3: "Lifetime license",
 				p_free_1: "Basic Workspace Management",
 				p_free_2: "Launch Apps & Folders",
 				p_free_3: "Menu Bar Resident",
@@ -899,11 +1439,18 @@
 				p_pro_4: "Backup/Restore",
 				p_pro_5: "Priority Support",
 				btn_buy: "Buy License",
-				contact_title: "Questions or Feedback?",
-				contact_subtitle: "Contact me directly, I reply within 24h.",
-				c_email_txt: "Send Email",
-				c_bug_txt: "Open Issue",
-				faq_title: "Frequently Asked Questions",
+				contact_title: "Questions, bugs, or ideas to improve the app?",
+				contact_subtitle: "Use the channel that fits best. GitHub is ideal for technical bugs; email is better for license, install, or Pro questions.",
+				contact_badge: "Direct support",
+				contact_response_t: "Fast reply",
+				contact_response_d: "Usually within 24 hours on business days.",
+				c_email_txt: "Licenses, installation, and general questions.",
+				c_bug_txt: "Report issues with details and screenshots.",
+				contact_open_issue: "Open an issue",
+				contact_email_cta: "Send an email",
+				contact_x_txt: "Quick updates and short messages.",
+				faq_badge: "Before installing",
+				faq_title: "Clear answers, no surprises.",
 				faq_q1: "Is the app safe?",
 				faq_a1: "Absolutely. WorkSpace Manager is digitally signed with an <strong>Apple Developer ID</strong> and Notarized by Apple servers to guarantee no malware is present.",
 				faq_q2: "Why isn't it on the App Store?",
@@ -921,6 +1468,13 @@
 				label_devices: "You can activate it on 2 devices",
 				label_payment: "Secure one-time payment",
 				label_downloads: "total downloads",
+				stat_setup: "ready setup",
+				stat_finder: "tabs and groups",
+				stat_native: "native flow",
+				launch_title: "Workspace launch",
+				launch_apps: "Essential apps opening",
+				launch_finder: "Finder organized in tabs",
+				launch_docs: "Sites and documents ready",
 			}
 		};
 
@@ -1044,6 +1598,24 @@
 		document.addEventListener('DOMContentLoaded', () => {
 			setLanguage('it');
 			fetchTotalDownloads();
+
+		// Premium reveal animations
+		const revealObserver = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('in-view');
+					revealObserver.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+
+		document.querySelectorAll('.reveal, .pro-card').forEach((el, index) => {
+			if (!el.classList.contains('reveal')) el.classList.add('reveal');
+			if (index % 3 === 1) el.classList.add('reveal-delay-1');
+			if (index % 3 === 2) el.classList.add('reveal-delay-2');
+			revealObserver.observe(el);
+		});
+
 		});
 	</script>
 
