@@ -3,14 +3,14 @@
     <channel>
         <title>WorkSpace Manager</title>
         <item>
-            <title>Version 2.0.6</title>
-            <pubDate>Wed, 15 Apr 2026 18:26:11 +0200</pubDate>
+            <title>Version 2.0.7</title>
+            <pubDate>Wed, 22 Apr 2026 15:30:33 +0200</pubDate>
             <sparkle:releaseNotesLink xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xml:lang="it">https://frafra077.github.io/workspace-manager/notes.html</sparkle:releaseNotesLink>
             <sparkle:releaseNotesLink xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xml:lang="en">https://frafra077.github.io/workspace-manager/notes-en.html</sparkle:releaseNotesLink>
-            <sparkle:version>206</sparkle:version>
-            <sparkle:shortVersionString>2.0.6</sparkle:shortVersionString>
+            <sparkle:version>207</sparkle:version>
+            <sparkle:shortVersionString>2.0.7</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/frafra077/workspace-manager/releases/download/v.2.0.6/WorkSpace.2.0.6.dmg" length="6431703" type="application/octet-stream" sparkle:edSignature="slNgqq8OMDJigobzmQERbdfsC55vXwx+KaaOze8NuBjoAb5HxBgmSJKmBGgoT/Mb/6ahpOrN6jJN21djDfOrDg=="></enclosure>
+            <enclosure url="https://github.com/frafra077/workspace-manager/releases/download/v.2.0.7/WorkSpace.2.0.7.dmg" length="8420141" type="application/octet-stream" sparkle:edSignature="oOW6c7t0Zr5PA/S3CCeYEc/B4lGBjDyU564UaAMCCs2QfWqwBLdlSBk5q/1xpUqw0t9+r/Tq7bJIX/+XCoCVBg=="></enclosure>
         </item>
     </channel>
 </rss>
