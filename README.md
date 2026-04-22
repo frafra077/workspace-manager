@@ -5,7 +5,7 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Version 2.0.6</strong> • Native macOS Automation<br/>
+  <strong>Version 2.0.7</strong> • Native macOS Automation<br/>
   Apps, Websites, Folders, and Terminals launched in <strong>one click</strong>.
 </p>
 
@@ -15,7 +15,7 @@
 
 <p align="center">
   <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Official Website</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.6 (.dmg)</b></a>
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.7 (.dmg)</b></a>
 </p>
 
 <!-- BADGES -->
@@ -27,9 +27,9 @@
 <br/>
 
 > [!TIP]
-> **New in v2.0.6:** **Finder Management Revolution** — Unified paths, deterministic opening order, and manual sorting UI · **Premium Workspace Selector** with Ghost Picker interaction · Reliable Data Persistence 🔄
+> **New in v2.0.7:** **Liquid Glass Design** for Settings and selectors · animated Apple-style onboarding · improved Finder controls · French localization 🇫🇷 · smarter numeric badges
+> **v2.0.6:** Finder Management Revolution — Unified paths, deterministic opening order, manual sorting UI, and reliable persistence
 > **v2.0.5:** Finder Tabs · Folder Window Groups · Pro Demo for Free users
-> **v2.0.4:** Automatic Updates · macOS Sonoma support restored
 
 ---
 
@@ -42,7 +42,7 @@ Create "Contexts" (e.g., *Work, University, Freelance*) and launch them instantl
 
 | 🔒 **Privacy & Security** | 🚀 **Performance** | 🌍 **Localization** | 🌗 **Themes** |
 |---|---|---|---|
-| **TouchID / FaceID** support | Native engine rewritten | English 🇬🇧 / Italian 🇮🇹 | Light/Dark/System |
+| **TouchID / FaceID** support | Native engine rewritten | English 🇬🇧 / Italian 🇮🇹 / French 🇫🇷 | Light/Dark/System |
 
 | 💾 **Backup** | 🔄 **Close Workspace** | 🞃 **Hide Dock Icon** | 🗂️ **Finder Tabs** |
 |---|---|---|---|
@@ -75,7 +75,22 @@ Create "Contexts" (e.g., *Work, University, Freelance*) and launch them instantl
 
 ---
 
-## 🗂️ Finder Revolution — Total Folder Control (New in v2.0.6)
+## 🎨 Liquid Glass Refresh — A More Native Settings Experience (New in v2.0.7)
+
+WorkSpace Manager 2.0.7 modernizes the app experience with a full Settings refresh and clearer Finder controls.
+
+- **Liquid Glass Design** — Settings and selection tabs now use native materials, translucency, and a more spacious visual language inspired by modern macOS.
+- **Animated Onboarding** — First-time users are welcomed by a smoother Apple-style intro animation.
+- **Better Finder Controls** — Folder ordering is clearer, more responsive, and easier to understand at a glance.
+- **Finder Group Button** — The group selector is now a rounded, readable button instead of a compact dropdown.
+- **Accidental Close Recovery** — A new in-app popup lets you quickly reopen folders and related workspaces closed by mistake.
+- **French Localization** — Full French language support has been added.
+- **Smart Numeric Badges** — Workspace configurations now show counts for Apps, Websites, and Files without opening each section.
+- **Improved Symbol Legend** — The legend now explains the new indicators more clearly.
+
+---
+
+## 🗂️ Finder Revolution — Total Folder Control (v2.0.6)
 
 We have completely redesigned how folders are handled. It's no longer just about tabs; it's about absolute order and organization.
 
@@ -94,7 +109,7 @@ We have completely redesigned how folders are handled. It's no longer just about
 
 As fully notarized software, installation is standard:
 
-1. **Download** `WorkSpace.2.0.6.dmg` from the [Releases Section](https://github.com/frafra077/workspace-manager/releases/latest)
+1. **Download** `WorkSpace.2.0.7.dmg` from the [Releases Section](https://github.com/frafra077/workspace-manager/releases/latest)
 2. **Drag** the app into your `Applications` folder
 3. **Launch** and enjoy your saved time 🚀
 
@@ -116,6 +131,15 @@ For bug reports or feature requests:
 ---
 
 ## 📋 Changelog
+
+### v2.0.7 (April 22, 2026)
+- 🎨 **Liquid Glass Design** — redesigned Settings and selection tabs with native materials, translucency, and a more spacious macOS look
+- ✨ **Animated Onboarding** — new Apple-style welcome animation for first-time users
+- 📂 **Better Finder Controls** — clearer folder ordering, improved group selector button, and faster visual feedback
+- ♻️ **Accidental Close Recovery** — new popup to quickly reopen folders and related workspaces closed by mistake
+- 🇫🇷 **French Localization** — full French language support added
+- 📊 **Smart Numeric Badges** — Apps, Websites, and Files now show item counts directly in the workspace configuration
+- 🧭 **Improved Symbol Legend** — updated explanations for the new indicators
 
 ### v2.0.6 (April 15, 2026)
 - ✅ **Finder Revolution** — Unified paths, deterministic opening order, and new sorting UI (arrows)

@@ -5,13 +5,13 @@
 <h1 align="center">WorkSpace Manager for macOS</h1>
 
 <p align="center">
-  <strong>Versione 2.0.6</strong> • Automazione Pro per macOS<br/>
+  <strong>Versione 2.0.7</strong> • Automazione Pro per macOS<br/>
   App, Siti, Cartelle e Terminali aperti in <strong>un click</strong>.
 </p>
 
 <p align="center">
   <a href="https://frafra077.github.io/workspace-manager/"><b>🌐 Sito Ufficiale & Offerta</b></a> •
-  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.6 (.dmg)</b></a>
+  <a href="https://github.com/frafra077/workspace-manager/releases/latest"><b>📦 Download v2.0.7 (.dmg)</b></a>
 </p>
 
 <!-- BADGES -->
@@ -23,9 +23,9 @@
 <br/>
 
 > [!TIP]
-> **Nuovo in v2.0.6:** **Rivoluzione Finder** — Percorsi unificati, ordine deterministico e manuale · **Selettore Premium** con tecnologia Ghost Picker · Attivazione Intelligente (Smart Activation) 🔄
+> **Nuovo in v2.0.7:** **Design Liquid Glass** per Impostazioni e tab · onboarding animato in stile Apple · controlli Finder più chiari · lingua francese 🇫🇷 · badge numerici intelligenti
+> **v2.0.6:** Rivoluzione Finder — Percorsi unificati, ordine deterministico, ordinamento manuale e persistenza affidabile
 > **v2.0.5:** Tab Finder — apri più cartelle in un'unica finestra Finder con schede · Gruppi di Finestre · Demo Pro per utenti Free
-> **v2.0.4:** Aggiornamenti automatici · Supporto macOS Sonoma ripristinato
 
 ---
 
@@ -38,7 +38,7 @@ Con WorkSpace Manager crei dei "contesti" (es. *Lavoro, Università, Freelance*)
 
 | 🔒 **Privacy & Sicurezza** | 🚀 **Performance** | 🌍 **Multilingua** | 🌗 **Temi** |
 |---|---|---|---|
-| **TouchID / FaceID** support | Motore nativo riscritto | Italiano 🇮🇹 / English 🇬🇧 | Light/Dark/System |
+| **TouchID / FaceID** support | Motore nativo riscritto | Italiano 🇮🇹 / English 🇬🇧 / Français 🇫🇷 | Light/Dark/System |
 
 | 💾 **Backup** | 🔄 **Chiudi Workspace** | 🞃 **Nascondi Dock** | 🗂️ **Tab Finder** |
 |---|---|---|---|
@@ -71,7 +71,22 @@ Con WorkSpace Manager crei dei "contesti" (es. *Lavoro, Università, Freelance*)
 
 ---
 
-## 🗂️ Rivoluzione Finder — Controllo Totale delle Cartelle (Nuovo v2.0.6)
+## 🎨 Nuovo Design Liquid Glass — Impostazioni più moderne (Nuovo v2.0.7)
+
+WorkSpace Manager 2.0.7 modernizza l'esperienza dell'app con un pannello Impostazioni ridisegnato e controlli Finder più chiari.
+
+- **Design Liquid Glass** — Impostazioni e tab di selezione adottano materiali nativi, traslucenze e un look più arioso ispirato alle versioni moderne di macOS.
+- **Onboarding Animato** — Chi apre l'app per la prima volta viene accolto da una nuova animazione fluida in stile Apple.
+- **Controlli Finder Migliorati** — L'ordinamento delle cartelle è più visibile, responsivo e facile da capire.
+- **Pulsante Gruppi Finder** — Il vecchio menu compatto diventa un pulsante arrotondato più leggibile e comodo da cliccare.
+- **Riapertura Rapida** — Un nuovo popup permette di riaprire velocemente cartelle e workspace chiusi per sbaglio.
+- **Lingua Francese** — Aggiunto il supporto completo alla lingua francese.
+- **Badge Numerici** — Le configurazioni mostrano il numero di App, Siti Web e File già presenti senza dover entrare nei dettagli.
+- **Legenda Migliorata** — La sezione "Legenda Simboli" spiega in modo più chiaro i nuovi indicatori.
+
+---
+
+## 🗂️ Rivoluzione Finder — Controllo Totale delle Cartelle (v2.0.6)
 
 Abbiamo completamente riprogettato la gestione delle cartelle. Non si tratta più solo di tab, ma di ordine e organizzazione assoluta.
 
@@ -127,7 +142,7 @@ Esporta i tuoi profili in formato JSON e portali su un altro Mac in un secondo.
 
 Essendo un software certificato Apple, l'installazione è standard:
 
-1. **Scarica** `WorkSpace.2.0.6.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
+1. **Scarica** `WorkSpace.2.0.7.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
 2. **Trascina** l'icona nella cartella `Applicazioni`
 3. **Avvia** e goditi il tuo tempo risparmiato 🚀
 
@@ -149,6 +164,15 @@ Per segnalare bug o richiedere feature:
 ---
 
 ## 📋 Changelog
+
+### v2.0.7 (22 Aprile 2026)
+- 🎨 **Design Liquid Glass** — ridisegnati Impostazioni e tab di selezione con materiali nativi, traslucenze e un look più moderno
+- ✨ **Onboarding Animato** — nuova animazione di benvenuto in stile Apple per i nuovi utenti
+- 📂 **Controlli Finder Migliorati** — ordinamento cartelle più chiaro, pulsante gruppi più leggibile e feedback visivo più responsivo
+- ♻️ **Riapertura Rapida** — nuovo popup per riaprire cartelle e workspace chiusi per sbaglio
+- 🇫🇷 **Lingua Francese** — aggiunto il supporto completo alla lingua francese
+- 📊 **Badge Numerici** — App, Siti Web e File mostrano il numero di elementi configurati
+- 🧭 **Legenda Simboli Migliorata** — spiegazioni aggiornate per i nuovi indicatori
 
 ### v2.0.6 (15 Aprile 2026)
 - ✅ **Rivoluzione Finder** — Percorsi unificati, ordine di apertura deterministico e nuove frecce di ordinamento
@@ -241,4 +265,3 @@ struct WorkspaceItemView: View {
         .glassBackgroundEffect()
     }
 }
-
