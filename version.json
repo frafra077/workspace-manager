@@ -1,7 +1,7 @@
 {
-  "version": "2.0.6",
+  "version": "2.0.7",
   "minimumRequiredVersion": "2.0.0",
   "downloadURL": "https://frafra077.github.io/workspace-manager/#download",
-  "releaseNotes": "v2.0.5 - Important: Please update as soon as possible. Support for versions earlier than 2.0.4 will be discontinued, and updating will become mandatory. New: Advanced Finder Tabs, Finder window groups, Pro demo for Free users, clearer Pro notice, fixed folder duplication bug, improved Accessibility permission check · Bug fixes | v2.0.5 - Importante: aggiorna il prima possibile. Il supporto per le versioni precedenti alla 2.0.4 verrà interrotto e l’aggiornamento diventerà obbligatorio. Nuovo: Finder Tabs avanzate, gruppi di finestre Finder, demo Pro per utenti Free, messaggio Pro più chiaro, fix duplicazione cartella, migliorato controllo permessi Accessibilità · Correzioni bug",
+  "releaseNotes": "v2.0.7 - Important: Please update as soon as possible. Support for versions earlier than 2.0.4 will be discontinued, and updating will become mandatory. New: Advanced Finder Tabs, Finder window groups, Pro demo for Free users, clearer Pro notice, fixed folder duplication bug, improved Accessibility permission check · Bug fixes | v2.0.5 - Importante: aggiorna il prima possibile. Il supporto per le versioni precedenti alla 2.0.4 verrà interrotto e l’aggiornamento diventerà obbligatorio. Nuovo: Finder Tabs avanzate, gruppi di finestre Finder, demo Pro per utenti Free, messaggio Pro più chiaro, fix duplicazione cartella, migliorato controllo permessi Accessibilità · Correzioni bug",
   "force": true
 }
