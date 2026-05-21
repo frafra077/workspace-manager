@@ -23,9 +23,10 @@
 <br/>
 
 > [!TIP]
-> **Nuovo in v2.0.7:** **Design Liquid Glass** per Impostazioni e tab · onboarding animato in stile Apple · controlli Finder più chiari · lingua francese 🇫🇷 · badge numerici intelligenti
-> **v2.0.6:** Rivoluzione Finder — Percorsi unificati, ordine deterministico, ordinamento manuale e persistenza affidabile
-> **v2.0.5:** Tab Finder — apri più cartelle in un'unica finestra Finder con schede · Gruppi di Finestre · Demo Pro per utenti Free
+> **Novità in v2.0.8:** Menu macOS nativo in lingua dell’app · più terminali per workspace · riapertura gruppi Finder più intelligente · voce Aiuto collegata al sito ufficiale · note di rilascio in francese per Sparkle 🇫🇷
+> **v2.0.7:** Design Liquid Glass per impostazioni e selettori · onboarding animato in stile Apple · controlli Finder migliorati · localizzazione francese 🇫🇷 · badge numerici più intelligenti
+> **v2.0.6:** Rivoluzione Finder — Percorsi unificati, ordine di apertura deterministico, UI di ordinamento manuale e persistenza affidabile
+> **v2.0.5:** Schede Finder · Gruppi finestra cartelle · Demo Pro per utenti Free
 
 ---
 
@@ -71,7 +72,22 @@ Con WorkSpace Manager crei dei "contesti" (es. *Lavoro, Università, Freelance*)
 
 ---
 
-## 🎨 Nuovo Design Liquid Glass — Impostazioni più moderne (Nuovo v2.0.7)
+## 🌐 Menu Nativo & Supporto Multi-Terminal — Un’Esperienza Più Coerente (Nuova v2.0.8)
+
+WorkSpace Manager 2.0.8 affina l’esperienza dell’app con un menu più coerente, comportamenti Finder più intelligenti e un supporto terminali ampliato.
+
+- **Menu macOS nativo in lingua dell’app** — La barra menu ora rispetta la lingua scelta nelle impostazioni, inclusi titoli e voci comuni inserite automaticamente da macOS.
+- **Più terminali per workspace** — La sezione Terminale e Comandi può ora configurare più cartelle e comandi, tutti avviati contemporaneamente all’apertura del workspace, mantenendo la compatibilità con le configurazioni a terminale singolo.
+- **Riapertura gruppi Finder più intelligente** — Il comando “Riapri gruppo” chiude prima il gruppo tracciato e poi lo riapre, evitando finestre duplicate quando il gruppo era già aperto.
+- **Voce Aiuto collegata al sito ufficiale** — La voce Aiuto WorkSpace nel menu punta ora direttamente al sito ufficiale dell’app per un accesso rapido alla documentazione e al supporto.
+- **Note di rilascio in francese per Sparkle** — Aggiunte le note di rilascio in francese (`notes-fr.html`) nel feed Sparkle; lo script release/appcast pubblica ora i link per `it`, `en` e `fr`.
+- **Menu Vista nativo più stabile** — Il menu Vista nativo di macOS è tenuto attivo per evitare reinserimenti intermittenti, mentre le voci native pannelli/schede sono state rimosse senza eliminare il menu stesso.
+- **Localizzazione menu migliorata** — I titoli dei menu vengono normalizzati e aggiornati durante `menuNeedsUpdate`, così anche le voci generate da macOS seguono la lingua dell’app.
+- **Barra menu più reattiva** — La sincronizzazione della barra menu è stata stabilizzata, eliminando blocchi durante l’apertura dei menu.
+
+---
+
+## 🎨 Nuovo Design Liquid Glass — Impostazioni più moderne (v2.0.7)
 
 WorkSpace Manager 2.0.7 modernizza l'esperienza dell'app con un pannello Impostazioni ridisegnato e controlli Finder più chiari.
 
@@ -142,7 +158,7 @@ Esporta i tuoi profili in formato JSON e portali su un altro Mac in un secondo.
 
 Essendo un software certificato Apple, l'installazione è standard:
 
-1. **Scarica** `WorkSpace.2.0.7.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
+1. **Scarica** `WorkSpace.2.0.8.dmg` dalla [Release Section](https://github.com/frafra077/workspace-manager/releases/latest)
 2. **Trascina** l'icona nella cartella `Applicazioni`
 3. **Avvia** e goditi il tuo tempo risparmiato 🚀
 
@@ -164,6 +180,16 @@ Per segnalare bug o richiedere feature:
 ---
 
 ## 📋 Changelog
+
+### v2.0.8 (21 maggio 2026)
+- 🌐 **Menu macOS in lingua dell’app** — il menu nativo segue la lingua scelta nelle impostazioni, inclusi i titoli e le voci inserite automaticamente da macOS
+- 🖥️ **Più terminali per workspace** — la sezione Terminale e Comandi supporta più cartelle e comandi per ogni workspace, tutti avviati all’apertura
+- 🔁 **Riapertura gruppi Finder più intelligente** — il comando “Riapri gruppo” chiude prima il gruppo e poi lo riapre, evitando finestre duplicate
+- ❓ **Aiuto collegato al sito ufficiale** — la voce Aiuto WorkSpace nel menu punta direttamente al sito ufficiale dell’app
+- 🇫🇷 **Note di rilascio in francese per Sparkle** — note di rilascio in francese (`notes-fr.html`) aggiunte al feed Sparkle, con link multi‑lingua (`it`, `en`, `fr`)
+- 🖥️ **Menu Vista nativo più stabile** — il menu Vista nativo è mantenuto attivo per evitare reinserimenti, mentre le voci native pannelli/schede sono state rimosse
+- 🌐 **Localizzazione menu migliorata** — i titoli vengono normalizzati e aggiornati durante `menuNeedsUpdate`, così anche le voci generate da macOS seguono la lingua dell’app
+- ⚙️ **Barra menu più reattiva** — ottimizzata la sincronizzazione per evitare blocchi durante l’apertura dei menu
 
 ### v2.0.7 (22 Aprile 2026)
 - 🎨 **Design Liquid Glass** — ridisegnati Impostazioni e tab di selezione con materiali nativi, traslucenze e un look più moderno
